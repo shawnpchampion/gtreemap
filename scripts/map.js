@@ -130,12 +130,20 @@ $(window).on('load', function() {
         
       if (point.Latitude !== '' && point.Longitude !== '') {
         
-        var marker = L.marker([point.Latitude, point.Longitude], {icon: icon});
+        var marker = L.marker([point.Latitude, point.Longitude], {icon: icon})
     //      .bindPopup("<b>" + point['Name'] + '</b><br>' +
     //      (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
     //      point['Description']);
-       
    
+        .on({
+         click: function (e) {
+           $("#feature-title").html(point['Name']);
+           $("#feature-back").html(point['Image']);
+      //     $("#feature-info").html(content);
+           $("#featureModal").modal("show");
+             }
+        });
+       
         
         if (layers !== undefined && layers.length !== 1) {
           marker.addTo(layers[point.Group]);
@@ -182,12 +190,6 @@ $(window).on('load', function() {
           multilayerClusterSupport.checkIn(layers[i]);
           layers[i].addTo(map);
           
-           layers[i].on({click: function (e) {
-    $("#feature-title").html(point['Name']);
-    $("#feature-info").html(point['Name']);
-    $("#featureModal").modal("show");
-  }
-});
         }
       }
 
@@ -293,6 +295,8 @@ $(window).on('load', function() {
     return group;
   }
 
+  
+  
   var polygon = 0; // current active polygon
   var layer = 0; // number representing current layer among layers in legend
 
