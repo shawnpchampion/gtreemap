@@ -93,6 +93,7 @@
   <!-- <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script> -->
  
 
+    <script src="assets/js/app.js"></script> 
   
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -128,20 +129,7 @@
 <!-- END NAV BAR CODE -->
 
 
-           
-    <div id="map"></div>
-  <table id="maptable" class="display"></table>
-  <script type="text/javascript">
-    var map = L.map('map', {
-      attributionControl: false,
-      zoomControl: false,
-      scrollWheelZoom: false,
-      tap: false
-    }).setView([41.76,-72.69], 11); // default center is overridden by Google Sheet options and points
-  </script>
-
-  
-
+          
 <!-- BEGIN MENU SCREEN ABOUT POP UP -->
     <!-- <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog"> -->
     <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
@@ -212,7 +200,16 @@
     </div><!-- /.modal -->
 <!-- END MENU SCREEN ABOUT POP UP -->
 
-  
+  <div id="map"></div>
+  <!-- <table id="maptable" class="display"></table> -->
+  <script type="text/javascript">
+    var map = L.map('map', {
+      attributionControl: false,
+      zoomControl: false,
+      scrollWheelZoom: false,
+      tap: false
+    }).setView([41.76,-72.69], 11); // default center is overridden by Google Sheet options and points
+  </script>
   
   <script type="text/javascript" src="./google-doc-url.js"></script>
   <script type="text/javascript" src="./scripts/constants.js"></script>
