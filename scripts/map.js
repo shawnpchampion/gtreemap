@@ -139,11 +139,11 @@ $(window).on('load', function() {
            $("#feature-back").html(point['Image'});
            $("#feature-info").html(content);
            $("#featureModal").modal("show");
-           var bgimgurlm = 'url(' + point['Image'] + ')';
-           var divm = document.getElementById("bgimage");
-           divm.style.backgroundImage = bgimgurlm;
-           divm.style.backgroundRepeat = "no-repeat";
-           divm.style.backgroundSize = "contain";
+           var bgimgurlw = 'url(' + point['Image'] + ')';
+           var divw = document.getElementById("bgimage");
+           divw.style.backgroundImage = bgimgurlw;
+           divw.style.backgroundRepeat = "no-repeat";
+           divw.style.backgroundSize = "contain";
           }
         });
         
