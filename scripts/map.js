@@ -135,17 +135,15 @@ $(window).on('load', function() {
       //    (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
       //    point['Description']);
         
-       var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + point['Name'] + "</td></tr>" + "<table>";
-      
-      
-        
         
         if (layers !== undefined && layers.length !== 1) {
           marker.addTo(layers[point.Group]);
         }
         
         markerArray.push(marker);  
-        
+      
+        var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + point['Name'] + "</td></tr>" + "<table>";
+      
         marker.on({
          click: function (e) {
            $("#feature-title").html(point['Name']);
