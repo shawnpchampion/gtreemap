@@ -157,6 +157,10 @@ $(window).on('load', function() {
       //     divw.style.backgroundSize = "contain";
           }
         });
+        
+        function empty() {
+  // TODO: Clear Modal when Modal is closed for next marker clicked
+}
       }
     }
     
