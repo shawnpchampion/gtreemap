@@ -131,18 +131,9 @@ $(window).on('load', function() {
       if (point.Latitude !== '' && point.Longitude !== '') {
         
         var marker = L.marker([point.Latitude, point.Longitude], {icon: icon})
-    //      .bindPopup("<b>" + point['Name'] + '</b><br>' +
-    //      (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
-    //      point['Description']);
-   
-        .on({
-         click: function (e) {
-           $("#feature-title").html(point['Name']);
-           $("#feature-back").html(point['Image']);
-      //     $("#feature-info").html(content);
-           $("#featureModal").modal("show");
-             }
-        });
+          .bindPopup("<b>" + point['Name'] + '</b><br>' +
+          (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
+          point['Description']);
        
         
         if (layers !== undefined && layers.length !== 1) {
@@ -150,22 +141,6 @@ $(window).on('load', function() {
         }
         
         markerArray.push(marker);  
-      
-     //   var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + point['Name'] + "</td></tr>" + "<table>";
-      
-//        marker.on({
-//         click: function (e) {
-//           $("#feature-title").html(point['Name']);
-//           $("#feature-back").html(point['Image']);
-      //     $("#feature-info").html(content);
- //          $("#featureModal").modal("show");
-      //     var bgimgurlw = 'url(' + point['Image'] + ')';
-      //     var divw = document.getElementById("bgimage");
-      //     divw.style.backgroundImage = bgimgurlw;
-      //     divw.style.backgroundRepeat = "no-repeat";
-      //     divw.style.backgroundSize = "contain";
-  //        }
-//        });
         
       }
     }
