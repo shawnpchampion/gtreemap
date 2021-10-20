@@ -128,6 +128,15 @@ $(window).on('load', function() {
         
       var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + point['Name'] + "</td></tr>" + "<table>";
       
+
+        
+      if (point.Latitude !== '' && point.Longitude !== '') {
+        
+        var marker = L.marker([point.Latitude, point.Longitude], {icon: icon})
+      //    .bindPopup("<b>" + point['Name'] + '</b><br>' +
+      //    (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
+      //    point['Description']);
+        
       marker.on({
           click: function (e) {
            $("#feature-title").html(point['Name']);
@@ -142,21 +151,10 @@ $(window).on('load', function() {
           }
         });
         
-      if (point.Latitude !== '' && point.Longitude !== '') {
-        
-        var marker = L.marker([point.Latitude, point.Longitude], {icon: icon});
-      //    .bindPopup("<b>" + point['Name'] + '</b><br>' +
-      //    (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
-      //    point['Description']);
-        
-
-        
         if (layers !== undefined && layers.length !== 1) {
           marker.addTo(layers[point.Group]);
         }
         markerArray.push(marker);  
-        
-       
         
       }
     }
