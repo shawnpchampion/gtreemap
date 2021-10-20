@@ -126,9 +126,27 @@ $(window).on('load', function() {
           point['Icon Color']
         );
         
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + point['Name'] + "</td></tr>" + "<table>";
+
+        
+      if (point.Latitude !== '' && point.Longitude !== '') {
+        
+        var marker = L.marker([point.Latitude, point.Longitude], {icon: icon});
+      //    .bindPopup("<b>" + point['Name'] + '</b><br>' +
+      //    (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
+      //    point['Description']);
+        
+       var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + point['Name'] + "</td></tr>" + "<table>";
       
-       marker.on({
+      
+        
+        
+        if (layers !== undefined && layers.length !== 1) {
+          marker.addTo(layers[point.Group]);
+        }
+        
+        markerArray.push(marker);  
+        
+        marker.on({
          click: function (e) {
            $("#feature-title").html(point['Name']);
            $("#feature-back").html(point['Image']);
@@ -141,19 +159,6 @@ $(window).on('load', function() {
            divw.style.backgroundSize = "contain";
           }
         });
-        
-      if (point.Latitude !== '' && point.Longitude !== '') {
-        
-        var marker = L.marker([point.Latitude, point.Longitude], {icon: icon});
-      //    .bindPopup("<b>" + point['Name'] + '</b><br>' +
-      //    (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
-      //    point['Description']);
-        
-        if (layers !== undefined && layers.length !== 1) {
-          marker.addTo(layers[point.Group]);
-        }
-        markerArray.push(marker);  
-        
       }
     }
     
