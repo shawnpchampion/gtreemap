@@ -133,7 +133,7 @@ $(window).on('load', function() {
       //    (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
       //    point['Description']);
 
-        point.on({
+        marker.on({
           click: function (e) {
            $("#feature-title").html(point['Name']);
            $("#feature-back").html(point['Image']);
