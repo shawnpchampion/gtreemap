@@ -165,7 +165,7 @@ $(window).on('load', function() {
           multilayerClusterSupport.checkIn(layers[i]);
           layers[i].addTo(map);
           
-       marker.on({
+       layers[i].on({
          click: function (e) {
            $("#feature-title").html(point['Name']);
            $("#feature-back").html(point['Image']);
