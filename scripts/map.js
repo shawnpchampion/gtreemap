@@ -117,7 +117,8 @@ $(window).on('load', function() {
         ? L.icon({
           iconUrl: point['Marker Icon'],
           iconSize: size,
-          iconAnchor: anchor
+          iconAnchor: anchor,
+          popupAnchor: [0, -25]
         })
         : createMarkerIcon(point['Marker Icon'],
           'fa',
@@ -126,16 +127,33 @@ $(window).on('load', function() {
         );
 
       if (point.Latitude !== '' && point.Longitude !== '') {
-        var marker = L.marker([point.Latitude, point.Longitude], {icon: icon})
-          .bindPopup("<b>" + point['Name'] + '</b><br>' +
-          (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
-          point['Description']);
+        var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + point['Name'] + "</td></tr>" + "<table>";
+        var marker = L.marker([point.Latitude, point.Longitude], {icon: icon});
+      //    .bindPopup("<b>" + point['Name'] + '</b><br>' +
+      //    (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
+      //    point['Description']);
 
+        point.on({
+          click: function (e) {
+           $("#feature-title").html(point['Name']);
+           $("#feature-back").html(point['Image'});
+           $("#feature-info").html(content);
+           $("#featureModal").modal("show");
+           var bgimgurlm = 'url(' + point['Image'] + ')';
+           var divm = document.getElementById("bgimage");
+           divm.style.backgroundImage = bgimgurlm;
+           divm.style.backgroundRepeat = "no-repeat";
+           divm.style.backgroundSize = "contain";
+          }
+        });
+        
         if (layers !== undefined && layers.length !== 1) {
           marker.addTo(layers[point.Group]);
         }
-
+        
         markerArray.push(marker);
+        
+
       }
     }
 
