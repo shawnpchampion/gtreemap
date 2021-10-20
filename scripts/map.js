@@ -142,15 +142,6 @@ $("#featureModal").modal({show:false});
         
         markerArray.push(marker);  
         
-        for (var i in markerArray){
-  //      var markerID = point['Name'];
-  //      markerArray[i].openPopup();
-        markerArray[i].on('click', function() {
-            $("#feature-title").html(point['Name']);
-            $("#featureModal").modal("show"); 
-        });
-    };
-        
       }
     }
     
