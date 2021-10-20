@@ -103,16 +103,16 @@ $(window).on('load', function() {
     // check that map has loaded before adding points to it?
     for (var i in points) {
       var point = points[i];
-
+    
       // If icon contains '.', assume it's a path to a custom icon,
       // otherwise create a Font Awesome icon
       var iconSize = point['Custom Size'];
       var size = (iconSize.indexOf('x') > 0)
         ? [parseInt(iconSize.split('x')[0]), parseInt(iconSize.split('x')[1])]
         : [32, 32];
-
+      
       var anchor = [size[0] / 2, size[1]];
-
+       
       var icon = (point['Marker Icon'].indexOf('.') > 0)
         ? L.icon({
           iconUrl: point['Marker Icon'],
@@ -125,15 +125,22 @@ $(window).on('load', function() {
           point['Marker Color'].toLowerCase(),
           point['Icon Color']
         );
-
+        
       if (point.Latitude !== '' && point.Longitude !== '') {
         var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + point['Name'] + "</td></tr>" + "<table>";
         var marker = L.marker([point.Latitude, point.Longitude], {icon: icon});
       //    .bindPopup("<b>" + point['Name'] + '</b><br>' +
       //    (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
       //    point['Description']);
+        
 
-        marker.on({
+        
+        if (layers !== undefined && layers.length !== 1) {
+          marker.addTo(layers[point.Group]);
+        }
+        markerArray.push(marker);  
+        
+         marker.on({
           click: function (e) {
            $("#feature-title").html(point['Name']);
            $("#feature-back").html(point['Image']);
@@ -147,16 +154,9 @@ $(window).on('load', function() {
           }
         });
         
-        if (layers !== undefined && layers.length !== 1) {
-          marker.addTo(layers[point.Group]);
-        }
-        
-        markerArray.push(marker);
-        
-
       }
     }
-
+    
     var group = L.featureGroup(markerArray);
     var clusters = (getSetting('_markercluster') === 'on') ? true : false;
 
