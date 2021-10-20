@@ -100,9 +100,179 @@
 <body>
 
   <div class="loader">Loading...</div>
+  
+  
+  <!-- BEGIN NAV BAR CODE -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+
+<!-- CODE FOR MENU ICONS ON SMALL SCREENS -->
+          <div class="navbar-icon-container">
+            <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
+            <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a>
+          </div>
+
+          <a class="navbar-brand" href="#"><img src="assets/img/kalanilogo.png" width="auto" height="37"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp;About</a></li>
+            <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;Tree List</a></li>
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+<!-- END NAV BAR CODE -->
+
+
+    <div id="container">
+      
+<!-- BEGIN SIDE BAR CODE -->
+      <div id="sidebar">
+        <div class="sidebar-wrapper">
+          <div class="panel panel-default" id="features">
+            <div class="panel-heading">
+              <h3 class="panel-title">Kalani Fruit Trees
+              <button type="button" class="btn btn-xs btn-default pull-right" id="sidebar-hide-btn"><i class="fa fa-chevron-left"></i></button></h3>
+            </div>
+                   
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-8 col-md-8">
+                  <input type="text" class="form-control search" placeholder="Search" />
+                </div>
+                <div class="col-xs-4 col-md-4">
+                  <button type="button" class="btn btn-primary pull-right sort" data-sort="feature-name" id="sort-btn"><i class="fa fa-sort"></i>&nbsp;&nbsp;Sort</button>
+                </div>
+              </div>
+            </div>
+                         
+            <div class="sidebar-table">
+              <table class="table table-hover" id="feature-list">
+                <thead class="hidden">
+                  <tr>
+                    <th>Icon</th>
+                  <tr>
+                  <tr>
+                    <th>Name</th>
+                  <tr>
+                  <tr>
+                    <th>Chevron</th>
+                  <tr>
+                </thead>
+                <tbody class="list"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- END Side BAR CODE -->      
+
+      <div id="map"></div>
+
+    </div>
+
+    <div id="loading">
+      <div class="loading-indicator">
+        <div class="progress progress-striped active">
+          <div class="progress-bar progress-bar-info progress-bar-full"></div>
+        </div>
+      </div>
+    </div>
+
+<!-- BEGIN MENU SCREEN ABOUT POP UP -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-titlea"><img src="assets/img/kalanilogoleaf.png" width="auto" height="50">&nbsp;&nbsp;Welcome to the Kalani Fruit Tree Map!</h4>
+          </div>
+          <div class="modal-bodya">
+            <ul class="nav nav-tabs nav-justified" id="aboutTabs">
+              <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;About the project</a></li>
+              <li><a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact us</a></li>
+            </ul>
+            <div class="tab-content" id="aboutTabsContent">
+              <div class="tab-pane fade active in" id="about">
+                <p>A simple, responsive template for building web mapping applications with <a href="http://getbootstrap.com/">Bootstrap 3</a>, <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, and <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a>. Open source, MIT licensed, and available on <a href="https://github.com/bmcbride/bootleaf" target="_blank">GitHub</a>.</p>
+                <div class="panel panel-primary">
+                  <div class="panel-heading">Features</div>
+                  <ul class="list-group">
+                    <li class="list-group-item">Fullscreen mobile-friendly map template with responsive navbar and modal placeholders</li>
+                    <li class="list-group-item">jQuery loading of external GeoJSON files</li>
+                    <li class="list-group-item">Logical multiple layer marker clustering via the <a href="https://github.com/Leaflet/Leaflet.markercluster" target="_blank">leaflet marker cluster plugin</a></li>
+                    <li class="list-group-item">Elegant client-side multi-layer feature search with autocomplete using <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a></li>
+                    <li class="list-group-item">Responsive sidebar feature list synced with map bounds, which includes sorting and filtering via <a href="http://listjs.com/" target="_blank">list.js</a></li>
+                    <li class="list-group-item">Marker icons included in grouped layer control via the <a href="https://github.com/ismyrnow/Leaflet.groupedlayercontrol" target="_blank">grouped layer control plugin</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="contact">
+                <form id="contact-form">
+                  <div class="well well-sm">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="first-name">First Name:</label>
+                          <input type="text" class="form-control" id="first-name">
+                        </div>
+                        <div class="form-group">
+                          <label for="last-name">Last Name:</label>
+                          <input type="text" class="form-control" id="last-email">
+                        </div>
+                        <div class="form-group">
+                          <label for="email">Email:</label>
+                          <input type="text" class="form-control" id="email">
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <label for="message">Message:</label>
+                        <textarea class="form-control" rows="8" id="message"></textarea>
+                      </div>
+                      <div class="col-md-12">
+                        <p>
+                          <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Submit</button>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div><!-- /.tab-content -->
+          </div><!-- /.modal-body -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+<!-- END MENU SCREEN ABOUT POP UP -->
+
+<!-- BEGIN POP UP FOR POINTS -->
+    <div class="modal fade" id="featureModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+   <!--     <div class="modal-content" style="background-image: url('https://www.w3schools.com/w3images/photographer.jpg');"> -->
+        <div class="modal-content" id="bgimage">
+          <div class="modal-header">
+          <!--  <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+            <h4 class="modal-title text-primary" id="feature-title"></h4>
+          </div>
+          <div class="modal-body" id="feature-info"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+<!-- END POP UP FOR POINTS -->
+  
+  
+  
+  <!--
   <div id="map"></div>
   <table id="maptable" class="display"></table>
-
   <script type="text/javascript">
     var map = L.map('map', {
       attributionControl: false,
@@ -111,7 +281,8 @@
       tap: false
     }).setView([41.76,-72.69], 11); // default center is overridden by Google Sheet options and points
   </script>
-
+  -->
+  
   <script type="text/javascript" src="./google-doc-url.js"></script>
   <script type="text/javascript" src="./scripts/constants.js"></script>
   <script type="text/javascript" src="./scripts/palette.js"></script>
