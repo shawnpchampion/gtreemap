@@ -139,7 +139,7 @@ $(window).on('load', function() {
         
 
     
-        marker.on({
+        layers.on({
          click: function (e) {
            $("#feature-title").html(point['Name']);
            $("#feature-back").html(point['Image']);
