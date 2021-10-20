@@ -128,7 +128,19 @@ $(window).on('load', function() {
         
       var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + point['Name'] + "</td></tr>" + "<table>";
       
-
+       marker.on({
+         click: function (e) {
+           $("#feature-title").html(point['Name']);
+           $("#feature-back").html(point['Image']);
+           $("#feature-info").html(content);
+           $("#featureModal").modal("show");
+           var bgimgurlw = 'url(' + point['Image'] + ')';
+           var divw = document.getElementById("bgimage");
+           divw.style.backgroundImage = bgimgurlw;
+           divw.style.backgroundRepeat = "no-repeat";
+           divw.style.backgroundSize = "contain";
+          }
+        });
         
       if (point.Latitude !== '' && point.Longitude !== '') {
         
@@ -164,20 +176,6 @@ $(window).on('load', function() {
         for (i in layers) {
           multilayerClusterSupport.checkIn(layers[i]);
           layers[i].addTo(map);
-          
-       layers[i].on({
-         click: function (e) {
-           $("#feature-title").html(point['Name']);
-           $("#feature-back").html(point['Image']);
-           $("#feature-info").html(content);
-           $("#featureModal").modal("show");
-           var bgimgurlw = 'url(' + point['Image'] + ')';
-           var divw = document.getElementById("bgimage");
-           divw.style.backgroundImage = bgimgurlw;
-           divw.style.backgroundRepeat = "no-repeat";
-           divw.style.backgroundSize = "contain";
-          }
-        });
           
         }
       }
