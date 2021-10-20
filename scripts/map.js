@@ -21,7 +21,7 @@ $(window).on('load', function() {
     });
   }
 
-$("#featureModal").modal({show:false});
+
   /**
    * Sets the map view so that all markers are visible, or
    * to specified (lat, lon) and zoom if all three are specified
@@ -117,8 +117,7 @@ $("#featureModal").modal({show:false});
         ? L.icon({
           iconUrl: point['Marker Icon'],
           iconSize: size,
-          iconAnchor: anchor,
-          popupAnchor: [0, -25]
+          iconAnchor: anchor
         })
         : createMarkerIcon(point['Marker Icon'],
           'fa',
@@ -126,7 +125,6 @@ $("#featureModal").modal({show:false});
           point['Icon Color']
         );
         
-
         
       if (point.Latitude !== '' && point.Longitude !== '') {
         
@@ -141,6 +139,12 @@ $("#featureModal").modal({show:false});
         }
         
         markerArray.push(marker);  
+        
+        for (var i in markerArray){
+        markerArray[i].on('click', function() {
+            $("#featureModal").modal("show"); 
+        });
+    }
         
       }
     }
