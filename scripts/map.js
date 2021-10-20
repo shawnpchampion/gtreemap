@@ -135,10 +135,10 @@ $(window).on('load', function() {
       //    (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
       //    point['Description']);
        
-        myMarker.on({
+        mymarker.on({
   click: function (e) {
-    $("#feature-title").html(myMarkerTitle);
-    $("#feature-info").html(myMarkerContent);
+    $("#feature-title").html(point['Name']);
+    $("#feature-info").html(point['Name']);
     $("#featureModal").modal("show");
   }
 });
