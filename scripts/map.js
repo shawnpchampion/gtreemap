@@ -146,7 +146,7 @@ $("#featureModal").modal({show:false});
   //      var markerID = point['Name'];
   //      markerArray[i].openPopup();
         markerArray[i].on('click', function() {
-            $("#feature-title").html([point'Name']);
+            $("#feature-title").html(point['Name']);
             $("#featureModal").modal("show"); 
         });
     };
