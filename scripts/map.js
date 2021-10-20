@@ -142,19 +142,19 @@ $(window).on('load', function() {
         
         markerArray.push(marker);  
       
-        var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + point['Name'] + "</td></tr>" + "<table>";
+     //   var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + point['Name'] + "</td></tr>" + "<table>";
       
         marker.on({
          click: function (e) {
            $("#feature-title").html(point['Name']);
            $("#feature-back").html(point['Image']);
-           $("#feature-info").html(content);
+      //     $("#feature-info").html(content);
            $("#featureModal").modal("show");
-           var bgimgurlw = 'url(' + point['Image'] + ')';
-           var divw = document.getElementById("bgimage");
-           divw.style.backgroundImage = bgimgurlw;
-           divw.style.backgroundRepeat = "no-repeat";
-           divw.style.backgroundSize = "contain";
+      //     var bgimgurlw = 'url(' + point['Image'] + ')';
+      //     var divw = document.getElementById("bgimage");
+      //     divw.style.backgroundImage = bgimgurlw;
+      //     divw.style.backgroundRepeat = "no-repeat";
+      //     divw.style.backgroundSize = "contain";
           }
         });
       }
