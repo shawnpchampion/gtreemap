@@ -137,22 +137,6 @@ $(window).on('load', function() {
       //    (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
       //    point['Description']);
         
-
-    
-        layers.on({
-         click: function (e) {
-           $("#feature-title").html(point['Name']);
-           $("#feature-back").html(point['Image']);
-           $("#feature-info").html(content);
-           $("#featureModal").modal("show");
-           var bgimgurlw = 'url(' + point['Image'] + ')';
-           var divw = document.getElementById("bgimage");
-           divw.style.backgroundImage = bgimgurlw;
-           divw.style.backgroundRepeat = "no-repeat";
-           divw.style.backgroundSize = "contain";
-          }
-        });
-        
         if (layers !== undefined && layers.length !== 1) {
           marker.addTo(layers[point.Group]);
         }
@@ -180,6 +164,21 @@ $(window).on('load', function() {
         for (i in layers) {
           multilayerClusterSupport.checkIn(layers[i]);
           layers[i].addTo(map);
+          
+       marker.on({
+         click: function (e) {
+           $("#feature-title").html(point['Name']);
+           $("#feature-back").html(point['Image']);
+           $("#feature-info").html(content);
+           $("#featureModal").modal("show");
+           var bgimgurlw = 'url(' + point['Image'] + ')';
+           var divw = document.getElementById("bgimage");
+           divw.style.backgroundImage = bgimgurlw;
+           divw.style.backgroundRepeat = "no-repeat";
+           divw.style.backgroundSize = "contain";
+          }
+        });
+          
         }
       }
 
