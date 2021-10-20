@@ -142,6 +142,7 @@ $(window).on('load', function() {
         
         for (var i in markerArray){
         markerArray[i].on('click', function() {
+            $("#feature-title").html(point['Name']);
             $("#featureModal").modal("show"); 
         });
     }
