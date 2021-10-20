@@ -21,7 +21,7 @@ $(window).on('load', function() {
     });
   }
 
-
+$("#featureModal").modal({show:false});
   /**
    * Sets the map view so that all markers are visible, or
    * to specified (lat, lon) and zoom if all three are specified
@@ -141,6 +141,14 @@ $(window).on('load', function() {
         }
         
         markerArray.push(marker);  
+        
+        for (var i in markerArray){
+        var markerID = point['Name'];
+        markerArray[i].openPopup();
+        markerArray[i].on('click', function() {
+            $("#featureModal").modal("show"); 
+        });
+    };
         
       }
     }
