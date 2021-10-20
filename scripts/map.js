@@ -136,7 +136,7 @@ $(window).on('load', function() {
         point.on({
           click: function (e) {
            $("#feature-title").html(point['Name']);
-           $("#feature-back").html(point['Image'});
+           $("#feature-back").html(point['Image']);
            $("#feature-info").html(content);
            $("#featureModal").modal("show");
            var bgimgurlw = 'url(' + point['Image'] + ')';
