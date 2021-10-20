@@ -137,11 +137,10 @@ $(window).on('load', function() {
       //    (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
       //    point['Description']);
         
-        points[i].on('click', function() {
-  //          $("#Modal").modal("show");
+
     
-  //      marker.on({
-  //        click: function (e) {
+        marker.on({
+         click: function (e) {
            $("#feature-title").html(point['Name']);
            $("#feature-back").html(point['Image']);
            $("#feature-info").html(content);
@@ -151,7 +150,7 @@ $(window).on('load', function() {
            divw.style.backgroundImage = bgimgurlw;
            divw.style.backgroundRepeat = "no-repeat";
            divw.style.backgroundSize = "contain";
- //         }
+          }
         });
         
         if (layers !== undefined && layers.length !== 1) {
