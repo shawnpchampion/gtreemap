@@ -128,11 +128,15 @@ $("#featureModal").modal({show:false});
         
       if (point.Latitude !== '' && point.Longitude !== '') {
         
-        var marker = L.marker([point.Latitude, point.Longitude], {icon: icon})
+        var marker = L.marker([point.Latitude, point.Longitude]).on('click', markerOnClick).addTo(map);
           .bindPopup("<b>" + point['Name'] + '</b><br>' +
           (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
           point['Description']);
-       
+        
+function markerOnClick(e)
+{
+  alert("hi. you clicked the marker at " + e.latlng);
+}
         
         if (layers !== undefined && layers.length !== 1) {
           marker.addTo(layers[point.Group]);
@@ -140,12 +144,8 @@ $("#featureModal").modal({show:false});
         
         markerArray.push(marker);  
         
-        for (var i in marker){
-        marker[i].on('click', function() {
-            $("#feature-title").html(point['Name']);
-            $("#featureModal").modal("show"); 
-        });
-          }
+
+
       }
     }
     
