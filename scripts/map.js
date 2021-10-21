@@ -198,14 +198,11 @@ $(window).on('load', function() {
     "Street Map": cartoLight
   };
   
-  var overlays = {
-    layers
-  };
       var pos = (getSetting('_pointsLegendPos') == 'off')
         ? 'topleft'
         : getSetting('_pointsLegendPos');
           
-      var pointsLegend = L.control.layers(baseLayers, overlays, {
+      var pointsLegend = L.control.layers(baseLayers, layers, {
         collapsed: false,
         position: pos,
       });
