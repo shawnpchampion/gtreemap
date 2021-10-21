@@ -956,10 +956,7 @@ $(window).on('load', function() {
 //attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 //});
 
-//var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
- //   maxZoom: 20,
-  //  subdomains:['mt0','mt1','mt2','mt3']
-//});
+
   
   
 //map = L.map("map", {
@@ -990,6 +987,10 @@ $(window).on('load', function() {
     L.tileLayer.provider(basemap, {
       maxZoom: 18
     }).addTo(map);
+//    var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+//    maxZoom: 20,
+//    subdomains:['mt0','mt1','mt2','mt3']
+//    });
     L.control.attribution({
       position: trySetting('_mapAttribution', 'bottomright')
     }).addTo(map);
