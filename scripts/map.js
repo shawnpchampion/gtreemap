@@ -970,8 +970,8 @@ $(window).on('load', function() {
     "Street Map": cartoLight
   };
   
-  var algroup = L.layerGroup(Avocado);
-  var blgroup = L.layerGroup(Banana);
+  var algroup = L.layerGroup("Avocado");
+  var blgroup = L.layerGroup("Banana");
   
 // Define Overlays
   var groupedOverlays = {
