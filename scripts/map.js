@@ -141,7 +141,7 @@ $(window).on('load', function() {
         markerArray.push(marker);  
         
         
-        markerArray[i].on('click', function() {
+        markerArray.on('click', function() {
             $("#feature-title").html(point['Name']);
             $("#featureModal").modal("show"); 
         });
