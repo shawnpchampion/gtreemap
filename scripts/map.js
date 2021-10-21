@@ -128,10 +128,10 @@ $("#featureModal").modal({show:false});
         
       if (point.Latitude !== '' && point.Longitude !== '') {
         
-        var marker = L.marker([point.Latitude, point.Longitude]).on('click', markerOnClick).addTo(map);
-    //      .bindPopup("<b>" + point['Name'] + '</b><br>' +
-    //      (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
-    //      point['Description']);
+        var marker = L.marker([point.Latitude, point.Longitude], {icon: icon}).on('click', markerOnClick)
+          .bindPopup("<b>" + point['Name'] + '</b><br>' +
+          (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
+          point['Description']).addTo(map);
         
 function markerOnClick(e)
 {
