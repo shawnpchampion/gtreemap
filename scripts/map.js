@@ -140,12 +140,12 @@ $("#featureModal").modal({show:false});
         
         markerArray.push(marker);  
         
-        
-        marker.on('click', function() {
+        for (var i in marker){
+        marker[i].on('click', function() {
             $("#feature-title").html(point['Name']);
             $("#featureModal").modal("show"); 
         });
-        
+          }
       }
     }
     
