@@ -130,12 +130,12 @@ $(window).on('load', function() {
       if (point.Latitude !== '' && point.Longitude !== '') {
         
         
-        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], bimage: point['Image'], hname: point['HName'], icon: icon}).on('click', markerOnClick)
+        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], bimage: point['Image'], harvest: point['Description'], hname: point['HName'], cplant: point['CPlant'], icon: icon}).on('click', markerOnClick)
           .addTo(map);
       
         function markerOnClick(e)
 {
-  var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + this.options.hname + "</td></tr>" + "<tr><th>Canoe Plant:</th><td>" + this.options.name + "</td></tr>" + "<tr><th>Harvest:</th><td>" + this.options.name + "</td></tr>" + "<table>";
+  var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + this.options.hname + "</td></tr>" + "<tr><th>Canoe Plant:</th><td>" + this.options.cplant + "</td></tr>" + "<tr><th>Harvest:</th><td>" + this.options.harvest + "</td></tr>" + "<table>";
   $("#feature-title").html(this.options.name);
   $("#feature-back").html(this.options.bimage);
   $("#feature-info").html(content);
