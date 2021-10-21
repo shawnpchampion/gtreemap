@@ -140,12 +140,11 @@ $(window).on('load', function() {
         
         markerArray.push(marker);  
         
-        for (var i in markerArray){
+        
         markerArray[i].on('click', function() {
             $("#feature-title").html(point['Name']);
             $("#featureModal").modal("show"); 
-        });
-    }
+        };
         
       }
     }
