@@ -199,7 +199,7 @@ $(window).on('load', function() {
   };
   
   var overlays = {
-    "Trees": layers
+    layers
   };
       var pos = (getSetting('_pointsLegendPos') == 'off')
         ? 'topleft'
