@@ -144,7 +144,7 @@ $(window).on('load', function() {
         markerArray[i].on('click', function() {
             $("#feature-title").html(point['Name']);
             $("#featureModal").modal("show"); 
-        };
+        });
         
       }
     }
