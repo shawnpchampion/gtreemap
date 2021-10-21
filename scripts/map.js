@@ -947,18 +947,16 @@ $(window).on('load', function() {
 
   
   // Make the Google Leaflet Map
-//  var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
-//  maxZoom: 19,
-//  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
-//});
+  var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
+});
+  var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+  maxZoom: 20,
+  subdomains:['mt0','mt1','mt2','mt3']
+});
 
-//var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-//attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-//});
-
-
-  
-  
+ 
 //map = L.map("map", {
 //  zoom: 16,
 //  center: [19.40893, -154.914],
@@ -968,29 +966,29 @@ $(window).on('load', function() {
 //});
   
   // Define Map Base Layers
-//var baseLayers = {
+var baseLayers = {
   //"Old Sat Map": Esri_WorldImagery,
-//  "Satellite Map": googleSat,
-//  "Street Map": cartoLight
-//};
+  "Satellite Map": googleSat,
+  "Street Map": cartoLight
+};
   
   // Create Control Box / Legend
-//var layerControl = L.control.groupedLayers(baseLayers, groupedOverlays, {
-//  collapsed: isCollapsed
-//}).addTo(map);
+var layerControl = L.control.groupedLayers(baseLayers, {
+  collapsed: isCollapsed
+}).addTo(map);
   
     /**
    * Loads the basemap and adds it to the map
    */
   function addBaseMap() {
-//    var basemap = trySetting('_tileProvider', 'CartoDB.Positron');
-//    L.tileLayer.provider(basemap, {
-//      maxZoom: 18
- //   }).addTo(map);
-    var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-    maxZoom: 20,
-    subdomains:['mt0','mt1','mt2','mt3']
+    var basemap = trySetting('_tileProvider', 'CartoDB.Positron');
+    L.tileLayer.provider(basemap, {
+      maxZoom: 18
     }).addTo(map);
+//    var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+//    maxZoom: 20,
+//    subdomains:['mt0','mt1','mt2','mt3']
+//    }).addTo(map);
     L.control.attribution({
       position: trySetting('_mapAttribution', 'bottomright')
     }).addTo(map);
