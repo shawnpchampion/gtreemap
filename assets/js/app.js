@@ -24,6 +24,17 @@ $("#about-btn").click(function() {
   return false;
 });
 
+$("#full-extent-btn").click(function() {
+//  map.fitBounds(boroughs.getBounds());
+  baseLayers["Satellite Map"].addTo(map);
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+
+
+// $('.leaflet-control-layers input').get(i).click()
+
+
 //opens the side bar
 $("#list-btn").click(function() {
   animateSidebar();
