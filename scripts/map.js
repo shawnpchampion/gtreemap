@@ -125,11 +125,11 @@ $(window).on('load', function() {
           point['Icon Color']
         );
       
-      var namenow = point['Name'];
+      
         
       if (point.Latitude !== '' && point.Longitude !== '') {
         
-        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name']}, {icon: icon}).on('click', markerOnClick)
+        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], icon: icon}).on('click', markerOnClick)
           .bindPopup("<b>" + point['Name'] + '</b><br>' +
           (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
           point['Description']).addTo(map);
@@ -137,7 +137,7 @@ $(window).on('load', function() {
         function markerOnClick(e)
 {
   alert("title of marker: " + this.options.name);
-  $("#feature-title").html(namenow);
+  $("#feature-title").html(this.options.name);
   $("#featureModal").modal("show");
 }
         
