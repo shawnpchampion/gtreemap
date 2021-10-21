@@ -200,7 +200,7 @@ $(window).on('load', function() {
       
   var gOverlays = {
   "Trees of Interests": {
-    "<img src='assets/img/ulupin.png' width='24' height='24'>": layers
+    "<img src='assets/img/ulupin.png' width='24' height='24'>"&nbsp;Ulu: layers
   }
 };
       
