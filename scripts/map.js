@@ -135,8 +135,7 @@ $("#featureModal").modal({show:false});
         
 function markerOnClick(e)
 {
-  alert("hi. you clicked the marker at " + e.latlng);
-  $("#feature-title").html(point['NAME']);
+  $("#feature-title").html(point['Name']);
   $("#featureModal").modal("show");
 }
         
