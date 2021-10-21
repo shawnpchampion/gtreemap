@@ -129,16 +129,23 @@ $(window).on('load', function() {
         
       if (point.Latitude !== '' && point.Longitude !== '') {
         
-        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], icon: icon}).on('click', markerOnClick)
+        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], bimage: point['Image'], icon: icon}).on('click', markerOnClick)
           .bindPopup("<b>" + point['Name'] + '</b><br>' +
           (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
           point['Description']).addTo(map);
       
         function markerOnClick(e)
 {
-  alert("title of marker: " + this.options.name);
+  
   $("#feature-title").html(this.options.name);
+  $("#feature-back").html(this.options.bimage);
+  $("#feature-info").html(content);
   $("#featureModal").modal("show");
+  var bgimgurlm = 'url(' + this.options.bimage + ')';
+  var divm = document.getElementById("bgimage");
+  divm.style.backgroundImage = bgimgurlm;
+  divm.style.backgroundRepeat = "no-repeat";
+  divm.style.backgroundSize = "contain";
 }
         
         if (layers !== undefined && layers.length !== 1) {
