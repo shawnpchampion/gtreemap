@@ -124,7 +124,8 @@ $(window).on('load', function() {
           point['Marker Color'].toLowerCase(),
           point['Icon Color']
         );
-        
+      
+      var namenow = point['Name'];
         
       if (point.Latitude !== '' && point.Longitude !== '') {
         
@@ -135,8 +136,8 @@ $(window).on('load', function() {
       
         function markerOnClick(e)
 {
-  alert("name: " + this.options.Name);
-  $("#feature-title").html(point['Name']);
+  alert("name: " + namenow);
+  $("#feature-title").html(namenow);
   $("#featureModal").modal("show");
 }
         
