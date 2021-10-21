@@ -966,10 +966,8 @@ $(window).on('load', function() {
 
   // Define Map Base Layers
   var baseLayers = {
-    "Switch Views": {
-    "<img src='assets/img/banpin.png' width='24' height='24'>&nbsp;Satellite Map": googleSat,
-    "<img src='assets/img/ulupin.png' width='24' height='24'>&nbsp;Street Map": cartoLight
-    }
+    "Satellite Map": googleSat,
+    "Street Map": cartoLight
   };
   
 // Define Overlays
@@ -981,6 +979,8 @@ $(window).on('load', function() {
 //    }
 //  };
 
+//  L.layerGroup();
+  
 // Create Control Box / Legend
       var layerControl = L.control.groupedLayers(baseLayers, {
         collapsed: isCollapsed
