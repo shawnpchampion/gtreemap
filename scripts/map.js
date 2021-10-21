@@ -208,7 +208,7 @@ $(window).on('load', function() {
 //  };
 
 // Create Control Box / Legend
-      var layerControl = L.control.groupedLayers(baseLayers, layers, {
+      var layerControl = L.control.groupedLayers(baseLayers, {
         collapsed: isCollapsed
       }).addTo(map);      
       
