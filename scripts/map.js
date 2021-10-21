@@ -210,16 +210,15 @@ $(window).on('load', function() {
 //  };
 
 // Create Control Box / Legend
-//      var layerControl = L.control.groupedLayers(baseLayers, {
-//        collapsed: isCollapsed
-//      }).addTo(map);      
+      var layerControl = L.control.groupedLayers(baseLayers, {
+        collapsed: isCollapsed
+      }).addTo(map);      
       
       var pos = (getSetting('_pointsLegendPos') == 'off')
         ? 'topleft'
         : getSetting('_pointsLegendPos');
           
-   //   var pointsLegend = L.control.layers(null, layers, {
-      var pointsLegend = L.control.groupedLayers(null, layers, baseLayers, {
+      var pointsLegend = L.control.layers(null, layers, {
         collapsed: false,
         position: pos,
       });
