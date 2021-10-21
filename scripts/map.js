@@ -215,6 +215,7 @@ $(window).on('load', function() {
     }
         
     $('#points-legend').prepend('<h6 class="pointer">' + getSetting('_pointsLegendTitle') + '</h6>');
+    $(".leaflet-control-layers-overlays").prepend("<label>Available layers</label>");
 //    if (getSetting('_pointsLegendIcon') != '') {
 //      $('#points-legend h6').prepend('<span class="legend-icon"><i class="fas '
 //        + getSetting('_pointsLegendIcon') + '"></i></span>');
