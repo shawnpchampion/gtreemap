@@ -197,12 +197,15 @@ $(window).on('load', function() {
     "Satellite Map": googleSat,
     "Street Map": cartoLight
   };
-            
+  
+  var overlays = {
+    "Trees": layers
+  };
       var pos = (getSetting('_pointsLegendPos') == 'off')
         ? 'topleft'
         : getSetting('_pointsLegendPos');
           
-      var pointsLegend = L.control.layers(baseLayers, layers, {
+      var pointsLegend = L.control.layers(baseLayers, overlays, {
         collapsed: false,
         position: pos,
       });
@@ -214,7 +217,7 @@ $(window).on('load', function() {
       }
     }
         
-    $('#points-legend').prepend('<h6 class="pointer">' + getSetting('_pointsLegendTitle') + "Work" + '</h6>');
+    $('#points-legend').prepend('<h6 class="pointer">' + getSetting('_pointsLegendTitle') + '</h6>');
 //    if (getSetting('_pointsLegendIcon') != '') {
 //      $('#points-legend h6').prepend('<span class="legend-icon"><i class="fas '
 //        + getSetting('_pointsLegendIcon') + '"></i></span>');
