@@ -9,9 +9,10 @@ $(window).on('load', function() {
   var completePolygons = false;
   var completePolylines = false;
 
-  /**
-   * Returns an Awesome marker with specified parameters
-   */
+  
+/**
+ * Returns an Awesome marker with specified parameters
+ */
   function createMarkerIcon(icon, prefix, markerColor, iconColor) {
     return L.AwesomeMarkers.icon({
       icon: icon,
@@ -21,11 +22,11 @@ $(window).on('load', function() {
     });
   }
 
-
-  /**
-   * Sets the map view so that all markers are visible, or
-   * to specified (lat, lon) and zoom if all three are specified
-   */
+  
+/**
+ * Sets the map view so that all markers are visible, or
+ * to specified (lat, lon) and zoom if all three are specified
+ */
   function centerAndZoomMap(points) {
     var lat = map.getCenter().lat, latSet = false;
     var lon = map.getCenter().lng, lonSet = false;
@@ -61,10 +62,10 @@ $(window).on('load', function() {
   }
 
 
-  /**
-   * Given a collection of points, determines the layers based on 'Group'
-   * column in the spreadsheet.
-   */
+/**
+ * Given a collection of points, determines the layers based on 'Group'
+ * column in the spreadsheet.
+ */
   function determineLayers(points) {
     var groups = [];
     var layers = {};
@@ -95,9 +96,10 @@ $(window).on('load', function() {
     return layers;
   }
 
-  /**
-   * Assigns points to appropriate layers and clusters them if needed
-   */
+  
+/**
+ * Assigns points to appropriate layers and clusters them if needed
+ */
   function mapPoints(points, layers) {
     var markerArray = [];
     // check that map has loaded before adding points to it?
@@ -125,27 +127,25 @@ $(window).on('load', function() {
           point['Icon Color']
         );
       
-      
-        
       if (point.Latitude !== '' && point.Longitude !== '') {
-        
-        
-        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], bimage: point['Image'], harvest: point['Description'], hname: point['HName'], cplant: point['CPlant'], icon: icon}).on('click', markerOnClick)
+     
+// DEFINE THE PARAMETERS OF THE MARKERS AND MODAL POP UP        
+        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon}).on('click', markerOnClick)
           .addTo(map);
       
         function markerOnClick(e)
-{
-  var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + this.options.hname + "</td></tr>" + "<tr><th>Canoe Plant:</th><td>" + this.options.cplant + "</td></tr>" + "<tr><th>Harvest:</th><td>" + this.options.harvest + "</td></tr>" + "<table>";
-  $("#feature-title").html(this.options.name);
-  $("#feature-back").html(this.options.bimage);
-  $("#feature-info").html(content);
-  $("#featureModal").modal("show");
-  var bgimgurlm = 'url(' + this.options.bimage + ')';
-  var divm = document.getElementById("bgimage");
-  divm.style.backgroundImage = bgimgurlm;
-  divm.style.backgroundRepeat = "no-repeat";
-  divm.style.backgroundSize = "contain";
-}
+          {
+            var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + this.options.hname + "</td></tr>" + "<tr><th>Canoe Plant:</th><td>" + this.options.cplant + "</td></tr>" + "<tr><th>Harvest:</th><td>" + this.options.harvest + "</td></tr>" + "<table>";
+            $("#feature-title").html(this.options.name);
+            $("#feature-back").html(this.options.bimage);
+            $("#feature-info").html(content);
+            $("#featureModal").modal("show");
+            var bgimgurlm = 'url(' + this.options.bimage + ')';
+            var divm = document.getElementById("bgimage");
+            divm.style.backgroundImage = bgimgurlm;
+            divm.style.backgroundRepeat = "no-repeat";
+            divm.style.backgroundSize = "contain";
+          }
         
         if (layers !== undefined && layers.length !== 1) {
           marker.addTo(layers[point.Group]);
@@ -153,14 +153,12 @@ $(window).on('load', function() {
         
         markerArray.push(marker);  
         
-
-
       }
     }
     
     var group = L.featureGroup(markerArray);
     var clusters = (getSetting('_markercluster') === 'on') ? true : false;
-
+     
     // if layers.length === 0, add points to map instead of layer
     if (layers === undefined || layers.length === 0) {
       map.addLayer(
@@ -173,48 +171,53 @@ $(window).on('load', function() {
         // Add multilayer cluster support
         multilayerClusterSupport = L.markerClusterGroup.layerSupport();
         multilayerClusterSupport.addTo(map);
-
+             
         for (i in layers) {
           multilayerClusterSupport.checkIn(layers[i]);
           layers[i].addTo(map);
-          
+               
         }
       }
 
+// BEGIN LEGEND CODE
+            
       var pos = (getSetting('_pointsLegendPos') == 'off')
         ? 'topleft'
         : getSetting('_pointsLegendPos');
-
+          
       var pointsLegend = L.control.layers(null, layers, {
         collapsed: false,
         position: pos,
       });
-
+         
       if (getSetting('_pointsLegendPos') !== 'off') {
         pointsLegend.addTo(map);
         pointsLegend._container.id = 'points-legend';
         pointsLegend._container.className += ' ladder';
       }
     }
-
+        
     $('#points-legend').prepend('<h6 class="pointer">' + getSetting('_pointsLegendTitle') + '</h6>');
     if (getSetting('_pointsLegendIcon') != '') {
       $('#points-legend h6').prepend('<span class="legend-icon"><i class="fas '
         + getSetting('_pointsLegendIcon') + '"></i></span>');
     }
 
+// END LEGEND CODE
+// BEGIN TABLE CODE
+    
     var displayTable = getSetting('_displayTable') == 'on' ? true : false;
-
+          
     // Display table with active points if specified
     var columns = getSetting('_tableColumns').split(',')
                   .map(Function.prototype.call, String.prototype.trim);
-
+      
     if (displayTable && columns.length > 1) {
       tableHeight = trySetting('_tableHeight', 40);
       if (tableHeight < 10 || tableHeight > 90) {tableHeight = 40;}
       $('#map').css('height', (100 - tableHeight) + 'vh');
       map.invalidateSize();
-
+        
       // Set background (and text) color of the table header
       var colors = getSetting('_tableHeaderColor').split(',');
       if (colors[0] != '') {
@@ -223,12 +226,12 @@ $(window).on('load', function() {
           $('table.display').css('color', colors[1]);
         }
       }
-
+         
       // Update table every time the map is moved/zoomed or point layers are toggled
       map.on('moveend', updateTable);
       map.on('layeradd', updateTable);
       map.on('layerremove', updateTable);
-
+        
       // Clear table data and add only visible markers to it
       function updateTable() {
         var pointsVisible = [];
@@ -238,14 +241,14 @@ $(window).on('load', function() {
             pointsVisible.push(points[i]);
           }
         }
-
+         
         tableData = pointsToTableData(pointsVisible);
-
+         
         table.clear();
         table.rows.add(tableData);
         table.draw();
       }
-
+        
       // Convert Leaflet marker objects into DataTable array
       function pointsToTableData(ms) {
         var data = [];
@@ -258,7 +261,7 @@ $(window).on('load', function() {
         }
         return data;
       }
-
+        
       // Transform columns array into array of title objects
       function generateColumnsArray() {
         var c = [];
@@ -267,7 +270,7 @@ $(window).on('load', function() {
         }
         return c;
       }
-
+    
       // Initialize DataTable
       var table = $('#maptable').DataTable({
         paging: false,
@@ -278,12 +281,14 @@ $(window).on('load', function() {
         columns: generateColumnsArray(),
       });
     }
-
+   
     completePoints = true;
     return group;
   }
 
+// END OF POINTS - MARKERS CODE
   
+// BEGINNING OF POLYGONS CODE
   
   var polygon = 0; // current active polygon
   var layer = 0; // number representing current layer among layers in legend
@@ -513,9 +518,10 @@ $(window).on('load', function() {
     togglePolygonLabels();
   }
 
-  /**
-   * Generates CSS for each geojson feature
-   */
+  
+/**
+ * Generates CSS for each geojson feature
+ */
   function polygonStyle(feature) {
     var value = feature.properties[allPolygonLayers[polygon][layer][0].trim()];
 
@@ -540,9 +546,9 @@ $(window).on('load', function() {
     }
   }
 
-  /**
-   * Returns a color for polygon property with value d
-   */
+/**
+ * Returns a color for polygon property with value d
+ */
   function getColor(d) {
     var num = allIsNumerical[polygon][layer];
     var col = allColors[polygon][layer];
@@ -564,9 +570,9 @@ $(window).on('load', function() {
   }
 
 
-  /**
-   * Generates popup windows for every polygon
-   */
+/**
+ * Generates popup windows for every polygon
+ */
   function onEachFeature(feature, layer) {
     // Do not bind popups if 1. no popup properties specified and 2. display
     // images is turned off.
@@ -610,19 +616,22 @@ $(window).on('load', function() {
     }
   }
 
-  /**
-   * Perform double click on polyline legend checkboxes so that they get
-   * redrawn and thus get on top of polygons
-   */
+/**
+ * Perform double click on polyline legend checkboxes so that they get
+ * redrawn and thus get on top of polygons
+ */
   function doubleClickPolylines() {
     $('#polylines-legend form label input').each(function(i) {
       $(this).click().click();
     });
   }
 
-  /**
-   * Here all data processing from the spreadsheet happens
-   */
+// END POLYGON CODE
+// BEGIN GOOGLE SHEET CODE
+  
+/**
+ * Here all data processing from the spreadsheet happens
+ */
   function onMapDataLoad(options, points, polylines) {
 
     createDocumentSettings(options);
@@ -630,7 +639,7 @@ $(window).on('load', function() {
     document.title = getSetting('_mapTitle');
     addBaseMap();
 
-    // Add point markers to the map
+// Add point markers to the map
     var layers;
     var group = '';
     if (points && points.length > 0) {
@@ -642,14 +651,14 @@ $(window).on('load', function() {
 
     centerAndZoomMap(group);
 
-    // Add polylines
+// Add polylines
     if (polylines && polylines.length > 0) {
       processPolylines(polylines);
     } else {
       completePolylines = true;
     }
 
-    // Add polygons
+// Add polygons
     if (getPolygonSetting(0, '_polygonsGeojsonURL')
       && getPolygonSetting(0, '_polygonsGeojsonURL').trim()) {
       loadAllGeojsons(0);
@@ -657,7 +666,7 @@ $(window).on('load', function() {
       completePolygons = true;
     }
 
-    // Add Nominatim Search control
+// Add Nominatim Search control
     if (getSetting('_mapSearch') !== 'off') {
       var geocoder = L.Control.geocoder({
         expand: 'click',
@@ -683,7 +692,7 @@ $(window).on('load', function() {
       map.on('moveend', updateGeocoderBounds);
     }
 
-    // Add location control
+// Add location control
     if (getSetting('_mapMyLocation') !== 'off') {
       var locationControl = L.control.locate({
         keepCurrentZoomLevel: true,
@@ -692,7 +701,7 @@ $(window).on('load', function() {
       }).addTo(map);
     }
 
-    // Add zoom control
+// Add zoom control
     if (getSetting('_mapZoom') !== 'off') {
       L.control.zoom({position: getSetting('_mapZoom')}).addTo(map);
     }
@@ -703,10 +712,10 @@ $(window).on('load', function() {
 
     addTitle();
 
-    // Change Map attribution to include author's info + urls
+// Change Map attribution to include author's info + urls
     changeAttribution();
 
-    // Append icons to categories in markers legend
+// Append icons to categories in markers legend
     $('#points-legend label span').each(function(i) {
       var g = $(this).text().trim();
       var legendIcon = (group2color[ g ].indexOf('.') > 0)
@@ -717,7 +726,7 @@ $(window).on('load', function() {
       $(this).prepend(legendIcon);
     });
 
-    // When all processing is done, hide the loader and make the map visible
+// When all processing is done, hide the loader and make the map visible
     showMap();
 
     function showMap() {
@@ -753,7 +762,7 @@ $(window).on('load', function() {
         $('#map').css('visibility', 'visible');
         $('.loader').hide();
 
-        // Open intro popup window in the center of the map
+// Open intro popup window in the center of the map
         if (getSetting('_introPopupText') != '') {
           initIntroPopup(getSetting('_introPopupText'), map.getCenter());
         };
@@ -764,7 +773,7 @@ $(window).on('load', function() {
       }
     }
 
-    // Add Google Analytics if the ID exists
+// Add Google Analytics if the ID exists
     var ga = getSetting('_googleAnalytics');
     console.log(ga)
     if ( ga && ga.length >= 10 ) {
@@ -779,9 +788,9 @@ $(window).on('load', function() {
     }
   }
 
-  /**
-   * Adds title and subtitle from the spreadsheet to the map
-   */
+/**
+ * Adds title and subtitle from the spreadsheet to the map
+ */
   function addTitle() {
     var dispTitle = getSetting('_mapTitleDisplay');
 
@@ -801,9 +810,9 @@ $(window).on('load', function() {
   }
 
 
-  /**
-   * Adds polylines to the map
-   */
+/**
+ * Adds polylines to the map
+ */
   function processPolylines(p) {
     if (!p || p.length == 0) return;
 
@@ -886,7 +895,7 @@ $(window).on('load', function() {
 
 
   function initIntroPopup(info, coordinates) {
-    // This is a pop-up for mobile device
+// This is a pop-up for mobile device
     if (window.matchMedia("only screen and (max-width: 760px)").matches) {
       $('body').append('<div id="mobile-intro-popup"><p>' + info +
         '</p><div id="mobile-intro-popup-close"><i class="fas fa-times"></i></div></div>');
@@ -897,16 +906,16 @@ $(window).on('load', function() {
       return;
     }
 
-    /* And this is a standard popup for bigger screens */
+/* And this is a standard popup for bigger screens */
     L.popup({className: 'intro-popup'})
       .setLatLng(coordinates) // this needs to change
       .setContent(info)
       .openOn(map);
   }
 
-  /**
-   * Turns on and off polygon text labels depending on current map zoom
-   */
+/**
+ * Turns on and off polygon text labels depending on current map zoom
+ */
   function togglePolygonLabels() {
     for (i in allTextLabels) {
       if (map.getZoom() <= tryPolygonSetting(i, '_polygonLabelZoomLevel', 9)) {
@@ -919,9 +928,9 @@ $(window).on('load', function() {
     }
   }
 
-  /**
-   * Changes map attribution (author, GitHub repo, email etc.) in bottom-right
-   */
+/**
+ * Changes map attribution (author, GitHub repo, email etc.) in bottom-right
+ */
   function changeAttribution() {
     var attributionHTML = $('.leaflet-control-attribution')[0].innerHTML;
     var credit = 'View <a href="' + googleDocURL + '" target="_blank">data</a>';
@@ -942,44 +951,43 @@ $(window).on('load', function() {
     credit += ' with ';
     $('.leaflet-control-attribution')[0].innerHTML = credit + attributionHTML;
   }
-
-
-
   
-  // Make the Google Leaflet Map
+
+// MAKE GOOGLE MAP AND GROUPED LEGEND CONTROLER
   var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
-});
+  });
+  
   var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
   maxZoom: 20,
   subdomains:['mt0','mt1','mt2','mt3']
-});
+  });
 
- 
-//map = L.map("map", {
-//  zoom: 16,
-//  center: [19.40893, -154.914],
-//  layers: [googleSat, markerClusters, highlight],
-//  zoomControl: false,
-//  attributionControl: false
-//});
-  
   // Define Map Base Layers
-var baseLayers = {
-  //"Old Sat Map": Esri_WorldImagery,
+  var baseLayers = {
   "Satellite Map": googleSat,
   "Street Map": cartoLight
-};
+  };
   
-  // Create Control Box / Legend
-var layerControl = L.control.groupedLayers(baseLayers, {
-  collapsed: isCollapsed
-}).addTo(map);
+// Define Overlays
+//  var groupedOverlays = {
+//    "Trees of Interest": {
+//      "<img src='assets/img/avopin.png' width='24' height='24'>&nbsp;Avacado": avoLayer,              //sizes for control box
+//      "<img src='assets/img/banpin.png' width='24' height='24'>&nbsp;Banana": banLayer,
+//      "<img src='assets/img/ulupin.png' width='24' height='24'>&nbsp;Ulu": uluLayer
+//    }
+//  };
+
+// Create Control Box / Legend
+  var layerControl = L.control.groupedLayers(baseLayers, layers, {
+    collapsed: isCollapsed
+  }).addTo(map);
   
-    /**
-   * Loads the basemap and adds it to the map
-   */
+  
+/**
+ * Loads the basemap and adds it to the map
+ */
   function addBaseMap() {
     var basemap = trySetting('_tileProvider', 'CartoDB.Positron');
     L.tileLayer.provider(basemap, {
@@ -989,23 +997,23 @@ var layerControl = L.control.groupedLayers(baseLayers, {
 //    maxZoom: 20,
 //    subdomains:['mt0','mt1','mt2','mt3']
 //    }).addTo(map);
-    L.control.attribution({
-      position: trySetting('_mapAttribution', 'bottomright')
-    }).addTo(map);
+//    L.control.attribution({
+//      position: trySetting('_mapAttribution', 'bottomright')
+//    }).addTo(map);
   }
-
-  /**
-   * Returns the value of a setting s
-   * getSetting(s) is equivalent to documentSettings[constants.s]
-   */
+    
+/** 
+ * Returns the value of a setting s
+ * getSetting(s) is equivalent to documentSettings[constants.s]
+ */ 
   function getSetting(s) {
     return documentSettings[constants[s]];
   }
 
-  /**
-   * Returns the value of a setting s
-   * getSetting(s) is equivalent to documentSettings[constants.s]
-   */
+/**
+ * Returns the value of a setting s
+ * getSetting(s) is equivalent to documentSettings[constants.s]
+ */
   function getPolygonSetting(p, s) {
     if (polygonSettings[p]) {
       return polygonSettings[p][constants[s]];
@@ -1013,12 +1021,12 @@ var layerControl = L.control.groupedLayers(baseLayers, {
     return false;
   }
 
-  /**
-   * Returns the value of setting named s from constants.js
-   * or def if setting is either not set or does not exist
-   * Both arguments are strings
-   * e.g. trySetting('_authorName', 'No Author')
-   */
+/**
+ * Returns the value of setting named s from constants.js
+ * or def if setting is either not set or does not exist
+ * Both arguments are strings
+ * e.g. trySetting('_authorName', 'No Author')
+ */
   function trySetting(s, def) {
     s = getSetting(s);
     if (!s || s.trim() === '') { return def; }
@@ -1031,16 +1039,16 @@ var layerControl = L.control.groupedLayers(baseLayers, {
     return s;
   }
 
-  /**
-   * Triggers the load of the spreadsheet and map creation
-   */
+/**
+ * Triggers the load of the spreadsheet and map creation
+ */
    var mapData;
 
    $.ajax({
        url:'./csv/Options.csv',
        type:'HEAD',
        error: function() {
-         // Options.csv does not exist in the root level, so use Tabletop to fetch data from
+         // Options.csv does not exist in the root level, so use Papa Parse to fetch data from
          // the Google sheet
 
          if (typeof googleApiKey !== 'undefined' && googleApiKey) {
