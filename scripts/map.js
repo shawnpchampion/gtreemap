@@ -999,9 +999,9 @@ $(window).on('load', function() {
 //    maxZoom: 20,
 //    subdomains:['mt0','mt1','mt2','mt3']
 //    }).addTo(map);
-//    L.control.attribution({
-//      position: trySetting('_mapAttribution', 'bottomright')
-//    }).addTo(map);
+    L.control.attribution({
+      position: trySetting('_mapAttribution', 'bottomright')
+    }).addTo(map);
   }
     
 /** 
