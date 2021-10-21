@@ -179,40 +179,7 @@ $(window).on('load', function() {
         }
       }
 
-// BEGIN LEGEND CODE
-            
-// MAKE GOOGLE MAP AND GROUPED LEGEND CONTROLER
-  var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
-  });
-  
-  var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-  maxZoom: 20,
-  subdomains:['mt0','mt1','mt2','mt3']
-  });
-
-  // Define Map Base Layers
-  var baseLayers = {
-    "Switch Views": {
-    "<img src='assets/img/banpin.png' width='24' height='24'>&nbsp;Satellite Map": googleSat,
-    "<img src='assets/img/ulupin.png' width='24' height='24'>&nbsp;Street Map": cartoLight
-    }
-  };
-  
-// Define Overlays
-//  var groupedOverlays = {
-//    "Trees of Interest": {
-//      "<img src='assets/img/avopin.png' width='24' height='24'>&nbsp;Avacado": avoLayer,              //sizes for control box
-//      "<img src='assets/img/banpin.png' width='24' height='24'>&nbsp;Banana": banLayer,
-//      "<img src='assets/img/ulupin.png' width='24' height='24'>&nbsp;Ulu": uluLayer
-//    }
-//  };
-
-// Create Control Box / Legend
-      var layerControl = L.control.groupedLayers(baseLayers, {
-        collapsed: isCollapsed
-      }).addTo(map);      
+// BEGIN LEGEND CODE    
       
       var pos = (getSetting('_pointsLegendPos') == 'off')
         ? 'topleft'
@@ -985,10 +952,39 @@ $(window).on('load', function() {
     $('.leaflet-control-attribution')[0].innerHTML = credit + attributionHTML;
   }
   
-
-
   
+  // MAKE GOOGLE MAP AND GROUPED LEGEND CONTROLER
+  var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
+  });
   
+  var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+  maxZoom: 20,
+  subdomains:['mt0','mt1','mt2','mt3']
+  });
+
+  // Define Map Base Layers
+  var baseLayers = {
+    "Switch Views": {
+    "<img src='assets/img/banpin.png' width='24' height='24'>&nbsp;Satellite Map": googleSat,
+    "<img src='assets/img/ulupin.png' width='24' height='24'>&nbsp;Street Map": cartoLight
+    }
+  };
+  
+// Define Overlays
+//  var groupedOverlays = {
+//    "Trees of Interest": {
+//      "<img src='assets/img/avopin.png' width='24' height='24'>&nbsp;Avacado": avoLayer,              //sizes for control box
+//      "<img src='assets/img/banpin.png' width='24' height='24'>&nbsp;Banana": banLayer,
+//      "<img src='assets/img/ulupin.png' width='24' height='24'>&nbsp;Ulu": uluLayer
+//    }
+//  };
+
+// Create Control Box / Legend
+      var layerControl = L.control.groupedLayers(baseLayers, {
+        collapsed: isCollapsed
+      }).addTo(map);  
 /**
  * Loads the basemap and adds it to the map
  */
