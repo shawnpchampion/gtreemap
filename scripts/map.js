@@ -213,10 +213,10 @@ $(window).on('load', function() {
     }
         
     $('#points-legend').prepend('<h6 class="pointer">' + getSetting('_pointsLegendTitle') + '</h6>');
-    if (getSetting('_pointsLegendIcon') != '') {
-      $('#points-legend h6').prepend('<span class="legend-icon"><i class="fas '
-        + getSetting('_pointsLegendIcon') + '"></i></span>');
-    }
+//    if (getSetting('_pointsLegendIcon') != '') {
+//      $('#points-legend h6').prepend('<span class="legend-icon"><i class="fas '
+//        + getSetting('_pointsLegendIcon') + '"></i></span>');
+//    }
 
 // END LEGEND CODE
 // BEGIN TABLE CODE
@@ -731,15 +731,15 @@ $(window).on('load', function() {
     changeAttribution();
 
 // Append icons to categories in markers legend
-    $('#points-legend label span').each(function(i) {
-      var g = $(this).text().trim();
-      var legendIcon = (group2color[ g ].indexOf('.') > 0)
-        ? '<img src="' + group2color[ g ] + '" class="markers-legend-icon">'
-        : '&nbsp;<i class="fas fa-map-marker" style="color: '
-          + group2color[ g ]
-          + '"></i>';
-      $(this).prepend(legendIcon);
-    });
+//    $('#points-legend label span').each(function(i) {
+//      var g = $(this).text().trim();
+//      var legendIcon = (group2color[ g ].indexOf('.') > 0)
+//        ? '<img src="' + group2color[ g ] + '" class="markers-legend-icon">'
+//        : '&nbsp;<i class="fas fa-map-marker" style="color: '
+//          + group2color[ g ]
+//          + '"></i>';
+//      $(this).prepend(legendIcon);
+//    });
 
 // When all processing is done, hide the loader and make the map visible
     showMap();
