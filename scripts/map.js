@@ -136,6 +136,8 @@ $("#featureModal").modal({show:false});
 function markerOnClick(e)
 {
   alert("hi. you clicked the marker at " + e.latlng);
+  $("#feature-title").html(point['NAME']);
+  $("#featureModal").modal("show");
 }
         
         if (layers !== undefined && layers.length !== 1) {
