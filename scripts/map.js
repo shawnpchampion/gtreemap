@@ -59,7 +59,7 @@ $(window).on('load', function() {
 
     map.setView(center, zoom);
   }
-
+$("#featureModal").modal({show:false}); 
 
   /**
    * Given a collection of points, determines the layers based on 'Group'
@@ -141,7 +141,7 @@ $(window).on('load', function() {
         markerArray.push(marker);  
         
         
-        markerArray.on('click', function() {
+        layers.on('click', function() {
             $("#feature-title").html(point['Name']);
             $("#featureModal").modal("show"); 
         });
