@@ -944,7 +944,45 @@ $(window).on('load', function() {
   }
 
 
-  /**
+
+  
+  // Make the Google Leaflet Map
+//  var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
+//  maxZoom: 19,
+//  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
+//});
+
+//var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+//attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+//});
+
+//var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+ //   maxZoom: 20,
+  //  subdomains:['mt0','mt1','mt2','mt3']
+//});
+  
+  
+//map = L.map("map", {
+//  zoom: 16,
+//  center: [19.40893, -154.914],
+//  layers: [googleSat, markerClusters, highlight],
+//  zoomControl: false,
+//  attributionControl: false
+//});
+  
+  // Define Map Base Layers
+//var baseLayers = {
+  //"Old Sat Map": Esri_WorldImagery,
+//  "Satellite Map": googleSat,
+//  "Street Map": cartoLight
+//};
+  
+  // Create Control Box / Legend
+//var layerControl = L.control.groupedLayers(baseLayers, groupedOverlays, {
+//  collapsed: isCollapsed
+//}).addTo(map);
+  
+    /**
    * Loads the basemap and adds it to the map
    */
   function addBaseMap() {
