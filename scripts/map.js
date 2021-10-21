@@ -60,11 +60,7 @@ $(window).on('load', function() {
     map.setView(center, zoom);
   }
 
-function markerOnClick(e)
-{
-  $("#feature-title").html(point['Name']);
-  $("#featureModal").modal("show");
-}
+
   /**
    * Given a collection of points, determines the layers based on 'Group'
    * column in the spreadsheet.
@@ -136,7 +132,13 @@ function markerOnClick(e)
           .bindPopup("<b>" + point['Name'] + '</b><br>' +
           (point['Image'] ? ('<img src="' + point['Image'] + '"><br>') : '') +
           point['Description']).addTo(map);
-        
+      
+        function markerOnClick(e)
+{
+  alert("name: " + this.options.Name);
+  $("#feature-title").html(point['Name']);
+  $("#featureModal").modal("show");
+}
         
         if (layers !== undefined && layers.length !== 1) {
           marker.addTo(layers[point.Group]);
