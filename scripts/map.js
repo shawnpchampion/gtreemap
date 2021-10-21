@@ -970,19 +970,22 @@ $(window).on('load', function() {
     "Street Map": cartoLight
   };
   
+  var algroup = L.layerGroup(Avocado);
+  var blgroup = L.layerGroup(Banana);
+  
 // Define Overlays
-//  var groupedOverlays = {
-//    "Trees of Interest": {
-//      "<img src='assets/img/avopin.png' width='24' height='24'>&nbsp;Avacado": avoLayer,              //sizes for control box
-//      "<img src='assets/img/banpin.png' width='24' height='24'>&nbsp;Banana": banLayer,
+  var groupedOverlays = {
+    "Trees of Interest": {
+      "<img src='assets/img/avopin.png' width='24' height='24'>&nbsp;Avacado": algroup,              //sizes for control box
+      "<img src='assets/img/banpin.png' width='24' height='24'>&nbsp;Banana": blgroup,
 //      "<img src='assets/img/ulupin.png' width='24' height='24'>&nbsp;Ulu": uluLayer
-//    }
-//  };
+    }
+  };
 
-//  L.layerGroup();
+      
   
 // Create Control Box / Legend
-      var layerControl = L.control.groupedLayers(baseLayers, {
+      var layerControl = L.control.groupedLayers(baseLayers, groupedOverlays, {
         collapsed: isCollapsed
       }).addTo(map);  
 /**
