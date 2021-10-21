@@ -180,6 +180,7 @@ $(window).on('load', function() {
       }
 
 // BEGIN LEGEND CODE    
+      
 // MAKE GOOGLE MAP AND GROUPED LEGEND CONTROLER
   var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
   maxZoom: 19,
@@ -196,11 +197,19 @@ $(window).on('load', function() {
     "Satellite Map": googleSat,
     "Street Map": cartoLight
   };
+      
+  var gOverlays = {
+  "Trees of Interests": {
+    "<img src='assets/img/ulupin.png' width='24' height='24'>": layers
+  }
+};
+      
+      
       var pos = (getSetting('_pointsLegendPos') == 'off')
         ? 'topleft'
         : getSetting('_pointsLegendPos');
           
-      var pointsLegend = L.control.layers(baseLayers, layers, {
+      var pointsLegend = L.control.layers(baseLayers, gOverlays, {
         collapsed: false,
         position: pos,
       });
