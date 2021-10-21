@@ -983,14 +983,14 @@ $(window).on('load', function() {
    * Loads the basemap and adds it to the map
    */
   function addBaseMap() {
-    var basemap = trySetting('_tileProvider', 'CartoDB.Positron');
-    L.tileLayer.provider(basemap, {
-      maxZoom: 18
+//    var basemap = trySetting('_tileProvider', 'CartoDB.Positron');
+//    L.tileLayer.provider(basemap, {
+//      maxZoom: 18
+ //   }).addTo(map);
+    var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
     }).addTo(map);
-//    var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-//    maxZoom: 20,
-//    subdomains:['mt0','mt1','mt2','mt3']
-//    });
     L.control.attribution({
       position: trySetting('_mapAttribution', 'bottomright')
     }).addTo(map);
