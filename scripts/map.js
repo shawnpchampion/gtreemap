@@ -141,7 +141,7 @@ $("#featureModal").modal({show:false});
         markerArray.push(marker);  
         
         
-        layers.on('click', function() {
+        layer.on('click', function() {
             $("#feature-title").html(point['Name']);
             $("#featureModal").modal("show"); 
         });
