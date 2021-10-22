@@ -23,17 +23,7 @@ $(window).on('load', function() {
   }
 
   
-$("#full-extent-btn").click(function() {
-//  $("#aboutModal").modal("show");
-//  layerControl.addBaseLayer(newBaseLayer, 'My New BaseLayer');
-//  $('.leaflet-control-layers-selector')[0];
-  map.addLayer(googleSat);  
- // map.removeLayer(layer1);
-//    layer1.addTo(map);
-//    baseLayers["Satellite Map"].addTo(map);
-//  $(".navbar-collapse.in").collapse("hide");
-//  return false;
-});
+
   
   
   
@@ -235,6 +225,19 @@ $("#full-extent-btn").click(function() {
 //        + getSetting('_pointsLegendIcon') + '"></i></span>');
 //    }
 
+$("#full-extent-btn").click(function() {
+//  $("#aboutModal").modal("show");
+//  layerControl.addBaseLayer(newBaseLayer, 'My New BaseLayer');
+//  $('.leaflet-control-layers-selector')[0];
+  map.addLayer(googleSat);  
+ // map.removeLayer(layer1);
+//    layer1.addTo(map);
+//    baseLayers["Satellite Map"].addTo(map);
+//  $(".navbar-collapse.in").collapse("hide");
+//  return false;
+});
+    
+    
 // END LEGEND CODE
 // BEGIN TABLE CODE
     
