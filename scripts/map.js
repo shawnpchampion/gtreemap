@@ -23,6 +23,19 @@ $(window).on('load', function() {
   }
 
   
+$("#full-extent-btn").click(function() {
+  $("#aboutModal").modal("show");
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+//  map.fitBounds(boroughs.getBounds());
+//  map.fitBounds(markers.getBounds().pad(0.5))
+//  baseLayers["Satellite Map"].addTo(map);
+//  $(".navbar-collapse.in").collapse("hide");
+//  return false;
+});
+  
+  
+  
 /**
  * Sets the map view so that all markers are visible, or
  * to specified (lat, lon) and zoom if all three are specified
