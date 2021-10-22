@@ -1222,10 +1222,10 @@ $("#sat-map-btn").click(function() {
 });
 
 $("#street-map-btn").click(function() {
-  $(".leaflet-control-layers-selector")[6].click();
+  map.removeLayer(googleSat);
 	
-  $(".navbar-collapse.in").collapse("hide");
-  return false;
+//  $(".navbar-collapse.in").collapse("hide");
+//  return false;
 });
 
      	var cities = L.layerGroup();
