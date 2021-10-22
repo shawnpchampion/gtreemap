@@ -1227,12 +1227,12 @@ $("#sat-map-btn").click(function() {
 });
 
 $("#street-map-btn").click(function() {
- if (map.hasLayer(googleSat)) {
+// if (map.hasLayer(googleSat)) {
     	map.removeLayer(googleSat);
-	map.addLayer(cartoLight);
-    } else {
-    	return false;
-    }
+//	map.addLayer(cartoLight);
+ //   } else {
+  //  	return false;
+  //  }
 	
 //	map.removeLayer(googleSat);
 	
