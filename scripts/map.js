@@ -1205,7 +1205,7 @@ $("#sat-map-btn").click(function() {
 });
 
 $("#street-map-btn").click(function() {
-  $(".leaflet-control-layers-selector")[2].click();
+  $(".leaflet-control-layers-selector")[6].click();
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
