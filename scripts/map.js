@@ -1197,10 +1197,21 @@ $("#full-extent-btn").click(function() {
 //  $("#aboutModal").modal("show");
 //  layerControl.addBaseLayer(newBaseLayer, 'My New BaseLayer');
 //  $('.leaflet-control-layers-selector')[0];
-  map.addLayer(googleSat);  
- // map.removeLayer(layer1);
+  map.removeLayer(basemaps);
+  map.addLayer(googleSat); 
 //    layer1.addTo(map);
 //    baseLayers["Satellite Map"].addTo(map);
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
+
+//$("#sights").click(function(event) {
+//    event.preventDefault();
+//    if(map.hasLayer(basemaps)) {
+//        $(this).removeClass('selected');
+//        map.removeLayer(basemaps);
+//    } else {
+//        map.addLayer(googleSat);                 
+//        $(this).addClass('selected');
+//   }
+//});
