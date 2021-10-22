@@ -1231,7 +1231,7 @@ $("#street-map-btn").click(function() {
 	
         var basLayers = {
 		"Grayscale": grayscale,
-		"Streets": streets
+		"Streets": streets,
 		"darkmatter": darkmatter
 	};
 
