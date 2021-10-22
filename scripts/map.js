@@ -1190,6 +1190,17 @@ map.addLayer(googleSat);
 //  return false;
 });
 
+$("#avo-btn").click(function(event) {
+map.removeLayer(Avocado);
+//  $(".navbar-collapse.in").collapse("hide");
+//  return false;
+});
+
+$("#ban-btn").click(function(event) {
+  $(".leaflet-control-layers-selector")[1].click();
+//  $(".navbar-collapse.in").collapse("hide");
+//  return false;
+});
 
 //  $(".leaflet-control-layers-selector")[0].click();
 
