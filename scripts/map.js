@@ -1193,14 +1193,14 @@ $(window).on('load', function() {
 
 });
 
-$("#full-extent-btn").click(function() {
-//  $("#aboutModal").modal("show");
-//  layerControl.addBaseLayer(newBaseLayer, 'My New BaseLayer');
+$("#sat-map-btn").click(function() {
   $(".leaflet-control-layers-selector")[0].click();
-//  map.removeLayer(basemaps);
-//  map.addLayer(googleSat); 
-//    layer1.addTo(map);
-//    baseLayers["Satellite Map"].addTo(map);
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+
+$("#street-map-btn").click(function() {
+  $(".leaflet-control-layers-selector")[1].click();
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
