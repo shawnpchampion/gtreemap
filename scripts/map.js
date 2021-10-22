@@ -233,8 +233,8 @@ $("#full-extent-btn").click(function() {
  // map.removeLayer(layer1);
 //    layer1.addTo(map);
 //    baseLayers["Satellite Map"].addTo(map);
-//  $(".navbar-collapse.in").collapse("hide");
-//  return false;
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
 });
     
     
