@@ -1196,9 +1196,9 @@ $(window).on('load', function() {
 $("#full-extent-btn").click(function() {
 //  $("#aboutModal").modal("show");
 //  layerControl.addBaseLayer(newBaseLayer, 'My New BaseLayer');
-//  $('.leaflet-control-layers-selector')[0];
-  map.removeLayer(basemaps);
-  map.addLayer(googleSat); 
+  $('.leaflet-control-layers-selector')[0].click();
+//  map.removeLayer(basemaps);
+//  map.addLayer(googleSat); 
 //    layer1.addTo(map);
 //    baseLayers["Satellite Map"].addTo(map);
   $(".navbar-collapse.in").collapse("hide");
