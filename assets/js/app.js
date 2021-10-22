@@ -25,7 +25,8 @@ $("#about-btn").click(function() {
 });
 
 $("#full-extent-btn").click(function() {
-  map.fitBounds(boroughs.getBounds());
+//  map.fitBounds(boroughs.getBounds());
+  map.fitBounds(markers.getBounds().pad(0.5))
 //  baseLayers["Satellite Map"].addTo(map);
   $(".navbar-collapse.in").collapse("hide");
   return false;
