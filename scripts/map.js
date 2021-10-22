@@ -723,7 +723,8 @@ $(window).on('load', function() {
       var g = $(this).text().trim();
       var legendIcon = (group2color[ g ].indexOf('.') > 0)
         ? '<img src="' + group2color[ g ] + '" class="markers-legend-icon">'
-        : '&nbsp;<i class="fas fa-map-marker" style="color: '
+//        : '&nbsp;<i class="fas fa-map-marker" style="color: '
+        : '&nbsp;<i class="" style="color: '
           + group2color[ g ]
           + '"></i>';
       $(this).prepend(legendIcon);
