@@ -1206,25 +1206,15 @@ var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
   });
 
-$("#WToday").click(function(event) {
-
-//	var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-//  maxZoom: 20,
-//  subdomains:['mt0','mt1','mt2','mt3']
-//    })
+$("#sat-map-btn").click(function(event) {
 map.addLayer(googleSat);
+//  $(".navbar-collapse.in").collapse("hide");
+//  return false;
 });
 
 
+//  $(".leaflet-control-layers-selector")[0].click();
 
-// $('.leaflet-control-layers').hide();
-
-$("#sat-map-btn").click(function() {
-  $(".leaflet-control-layers-selector")[0].click();
-//	googleSat.addTo(map);
-  $(".navbar-collapse.in").collapse("hide");
-  return false;
-});
 
 $("#street-map-btn").click(function() {
 // if (map.hasLayer(googleSat)) {
@@ -1233,9 +1223,6 @@ $("#street-map-btn").click(function() {
  //   } else {
   //  	return false;
   //  }
-	
-//	map.removeLayer(googleSat);
-	
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
 });
