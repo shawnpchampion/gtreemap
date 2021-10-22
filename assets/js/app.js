@@ -33,7 +33,7 @@ $("#about-btn").click(function() {
 //  baseLayers["Satellite Map"].addTo(map);
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
-});
+// });
 
 
 // $('.leaflet-control-layers input').get(i).click()
