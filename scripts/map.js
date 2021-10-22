@@ -1201,6 +1201,11 @@ var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
   subdomains:['mt0','mt1','mt2','mt3']
   });
 
+var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
+  });
+
 $("#WToday").click(function(event) {
 
 //	var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
@@ -1222,7 +1227,14 @@ $("#sat-map-btn").click(function() {
 });
 
 $("#street-map-btn").click(function() {
-  map.removeLayer(googleSat);
+ if (map.hasLayer(googleSat)) {
+    	map.removeLayer(googleSat);
+	map.addLayer(cartoLight);
+    } else {
+    	return false;
+    }
+	
+//	map.removeLayer(googleSat);
 	
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
@@ -1243,10 +1255,7 @@ $("#street-map-btn").click(function() {
 	var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr}),
 		streets  = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
 
-  var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
-  });	
+	
 
 
   //      var basLayers = {
