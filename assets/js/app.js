@@ -24,10 +24,10 @@ $("#about-btn").click(function() {
   return false;
 });
 
-$("#full-extent-btn").click(function() {
-  $("#aboutModal").modal("show");
-  $(".navbar-collapse.in").collapse("hide");
-  return false;
+//$("#full-extent-btn").click(function() {
+//  $("#aboutModal").modal("show");
+//  $(".navbar-collapse.in").collapse("hide");
+//  return false;
 //  map.fitBounds(boroughs.getBounds());
 //  map.fitBounds(markers.getBounds().pad(0.5))
 //  baseLayers["Satellite Map"].addTo(map);
