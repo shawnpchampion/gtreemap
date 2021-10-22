@@ -22,10 +22,7 @@ $(window).on('load', function() {
     });
   }
 
-  
-
-  
-  
+ 
   
 /**
  * Sets the map view so that all markers are visible, or
@@ -720,16 +717,16 @@ $(window).on('load', function() {
 // Change Map attribution to include author's info + urls
     changeAttribution();
 
-// Append icons to categories in markers legend
-//    $('#points-legend label span').each(function(i) {
-//      var g = $(this).text().trim();
-//      var legendIcon = (group2color[ g ].indexOf('.') > 0)
-//        ? '<img src="' + group2color[ g ] + '" class="markers-legend-icon">'
-//        : '&nbsp;<i class="fas fa-map-marker" style="color: '
-//          + group2color[ g ]
-//          + '"></i>';
-//      $(this).prepend(legendIcon);
-//    });
+ Append icons to categories in markers legend
+    $('#points-legend label span').each(function(i) {
+      var g = $(this).text().trim();
+      var legendIcon = (group2color[ g ].indexOf('.') > 0)
+        ? '<img src="' + group2color[ g ] + '" class="markers-legend-icon">'
+        : '&nbsp;<i class="fas fa-map-marker" style="color: '
+          + group2color[ g ]
+          + '"></i>';
+      $(this).prepend(legendIcon);
+    });
 
 // When all processing is done, hide the loader and make the map visible
     showMap();
