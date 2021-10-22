@@ -1225,14 +1225,10 @@ $("#street-map-btn").click(function() {
 	var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr}),
 		streets  = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
 
-        var darkmatter = L.TileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',{
-        });
-
 	
         var basLayers = {
 		"Grayscale": grayscale,
-		"Streets": streets,
-		"darkmatter": darkmatter
+		"Streets": streets
 	};
 
 	var ovelays = {
