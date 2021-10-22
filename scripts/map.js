@@ -202,6 +202,9 @@ $(window).on('load', function() {
     "Street Map": cartoLight
   };
   
+ 
+        
+        
       var pos = (getSetting('_pointsLegendPos') == 'off')
         ? 'topleft'
         : getSetting('_pointsLegendPos');
@@ -1193,6 +1196,8 @@ $(window).on('load', function() {
 
 });
 
+// $('.leaflet-control-layers').hide();
+
 $("#sat-map-btn").click(function() {
   $(".leaflet-control-layers-selector")[0].click();
   $(".navbar-collapse.in").collapse("hide");
@@ -1204,6 +1209,32 @@ $("#street-map-btn").click(function() {
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
+
+     	var cities = L.layerGroup();
+
+	L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.').addTo(cities),
+	L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.').addTo(cities),
+	L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities),
+	L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
+
+
+	var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+
+	var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr}),
+		streets  = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
+
+	var basLayers = {
+		"Grayscale": grayscale,
+		"Streets": streets
+	};
+
+	var ovelays = {
+		"Cities": cities
+	};
+
+	L.control.layers(basLayers, ovelays).addTo(map);
 
 //$("#sights").click(function(event) {
 //    event.preventDefault();
