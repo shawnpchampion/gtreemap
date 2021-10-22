@@ -1196,16 +1196,33 @@ $(window).on('load', function() {
 
 });
 
+$("#WToday").click(function(event) {
+    var floodToday = L.tileLayer.wms("http://localhost:8080/geoserver/wms", {
+    layers: 'FloodlayerWMS',
+    format:'image/png',
+    version: '1.1.1',
+    transparent: true
+    })
+map.addLayer(floodToday);
+});
+
+var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+  maxZoom: 20,
+  subdomains:['mt0','mt1','mt2','mt3']
+  });
+
 // $('.leaflet-control-layers').hide();
 
 $("#sat-map-btn").click(function() {
   $(".leaflet-control-layers-selector")[0].click();
+//	googleSat.addTo(map);
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
 
 $("#street-map-btn").click(function() {
   $(".leaflet-control-layers-selector")[6].click();
+	
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
@@ -1230,24 +1247,21 @@ $("#street-map-btn").click(function() {
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
   });	
 
-var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-  maxZoom: 20,
-  subdomains:['mt0','mt1','mt2','mt3']
-  });
-        var basLayers = {
-		"Grayscale": grayscale,
-		"Streets": streets,
-		"Satillite": googleSat,
-		"GStreet": cartoLight
-	};
 
-	var ovelays = {
+  //      var basLayers = {
+//		"Grayscale": grayscale,
+//		"Streets": streets,
+//		"Satillite": googleSat,
+//		"GStreet": cartoLight
+//	};
+
+//	var ovelays = {
 		"Cities": cities
-	};
+//	};
 
-	var controlss = L.control.layers(basLayers, ovelays).addTo(map);
+//	L.control.layers(basLayers, ovelays).addTo(map);
 
-        map.removeControl(controlss);
+        
 
 //$("#sights").click(function(event) {
 //    event.preventDefault();
