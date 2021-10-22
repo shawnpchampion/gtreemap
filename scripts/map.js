@@ -1245,8 +1245,9 @@ var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
 		"Cities": cities
 	};
 
-//	L.control.layers(basLayers, ovelays).addTo(map);
-        L.control.layers(basLayers, ovelays);
+	var controlss = L.control.layers(basLayers, ovelays).addTo(map);
+
+        map.removeControl(controlss);
 
 //$("#sights").click(function(event) {
 //    event.preventDefault();
