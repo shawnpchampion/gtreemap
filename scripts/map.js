@@ -193,8 +193,8 @@ $(window).on('load', function() {
       
       if (getSetting('_pointsLegendPos') !== 'off') {
         pointsLegend.addTo(map);
-        pointsLegend._container.id = 'points-legend';
-        pointsLegend._container.className += ' ladder';
+//        pointsLegend._container.id = 'points-legend';
+//        pointsLegend._container.className += ' ladder';
       }
     }
         
