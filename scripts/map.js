@@ -1256,7 +1256,7 @@ $("#street-map-btn").click(function() {
 //	};
 
 //	var ovelays = {
-		"Cities": cities
+//		"Cities": cities
 //	};
 
 //	L.control.layers(basLayers, ovelays).addTo(map);
