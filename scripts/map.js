@@ -1197,13 +1197,13 @@ $(window).on('load', function() {
 });
 
 $("#WToday").click(function(event) {
-    var floodToday = L.tileLayer.wms("http://localhost:8080/geoserver/wms", {
-    layers: 'FloodlayerWMS',
-    format:'image/png',
-    version: '1.1.1',
-    transparent: true
+     var nexrad = new L.tileLayer.wms("https://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
+            layers: 'nexrad-n0r',
+            format: 'image/png',
+            transparent: true,
+            attribution: "Weather data &copy; 2015 IEM Nexrad"
     })
-map.addLayer(floodToday);
+map.addLayer(nexrad);
 });
 
 var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
