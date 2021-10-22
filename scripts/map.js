@@ -183,27 +183,7 @@ $(window).on('load', function() {
         }
       }
 
-// BEGIN LEGEND CODE    
-      
-// MAKE GOOGLE MAP AND GROUPED LEGEND CONTROLER
-//  var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
-//  maxZoom: 19,
-//  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
-//  });
-  
-//  var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-//  maxZoom: 20,
-//  subdomains:['mt0','mt1','mt2','mt3']
-//  });
-	    
-  // Define Map Base Layers
-//  var baseLayers = {
-//    "Satellite Map": googleSat,
-//    "Street Map": cartoLight
-//  };
-  
- 
-        
+// BEGIN LEGEND CODE      
         
       var pos = (getSetting('_pointsLegendPos') == 'off')
         ? 'topleft'
@@ -222,11 +202,11 @@ $(window).on('load', function() {
     }
         
     $('#points-legend').prepend('<h6 class="pointer"><b>' + getSetting('_pointsLegendTitle') + '</b></h6>');
-    $(".leaflet-control-layers-overlays").prepend("<label><b>Trees of Interest</b></label>");
-//    if (getSetting('_pointsLegendIcon') != '') {
-//      $('#points-legend h6').prepend('<span class="legend-icon"><i class="fas '
-//        + getSetting('_pointsLegendIcon') + '"></i></span>');
-//    }
+//    $(".leaflet-control-layers-overlays").prepend("<label><b>Trees of Interest</b></label>");
+    if (getSetting('_pointsLegendIcon') != '') {
+      $('#points-legend h6').prepend('<span class="legend-icon"><i class="fas '
+        + getSetting('_pointsLegendIcon') + '"></i></span>');
+    }
         
 // END LEGEND CODE
 // BEGIN TABLE CODE
