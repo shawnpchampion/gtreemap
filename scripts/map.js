@@ -24,12 +24,13 @@ $(window).on('load', function() {
 
   
 $("#full-extent-btn").click(function() {
-  $("#aboutModal").modal("show");
-//  $(".navbar-collapse.in").collapse("hide");
-//  return false;
-//    layerControl.addBaseLayer(newBaseLayer, 'My New BaseLayer');
+//  $("#aboutModal").modal("show");
+//  layerControl.addBaseLayer(newBaseLayer, 'My New BaseLayer');
 //  $('.leaflet-control-layers-selector')[0];
-//  baseLayers["Satellite Map"].addTo(map);
+  map.addLayer(googleSat);  
+ // map.removeLayer(layer1);
+//    layer1.addTo(map);
+//    baseLayers["Satellite Map"].addTo(map);
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
 });
