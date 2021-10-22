@@ -1196,20 +1196,27 @@ $(window).on('load', function() {
 
 });
 
-$("#WToday").click(function(event) {
-     var nexrad = new L.tileLayer.wms("https://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
-            layers: 'nexrad-n0r',
-            format: 'image/png',
-            transparent: true,
-            attribution: "Weather data &copy; 2015 IEM Nexrad"
-    })
-map.addLayer(nexrad);
-});
+//var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+//  maxZoom: 20,
+//  subdomains:['mt0','mt1','mt2','mt3']
+//  });
 
-var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+$("#WToday").click(function(event) {
+
+	var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
   maxZoom: 20,
   subdomains:['mt0','mt1','mt2','mt3']
-  });
+//  });
+//	var nexrad = new L.tileLayer.wms("https://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
+//            layers: 'nexrad-n0r',
+//            format: 'image/png',
+//            transparent: true,
+//            attribution: "Weather data &copy; 2015 IEM Nexrad"
+    })
+map.addLayer(googleSat);
+});
+
+
 
 // $('.leaflet-control-layers').hide();
 
