@@ -24,14 +24,14 @@ $(window).on('load', function() {
 
   
 $("#full-extent-btn").click(function() {
-//  $("#aboutModal").modal("show");
+  $("#aboutModal").modal("show");
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
 //    layerControl.addBaseLayer(newBaseLayer, 'My New BaseLayer');
-  $('.leaflet-control-layers-selector')[0];
+//  $('.leaflet-control-layers-selector')[0];
 //  baseLayers["Satellite Map"].addTo(map);
-  $(".navbar-collapse.in").collapse("hide");
-  return false;
+//  $(".navbar-collapse.in").collapse("hide");
+//  return false;
 });
   
   
