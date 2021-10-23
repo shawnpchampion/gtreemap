@@ -131,9 +131,11 @@ $(window).on('load', function() {
       if (point.Latitude !== '' && point.Longitude !== '') {
      
 // DEFINE THE PARAMETERS OF THE MARKERS AND MODAL POP UP        
-        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon}).on('click', markerOnClick)
+        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon}).on('click', markerOnClick)      
           .addTo(map);
-      
+        
+	
+	      
 	
         function markerOnClick(e)
           {
@@ -1192,8 +1194,12 @@ map.addLayer(googleSat);
 });
 
 $("#avo-btn").click(function(event) {
-$(".leaflet-pane img[src='assets/img/avopin.png']").hide();
-//	
+//$(".leaflet-pane img[src='assets/img/avopin.png']").hide();
+     
+ map.eachLayer(function(marker) {
+ if (marker.options.group) {
+          alert(marker.options.group);
+ }}
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
 });
