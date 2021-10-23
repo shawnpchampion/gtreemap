@@ -1191,7 +1191,7 @@ map.addLayer(googleSat);
 });
 
 $("#avo-btn").click(function(event) {
-map.removeLayer( Avocado);
+map.removeLayer(Avocado);
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
 });
@@ -1200,7 +1200,7 @@ $("#ban-btn").click(function(event) {
 var qname;
 map.on('overlayadd', function(e){
    qname = e.name;
-   alert("Lat, Lon : " + qname);
+   alert(qname);
 })
   $(".leaflet-control-layers-selector")[1].click();
 //  $(".navbar-collapse.in").collapse("hide");
