@@ -1206,7 +1206,12 @@ $("#avo-btn").click(function(event) {
 });
 
 $("#ban-btn").click(function(event) {
-$(".leaflet-pane img[src='assets/img/avopin.png']").show();	
+ map.eachLayer(function(marker) {
+ if (marker.options.group == 'Avocado') {
+	//  var tempMarker = this;
+          map.addLayer(marker);
+	  }})
+//$(".leaflet-pane img[src='assets/img/avopin.png']").show();	
 //var qname;
 //map.on('overlayadd', function(e){
 //   qname = e.name;
