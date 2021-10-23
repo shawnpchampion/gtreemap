@@ -1192,14 +1192,14 @@ map.addLayer(googleSat);
 });
 
 $("#avo-btn").click(function(event) {
-$(".leaflet-pane img[src="assets/img/avopin.png"]").hide();
+$(".leaflet-pane img[src='assets/img/avopin.png']").hide();
 //	
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
 });
 
 $("#ban-btn").click(function(event) {
-$(".leaflet-pane img[src="assets/img/avopin.png"]").show();	
+$(".leaflet-pane img[src='assets/img/avopin.png']").show();	
 //var qname;
 //map.on('overlayadd', function(e){
 //   qname = e.name;
