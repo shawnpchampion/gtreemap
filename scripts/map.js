@@ -1203,7 +1203,7 @@ map.on('overlayadd', function(e){
    qname = e.name;
    alert(qname);
 })
-  $(".leaflet-control-layers-selector")[1].click();
+//  $(".leaflet-control-layers-selector")[1].click();
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
 });
