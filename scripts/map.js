@@ -1197,8 +1197,9 @@ $("#avo-btn").click(function(event) {
 //$(".leaflet-pane img[src='assets/img/avopin.png']").hide();
      
  map.eachLayer(function(marker) {
- if (marker.options.group) {
-          alert(marker.options.group);
+ if (marker.options.group == 'Avocado') {
+	//  var tempMarker = this;
+          map.removeLayer(marker);
  }})
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
