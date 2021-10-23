@@ -134,6 +134,7 @@ $(window).on('load', function() {
         var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon}).on('click', markerOnClick)
           .addTo(map);
       
+	
         function markerOnClick(e)
           {
             var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + this.options.hname + "</td></tr>" + "<tr><th>Canoe Plant:</th><td>" + this.options.cplant + "</td></tr>" + "<tr><th>Harvest:</th><td>" + this.options.harvest + "</td></tr>" + "<table>";
@@ -1191,17 +1192,18 @@ map.addLayer(googleSat);
 });
 
 $("#avo-btn").click(function(event) {
-map.removeLayer(L.layerGroup(Avocado));
-//	L.markerClusterGroup().addLayer(group).addTo(map)
+$(".leaflet-pane img[src="assets/img/avopin.png"]").hide();
+//	
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
 });
 
 $("#ban-btn").click(function(event) {
-var qname;
-map.on('overlayadd', function(e){
-   qname = e.name;
-   alert(qname);
+$(".leaflet-pane img[src="assets/img/avopin.png"]").show();	
+//var qname;
+//map.on('overlayadd', function(e){
+//   qname = e.name;
+//   alert(qname);
 })
 //  $(".leaflet-control-layers-selector")[1].click();
 //  $(".navbar-collapse.in").collapse("hide");
