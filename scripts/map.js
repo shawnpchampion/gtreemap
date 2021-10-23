@@ -1197,6 +1197,11 @@ map.removeLayer( Avocado);
 });
 
 $("#ban-btn").click(function(event) {
+var qname;
+map.on('overlayadd', function(e){
+   qname = e.name;
+   console.log(qname);
+})
   $(".leaflet-control-layers-selector")[1].click();
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
