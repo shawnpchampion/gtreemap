@@ -1191,7 +1191,8 @@ map.addLayer(googleSat);
 });
 
 $("#avo-btn").click(function(event) {
-map.removeLayer(L.layerGroup(2));
+map.removeLayer(L.layerGroup(Avocado));
+//	L.markerClusterGroup().addLayer(group).addTo(map)
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
 });
@@ -1221,12 +1222,7 @@ $("#street-map-btn").click(function() {
 //  return false;
 });
 
-     	var cities = L.layerGroup();
-
-	L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.').addTo(cities),
-	L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.').addTo(cities),
-	L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities),
-	L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
+ 
 
 
 	var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
