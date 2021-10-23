@@ -1191,7 +1191,7 @@ map.addLayer(googleSat);
 });
 
 $("#avo-btn").click(function(event) {
-map.removeLayer(Avocado);
+map.removeLayer(L.layerGroup(2));
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
 });
