@@ -1204,7 +1204,7 @@ $(".leaflet-pane img[src='assets/img/avopin.png']").show();
 //map.on('overlayadd', function(e){
 //   qname = e.name;
 //   alert(qname);
-})
+//})
 //  $(".leaflet-control-layers-selector")[1].click();
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
@@ -1216,7 +1216,6 @@ $(".leaflet-pane img[src='assets/img/avopin.png']").show();
 $("#street-map-btn").click(function() {
 // if (map.hasLayer(googleSat)) {
     	map.removeLayer(googleSat);
-//	map.addLayer(cartoLight);
  //   } else {
   //  	return false;
   //  }
@@ -1225,33 +1224,7 @@ $("#street-map-btn").click(function() {
 });
 
  
-
-
-	var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-		mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
-
-	var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr}),
-		streets  = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
-
-	
-
-
-  //      var basLayers = {
-//		"Grayscale": grayscale,
-//		"Streets": streets,
-//		"Satillite": googleSat,
-//		"GStreet": cartoLight
-//	};
-
-//	var ovelays = {
-//		"Cities": cities
-//	};
-
-//	L.control.layers(basLayers, ovelays).addTo(map);
-
-        
-
+       
 //$("#sights").click(function(event) {
 //    event.preventDefault();
 //    if(map.hasLayer(basemaps)) {
