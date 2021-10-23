@@ -1199,7 +1199,7 @@ $("#avo-btn").click(function(event) {
  map.eachLayer(function(marker) {
  if (marker.options.group) {
           alert(marker.options.group);
- }}
+ }})
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
 });
