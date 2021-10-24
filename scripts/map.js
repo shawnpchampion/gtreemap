@@ -102,7 +102,7 @@ $(window).on('load', function() {
 /**
  * Assigns points to appropriate layers and clusters them if needed
  */
-  var canoeLayer = L.featureGroup().addTo(map);
+//  var canoeLayer = L.featureGroup().addTo(map);
 	
   function mapPoints(points, layers) {
     var markerArray = [];
@@ -110,7 +110,7 @@ $(window).on('load', function() {
     
     for (var i in points) {
       var point = points[i];	    
-      var canoe = points[i].CPlant;
+//      var canoe = points[i].CPlant;
       
     
       // If icon contains '.', assume it's a path to a custom icon,
@@ -159,9 +159,9 @@ $(window).on('load', function() {
           marker.addTo(layers[point.Group]);
         }
         
-	if (canoe == 'Yes') {    
-	  marker.addTo(canoeLayer);
-        }
+//	if (canoe == 'Yes') {    
+//	  marker.addTo(canoeLayer);
+//        }
 	    
         markerArray.push(marker);  
         
@@ -219,14 +219,26 @@ $(window).on('load', function() {
 	  
 $("#ban-btn").click(function(event) {
     event.preventDefault();
- //   if(map.hasLayer(layers[points[1].Group])) {
- //       map.removeLayer(layers[points[1].Group]);
- //   } else {
- //       map.addLayer(layers[points[1].Group]);        
- //   }
+    if(map.hasLayer(layers[points[1].Group])) {
+        map.removeLayer(layers[points[1].Group]);
+    } else {
+        map.addLayer(layers[points[1].Group]);        
+    }	
+});
+	  
+$("#canoe-btn").click(function(event) {
+    event.preventDefault();
 	
-      map.addLayer(canoeLayer);	
-//console.log(layers[points[1].Group])
+layers.eachLayer(function(layer) {
+	layer.eachLayer(function(layer) {
+if (layer.options.cplant == 'No') {
+         map.removeLayer(layer);
+}
+if (layer.options.cplant == 'Yes') {
+         map.addLayer(layer);
+}		
+
+}
 });
 	  
 // BEGIN TABLE CODE
