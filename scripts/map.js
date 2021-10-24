@@ -217,7 +217,7 @@ $(window).on('load', function() {
         
 // END LEGEND CODE
 	  
-$("#ban-btn").click(function(event) {
+$("#banc-btn").click(function(event) {
     event.preventDefault();
     if(map.hasLayer(layers[points[1].Group])) {
         map.removeLayer(layers[points[1].Group]);
@@ -226,7 +226,7 @@ $("#ban-btn").click(function(event) {
     }	
 });
 	  
-$("#canoe-btn").click(function(event) {
+$("#ban-btn").click(function(event) {
     event.preventDefault();
 	
 layers.eachLayer(function(layer) {
