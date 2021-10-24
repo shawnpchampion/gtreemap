@@ -183,13 +183,13 @@ $(window).on('load', function() {
 
      
 $("#ban-btn").click(function(event) {
-// layers.eachLayer(function() {
-//	 .getLayerId(
+
 layers.eachLayer(function (layer) {
    var qname;
    qname = layer.getLayers();	
    alert(qname);	
 });
+});	
 	// BEGIN LEGEND CODE 
       var pos = (getSetting('_pointsLegendPos') == 'off')
         ? 'topleft'
