@@ -228,17 +228,26 @@ $("#banc-btn").click(function(event) {
 	  
 $("#ban-btn").click(function(event) {
     event.preventDefault();
-    for (i in layers) {
-      if (layers[i].options.cplant == 'No') {
-         map.removeLayer(layers[i]); 
-      } 
+    for (i in layers[points.Group]) {
+      layers[points[i].Group].eachLayer(function(marker) {
+        if (marker.options.group == 'Avocado') {
+          map.removeLayer(marker);
+//          map.removeLayer(layers[points[i].Group]);
+	}
+      })
+    }
+ });
+	  
+//if (layers[i].options.cplant == 'No') {
+//map.removeLayer(layers[i]); 
+//      } 
 //	else {
 //	  if (layers[i].options.cplant == 'Yes') {
 //          layers[i].addTo(map); 
 //          }		
 //      }
-    }
- });
+//    }
+
 	
 	  
 // BEGIN TABLE CODE
@@ -1224,7 +1233,7 @@ map.addLayer(googleSat);
 //  return false;
 });
 
-$("#avo-btn").click(function(event) {
+$("#avos-btn").click(function(event) {
 
 });
 	
