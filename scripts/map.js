@@ -1224,7 +1224,7 @@ $("#avo-btn").click(function(event) {
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
 
-});
+//});
 
 
 
