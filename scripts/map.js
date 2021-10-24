@@ -1195,21 +1195,25 @@ $("#avo-btn").click(function(event) {
 //$(".leaflet-pane img[src='assets/img/avopin.png']").hide();
      
  map.eachLayer(function(marker) {
+	 
  if (marker.options.group == 'Avocado') {
-	//  var tempMarker = this;
           map.removeLayer(marker);
  }})
-	map.on('layerremove', updateTable);
-//  $(".navbar-collapse.in").collapse("hide");
-//  return false;
+
 });
 
 $("#ban-btn").click(function(event) {
- map.eachLayer(function(marker) {
- if (marker.options.group == 'Avocado') {
-	//  var tempMarker = this;
-          map.addLayer(marker);
-	  }})
+// layers.eachLayer(function() {
+//	 .getLayerId(
+layers.eachLayer(function (layer) {
+   var qname;
+   qname = layer.getLayers();
+	
+   alert(qname);	
+});
+	 
+	 
+	
 //$(".leaflet-pane img[src='assets/img/avopin.png']").show();	
 //var qname;
 //map.on('overlayadd', function(e){
@@ -1219,9 +1223,9 @@ $("#ban-btn").click(function(event) {
 //  $(".leaflet-control-layers-selector")[1].click();
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
+
 });
 
-//  $(".leaflet-control-layers-selector")[0].click();
 
 
 $("#street-map-btn").click(function() {
