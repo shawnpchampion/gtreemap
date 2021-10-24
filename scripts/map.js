@@ -220,9 +220,11 @@ $(window).on('load', function() {
 $("#avo-btn").click(function(event) {
     event.preventDefault();
     if(map.hasLayer(layers[points[1].Group])) {
+	layers[points[i].Group].removeClass('selected');   
         map.removeLayer(layers[points[1].Group]);    //works, but makes all layer icons dissapear from layer.control
     } else {
         map.addLayer(layers[points[1].Group]);        //works
+        layers[points[i].Group].addClass('selected');  
     }	
 });
 	  
@@ -231,11 +233,13 @@ $("#ban-btn").click(function(event) {
   for (i in points) {                                     //removes icon from map, but not data table or layer.control, and add layer does not work at all
     layers[points[i].Group].eachLayer(function (marker) {
        if (marker.options.group == 'Avocado') {
+	   layers[points[i].Group].removeClass('selected');    
 //         map.removeLayer(layers[points[i].Group]);    
 	 layers[points[i].Group].removeLayer(marker);
        } else {
 //        map.addLayer(layers[points[i].Group]);        
 	layers[points[i].Group].addLayer(marker); 
+	layers[points[i].Group].addClass('selected');
        }
     }) 
   }
