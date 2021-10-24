@@ -91,7 +91,7 @@ $(window).on('load', function() {
       for (var i in groups) {
         var name = groups[i];
         layers[name] = L.layerGroup();
-  //      layers[name].addTo(map);
+        layers[name].addTo(map); // if commented out, data table and layer.control show no data, but markers still show on the map, and marker.layerRemove button still works
       }
     }
     return layers;
@@ -131,8 +131,8 @@ $(window).on('load', function() {
       if (point.Latitude !== '' && point.Longitude !== '') {
      
 // DEFINE THE PARAMETERS OF THE MARKERS AND MODAL POP UP        
-        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon}).on('click', markerOnClick)      
-          .addTo(map);
+  //      var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon}).on('click', markerOnClick)      
+  //        .addTo(map);
         
 	
 	      
