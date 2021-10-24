@@ -228,12 +228,14 @@ $("#avo-btn").click(function(event) {
 	  
 $("#ban-btn").click(function(event) {
     event.preventDefault();
-  for (i in points) {
+  for (i in points) {                                     //removes icon from map, but not data table or layer.control, and add layer does not work at all
     layers[points[i].Group].eachLayer(function (marker) {
        if (marker.options.group == 'Avocado') {
-         map.removeLayer(layers[points[i].Group]);
+//         map.removeLayer(layers[points[i].Group]);    
+	 layers[points[i].Group].removeLayer(marker);
        } else {
-        map.addLayer(layers[points[i].Group]);        //works
+//        map.addLayer(layers[points[i].Group]);        
+	layers[points[i].Group].addLayer(marker); 
        }
     }) 
   }
