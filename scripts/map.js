@@ -1203,7 +1203,12 @@ $("#avo-btn").click(function(event) {
  //         map.removeLayer(marker);
  //}})
 
-console.log(layers)
+    event.preventDefault();
+    if(map.hasLayer(layers[points[1].Group])) {
+        map.removeLayer(layers[points[1].Group]);
+    } else {
+        map.addLayer(layers[points[1].Group]);        
+    }
 	
 });
 //alert(JSON.stringify(overlayMaps, null, 4))
