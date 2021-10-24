@@ -208,7 +208,13 @@ $(window).on('load', function() {
 // END LEGEND CODE
 	  
 $("#ban-btn").click(function(event) {
-console.log(layers[points[1].Group])
+    event.preventDefault();
+    if(map.hasLayer(layers[points[1].Group])) {
+        map.removeLayer(layers[points[1].Group]);
+    } else {
+        map.addLayer(layers[points[1].Group]);        
+    }
+//console.log(layers[points[1].Group])
 //$(".leaflet-control-layers-selector")[0].click();
 });
 	  
