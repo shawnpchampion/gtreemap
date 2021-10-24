@@ -91,7 +91,7 @@ $(window).on('load', function() {
       for (var i in groups) {
         var name = groups[i];
         layers[name] = L.layerGroup();
-        layers[name].addTo(map);
+  //      layers[name].addTo(map);
       }
     }
     return layers;
