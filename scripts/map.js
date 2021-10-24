@@ -230,12 +230,13 @@ $("#ban-btn").click(function(event) {
     event.preventDefault();
     for (i in layers) {
       if (layers[i].options.cplant == 'No') {
-         layers[i].addTo(map); 
-      } else {
-	  if (layers[i].options.cplant == 'Yes') {
-          layers[i].addTo(map); 
-          }		
-        }
+         map.removeLayer(layers[i]); 
+      } 
+//	else {
+//	  if (layers[i].options.cplant == 'Yes') {
+//          layers[i].addTo(map); 
+//          }		
+//      }
     }
  });
 	
