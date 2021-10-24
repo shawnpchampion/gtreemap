@@ -181,8 +181,16 @@ $(window).on('load', function() {
         }
       }
 
-// BEGIN LEGEND CODE      
-        
+     
+$("#ban-btn").click(function(event) {
+// layers.eachLayer(function() {
+//	 .getLayerId(
+layers.eachLayer(function (layer) {
+   var qname;
+   qname = layer.getLayers();	
+   alert(qname);	
+});
+	// BEGIN LEGEND CODE 
       var pos = (getSetting('_pointsLegendPos') == 'off')
         ? 'topleft'
         : getSetting('_pointsLegendPos');
@@ -1202,15 +1210,7 @@ $("#avo-btn").click(function(event) {
 
 });
 
-$("#ban-btn").click(function(event) {
-// layers.eachLayer(function() {
-//	 .getLayerId(
-layers.eachLayer(function (layer) {
-   var qname;
-   qname = layer.getLayers();
-	
-   alert(qname);	
-});
+
 	 
 	 
 	
