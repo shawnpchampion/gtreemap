@@ -188,7 +188,7 @@ layers.eachLayer(function (layer) {
    var qname;
    qname = layer.getLayers();	
    alert(qname);	
-});
+})
 });	
 	// BEGIN LEGEND CODE 
       var pos = (getSetting('_pointsLegendPos') == 'off')
