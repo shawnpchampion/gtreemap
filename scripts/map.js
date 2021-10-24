@@ -68,7 +68,7 @@ $(window).on('load', function() {
  * column in the spreadsheet.
  */
   function determineLayers(points) {
-    var groups = [];
+    var groups = [];	  
     var layers = {};
 
     for (var i in points) {
@@ -90,10 +90,11 @@ $(window).on('load', function() {
     } else {
       for (var i in groups) {
         var name = groups[i];
-        layers[name] = L.layerGroup();
-        layers[name].addTo(map); // if commented out, data table and layer.control show no data, but markers still show on the map, and marker.layerRemove button still works
+        layers[name] = L.layerGroup();      
+        layers[name].addTo(map); // if commented out, data table and layer.control show no data, but markers still show on the map, and marker.layerRemove button still works      
       }
     }
+	    
     return layers;
   }
 
@@ -101,11 +102,16 @@ $(window).on('load', function() {
 /**
  * Assigns points to appropriate layers and clusters them if needed
  */
+  var canoeLayer = L.featureGroup().addTo(map);
+	
   function mapPoints(points, layers) {
     var markerArray = [];
     // check that map has loaded before adding points to it?
+    
     for (var i in points) {
-      var point = points[i];
+      var point = points[i];	    
+      var canoe = points[i].CPlant;
+      
     
       // If icon contains '.', assume it's a path to a custom icon,
       // otherwise create a Font Awesome icon
@@ -153,6 +159,10 @@ $(window).on('load', function() {
           marker.addTo(layers[point.Group]);
         }
         
+	if (canoe == 'Yes' {    
+	  marker.addTo(canoeLayer);
+        }
+	    
         markerArray.push(marker);  
         
       }
@@ -209,13 +219,14 @@ $(window).on('load', function() {
 	  
 $("#ban-btn").click(function(event) {
     event.preventDefault();
-    if(map.hasLayer(layers[points[1].Group])) {
-        map.removeLayer(layers[points[1].Group]);
-    } else {
-        map.addLayer(layers[points[1].Group]);        
-    }
+ //   if(map.hasLayer(layers[points[1].Group])) {
+ //       map.removeLayer(layers[points[1].Group]);
+ //   } else {
+ //       map.addLayer(layers[points[1].Group]);        
+ //   }
+	
+      map.addLayer(canoeLayer);	
 //console.log(layers[points[1].Group])
-//$(".leaflet-control-layers-selector")[0].click();
 });
 	  
 // BEGIN TABLE CODE
@@ -1209,12 +1220,6 @@ $("#avo-btn").click(function(event) {
  //         map.removeLayer(marker);
  //}})
 
-    event.preventDefault();
-    if(map.hasLayer(layers[points[1].Group])) {
-        map.removeLayer(layers[points[1].Group]);
-    } else {
-        map.addLayer(layers[points[1].Group]);        
-    }
 	
 });
 //alert(JSON.stringify(overlayMaps, null, 4))
