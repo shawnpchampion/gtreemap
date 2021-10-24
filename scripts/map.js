@@ -185,11 +185,13 @@ $(window).on('load', function() {
 $("#ban-btn").click(function(event) {
 
 //layers.eachLayer(function (layer) {
-//   var qname;
-//   qname = layer.getLayers();	
-//   alert(qname);	
-//})
-//	alert(JSON.stringify(layers, null, 4))
+var qname;
+map.on('overlayadd', function(e){
+   qname = e.name;
+  // alert(qname);
+   alert(JSON.stringify(layers, null, 4));
+})	
+$(".leaflet-control-layers-selector")[0].click();
 });
 	    
 	// BEGIN LEGEND CODE 
