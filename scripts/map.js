@@ -1200,6 +1200,7 @@ $("#avo-btn").click(function(event) {
  if (marker.options.group == 'Avocado') {
 	//  var tempMarker = this;
           map.removeLayer(marker);
+	  map.on('layerremove', updateTable);
  }})
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
