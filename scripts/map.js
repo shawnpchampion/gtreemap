@@ -1212,8 +1212,10 @@ $("#avo-btn").click(function(event) {
 var qname;
 map.on('overlayadd', function(e){
    qname = e.name;
-   alert(qname);
+  // alert(qname);
+   alert(JSON.stringify(layers, null, 4));
 })	
+$(".leaflet-control-layers-selector")[1].click();
 	
 });
 //alert(JSON.stringify(overlayMaps, null, 4))
