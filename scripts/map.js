@@ -233,8 +233,9 @@ $("#ban-btn").click(function(event) {
          layers[i].addTo(map); 
       } else {
 	  if (layers[i].options.cplant == 'Yes') {
-            layers[i].addTo(map); 
+          layers[i].addTo(map); 
           }		
+        }
     }
  });
 	
