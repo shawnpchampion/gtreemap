@@ -228,19 +228,16 @@ $("#banc-btn").click(function(event) {
 	  
 $("#ban-btn").click(function(event) {
     event.preventDefault();
+    for (i in layers) {
+      if (layers[i].options.cplant == 'No') {
+         layers[i].addTo(map); 
+      } else {
+	  if (layers[i].options.cplant == 'Yes') {
+            layers[i].addTo(map); 
+          }		
+    }
+ });
 	
-layers.eachLayer(function(layer) {
-	layer.eachLayer(function(layer) {
-if (layer.options.cplant == 'No') {
-         map.removeLayer(layer);
-}
-if (layer.options.cplant == 'Yes') {
-         map.addLayer(layer);
-}		
-
-})
-})
-	});
 	  
 // BEGIN TABLE CODE
     
@@ -1226,42 +1223,38 @@ map.addLayer(googleSat);
 });
 
 $("#avo-btn").click(function(event) {
-//$(".leaflet-pane img[src='assets/img/avopin.png']").hide();
-     
- //map.eachLayer(function(marker) {
- //if (marker.options.group == 'Avocado') {
- //         map.removeLayer(marker);
- //}})
+
+});
+	
+//map.eachLayer(function(marker) {
+//if (marker.options.group == 'Avocado') {
+//         map.removeLayer(marker);
+//}})
 
 	
-});
-//alert(JSON.stringify(overlayMaps, null, 4))
+
+
 
 	 
 	 
 	
 //$(".leaflet-pane img[src='assets/img/avopin.png']").show();	
+	
 //var qname;
 //map.on('overlayadd', function(e){
 //   qname = e.name;
 //   alert(qname);
 //})
+	
 //  $(".leaflet-control-layers-selector")[1].click();
-//  $(".navbar-collapse.in").collapse("hide");
-//  return false;
 
-//});
+
 
 
 
 $("#street-map-btn").click(function() {
 // if (map.hasLayer(googleSat)) {
     	map.removeLayer(googleSat);
- //   } else {
-  //  	return false;
-  //  }
-//  $(".navbar-collapse.in").collapse("hide");
-//  return false;
 });
 
  
