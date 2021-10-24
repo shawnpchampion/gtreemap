@@ -1201,6 +1201,7 @@ $("#avo-btn").click(function(event) {
 	//  var tempMarker = this;
           map.removeLayer(marker);
  }})
+	map.on('layerremove', updateTable);
 //  $(".navbar-collapse.in").collapse("hide");
 //  return false;
 });
