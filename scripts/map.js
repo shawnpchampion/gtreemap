@@ -217,7 +217,7 @@ $(window).on('load', function() {
         
 // END LEGEND CODE
 	  
-$("#banc-btn").click(function(event) {
+$("#avo-btn").click(function(event) {
     event.preventDefault();
     if(map.hasLayer(layers[points[1].Group])) {
         map.removeLayer(layers[points[1].Group]);
@@ -228,15 +228,14 @@ $("#banc-btn").click(function(event) {
 	  
 $("#ban-btn").click(function(event) {
     event.preventDefault();
-    for (i in layers[points.Group]) {
-      layers[points[i].Group].eachLayer(function(marker) {
-        if (marker.options.group == 'Avocado') {
-          map.removeLayer(marker);
-//          map.removeLayer(layers[points[i].Group]);
-	}
-      })
-    }
- });
+  map.eachLayer(function(marker) {
+    if (marker.options.group == 'Avocado') {
+      map.removeLayer(marker);
+    } else {
+        map.addLayer(marker);        
+    }	
+  })
+});
 	  
 //if (layers[i].options.cplant == 'No') {
 //map.removeLayer(layers[i]); 
@@ -1237,10 +1236,7 @@ $("#avos-btn").click(function(event) {
 
 });
 	
-//map.eachLayer(function(marker) {
-//if (marker.options.group == 'Avocado') {
-//         map.removeLayer(marker);
-//}})
+
 
 	
 
