@@ -238,8 +238,9 @@ if (layer.options.cplant == 'Yes') {
          map.addLayer(layer);
 }		
 
-}
-});
+})
+})
+	});
 	  
 // BEGIN TABLE CODE
     
