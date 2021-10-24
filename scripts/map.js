@@ -220,32 +220,32 @@ $(window).on('load', function() {
 $("#avo-btn").click(function(event) {
     event.preventDefault();
     if(map.hasLayer(layers[points[1].Group])) {
-        map.removeLayer(layers[points[1].Group]);
+        map.removeLayer(layers[points[1].Group]);    //works, but makes all layer icons dissapear from layer.control
     } else {
-        map.addLayer(layers[points[1].Group]);        
+        map.addLayer(layers[points[1].Group]);        //works
     }	
 });
 	  
 $("#ban-btn").click(function(event) {
     event.preventDefault();
-  map.eachLayer(function(marker) {
-    if (marker.options.group == 'Avocado') {
-      map.removeLayer(marker);
-    } else {
-        map.addLayer(marker);        
-    }	
-  })
+  for (i in points) {
+    layers[points[i].Group].eachLayer(function (marker) {
+       if (marker.options.group == 'Avocado') {
+         map.removeLayer(marker);
+       }
+    }) 
+  }
+	
+//  map.eachLayer(function(marker) {            //removes icon from map, but not data table or layer.control, and add layer does not work at all
+//    if (marker.options.group == 'Avocado') {
+//      map.removeLayer(marker);
+//    } else {
+//        map.addLayer(marker);        
+//    }	
+//  })
 });
 	  
-//if (layers[i].options.cplant == 'No') {
-//map.removeLayer(layers[i]); 
-//      } 
-//	else {
-//	  if (layers[i].options.cplant == 'Yes') {
-//          layers[i].addTo(map); 
-//          }		
-//      }
-//    }
+
 
 	
 	  
