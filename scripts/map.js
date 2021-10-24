@@ -130,13 +130,11 @@ $(window).on('load', function() {
       
       if (point.Latitude !== '' && point.Longitude !== '') {
      
-// DEFINE THE PARAMETERS OF THE MARKERS AND MODAL POP UP        
-  //      var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon}).on('click', markerOnClick)      
-  //        .addTo(map);
+// DEFINE THE PARAMETERS OF THE MARKERS        
+        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon}).on('click', markerOnClick)      
+          .addTo(map);
         
-	
-	      
-	
+// DEFINE THE PARAMETERS FOR THE MODAL POPUP	
         function markerOnClick(e)
           {
             var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + this.options.hname + "</td></tr>" + "<tr><th>Canoe Plant:</th><td>" + this.options.cplant + "</td></tr>" + "<tr><th>Harvest:</th><td>" + this.options.harvest + "</td></tr>" + "<table>";
@@ -178,7 +176,7 @@ $(window).on('load', function() {
              
         for (i in layers) {
           multilayerClusterSupport.checkIn(layers[i]);
-          layers[i].addTo(map);
+//          layers[i].addTo(map);
                
         }
       }
