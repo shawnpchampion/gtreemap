@@ -1215,7 +1215,7 @@ map.on('overlayadd', function(e){
   // alert(qname);
    alert(JSON.stringify(layers, null, 4));
 })	
-$(".leaflet-control-layers-selector")[1].click();
+$(".leaflet-control-layers-selector")[0].click();
 	
 });
 //alert(JSON.stringify(overlayMaps, null, 4))
