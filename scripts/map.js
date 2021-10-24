@@ -176,18 +176,11 @@ $(window).on('load', function() {
              
         for (i in layers) {
           multilayerClusterSupport.checkIn(layers[i]);
-//          layers[i].addTo(map);
-               
+          layers[i].addTo(map);               
         }
       }
-
-     
-$("#ban-btn").click(function(event) {
-console.log(layers)
-//$(".leaflet-control-layers-selector")[0].click();
-});
 	    
-	// BEGIN LEGEND CODE 
+// BEGIN LEGEND CODE 
       var pos = (getSetting('_pointsLegendPos') == 'off')
         ? 'topleft'
         : getSetting('_pointsLegendPos');
@@ -213,6 +206,12 @@ console.log(layers)
     }
         
 // END LEGEND CODE
+	  
+$("#ban-btn").click(function(event) {
+console.log(layers[points[1].Group)
+//$(".leaflet-control-layers-selector")[0].click();
+});
+	  
 // BEGIN TABLE CODE
     
     var displayTable = getSetting('_displayTable') == 'on' ? true : false;
