@@ -231,7 +231,9 @@ $("#ban-btn").click(function(event) {
   for (i in points) {
     layers[points[i].Group].eachLayer(function (marker) {
        if (marker.options.group == 'Avocado') {
-         map.removeLayer(marker);
+         map.removeLayer(layers[points[i].Group]);
+       } else {
+        map.addLayer(layers[points[i].Group]);        //works
        }
     }) 
   }
