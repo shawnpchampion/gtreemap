@@ -183,15 +183,8 @@ $(window).on('load', function() {
 
      
 $("#ban-btn").click(function(event) {
-
-//layers.eachLayer(function (layer) {
-var qname;
-map.on('overlayadd', function(e){
-   qname = e.name;
-  // alert(qname);
-   alert(JSON.stringify(layers, null, 4));
-})	
-$(".leaflet-control-layers-selector")[0].click();
+console.log(layers)
+//$(".leaflet-control-layers-selector")[0].click();
 });
 	    
 	// BEGIN LEGEND CODE 
@@ -1211,13 +1204,7 @@ $("#avo-btn").click(function(event) {
  //         map.removeLayer(marker);
  //}})
 
-var qname;
-map.on('overlayadd', function(e){
-   qname = e.name;
-  // alert(qname);
-   alert(JSON.stringify(layers, null, 4));
-})	
-$(".leaflet-control-layers-selector")[0].click();
+console.log(layers)
 	
 });
 //alert(JSON.stringify(overlayMaps, null, 4))
