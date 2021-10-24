@@ -159,7 +159,7 @@ $(window).on('load', function() {
           marker.addTo(layers[point.Group]);
         }
         
-	if (canoe == 'Yes' {    
+	if (canoe == 'Yes') {    
 	  marker.addTo(canoeLayer);
         }
 	    
