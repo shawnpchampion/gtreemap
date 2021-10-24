@@ -184,12 +184,14 @@ $(window).on('load', function() {
      
 $("#ban-btn").click(function(event) {
 
-layers.eachLayer(function (layer) {
-   var qname;
-   qname = layer.getLayers();	
-   alert(qname);	
-})
-});	
+//layers.eachLayer(function (layer) {
+//   var qname;
+//   qname = layer.getLayers();	
+//   alert(qname);	
+//})
+//	alert(JSON.stringify(layers, null, 4))
+});
+	    
 	// BEGIN LEGEND CODE 
       var pos = (getSetting('_pointsLegendPos') == 'off')
         ? 'topleft'
@@ -1202,14 +1204,19 @@ map.addLayer(googleSat);
 $("#avo-btn").click(function(event) {
 //$(".leaflet-pane img[src='assets/img/avopin.png']").hide();
      
- map.eachLayer(function(marker) {
-	 
- if (marker.options.group == 'Avocado') {
-          map.removeLayer(marker);
- }})
+ //map.eachLayer(function(marker) {
+ //if (marker.options.group == 'Avocado') {
+ //         map.removeLayer(marker);
+ //}})
 
+var qname;
+map.on('overlayadd', function(e){
+   qname = e.name;
+   alert(qname);
+})	
+	
 });
-
+//alert(JSON.stringify(overlayMaps, null, 4))
 
 	 
 	 
