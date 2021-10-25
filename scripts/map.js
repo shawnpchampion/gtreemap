@@ -153,7 +153,7 @@ $(window).on('load', function() {
             divm.style.backgroundImage = bgimgurlm;
             divm.style.backgroundRepeat = "no-repeat";
             divm.style.backgroundSize = "contain";
-	    alert(this.options.hname);  
+	//    alert(this.options.hname);  
           }
 // Add marker to it's individual layer group        
         if (layers !== undefined && layers.length !== 1) {
