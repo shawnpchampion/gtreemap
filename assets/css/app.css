@@ -40,10 +40,19 @@ input[type="radio"], input[type="checkbox"] {
 		height:30%;
 		font-family:Arial;
 		position:absolute;
-		z-index:9999;
+		z-index:9996;
     background-color: #92a8d1;
     bottom: 0;
   	overflow:auto;
+	}
+
+.forward {
+		position:absolute;
+		z-index:9999;
+		bottom:7%;
+		right:4%;
+		cursor:pointer;
+		cursor:hand;
 	}
 #loading {
   position: absolute;
