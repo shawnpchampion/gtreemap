@@ -152,7 +152,7 @@ $(window).on('load', function() {
             divm.style.backgroundImage = bgimgurlm;
             divm.style.backgroundRepeat = "no-repeat";
             divm.style.backgroundSize = "contain";
-            map.flyTo([e.latitude, e.longitude], 16, {
+            map.flyTo([this.latitude, this.longitude], 16, {
             animate: true,
             duration: 2 // in seconds
                 });
