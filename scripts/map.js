@@ -136,7 +136,15 @@ $(window).on('load', function() {
       if (point.Latitude !== '' && point.Longitude !== '') {
      
 // DEFINE THE PARAMETERS OF THE MARKERS        
-        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon}).on('click', markerOnClick)      
+        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon})
+//	.on('click', markerOnClick)  
+	.on('click', () => {
+	    markerOnClick;
+            map.flyTo([point.latitude, point.longitude], 16, {
+            animate: true,
+            duration: 2 // in seconds
+                });
+	})
           .addTo(map);
         
 // DEFINE THE PARAMETERS FOR THE MODAL POPUP	
@@ -152,10 +160,6 @@ $(window).on('load', function() {
             divm.style.backgroundImage = bgimgurlm;
             divm.style.backgroundRepeat = "no-repeat";
             divm.style.backgroundSize = "contain";
-            map.flyTo([this.latitude, this.longitude], 16, {
-            animate: true,
-            duration: 2 // in seconds
-                });
 	    alert(this.options.hname);  
           }
 // Add marker to it's individual layer group        
