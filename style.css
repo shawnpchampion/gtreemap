@@ -19,8 +19,8 @@ body {
 		height:30%;
 		font-family:Arial;
 		position:absolute;
-		z-index:1;
-    background-color: #92a8d1
+		z-index:9999;
+    background-color: #92a8d1;
         bottom: 0;
 	overflow:auto;
 	}
