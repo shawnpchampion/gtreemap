@@ -237,9 +237,8 @@ $(window).on('load', function() {
     var columns = getSetting('_tableColumns').split(',')
                   .map(Function.prototype.call, String.prototype.trim);
       
-  //  if (displayTable && columns.length > 1) {
-	  
-    if (displayTable > 1) {
+   if (displayTable && columns.length > 1) {
+	
       tableHeight = trySetting('_tableHeight', 40);
       if (tableHeight < 10 || tableHeight > 90) {tableHeight = 40;}
       $('#map').css('height', (100 - tableHeight) + 'vh');
