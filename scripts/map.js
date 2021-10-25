@@ -137,15 +137,8 @@ $(window).on('load', function() {
      
 // DEFINE THE PARAMETERS OF THE MARKERS        
         var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon})
-//	.on('click', markerOnClick)  
-	.on('click', () => {
-	    markerOnClick;
-            map.flyTo([point.Latitude, point.Longitude], 16, {
-            animate: true,
-            duration: 2 // in seconds
-                });
-	})
-          .addTo(map);
+	.on('click', markerOnClick)  
+        .addTo(map);
         
 // DEFINE THE PARAMETERS FOR THE MODAL POPUP	
         function markerOnClick(e)
