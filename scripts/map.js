@@ -152,6 +152,11 @@ $(window).on('load', function() {
             divm.style.backgroundImage = bgimgurlm;
             divm.style.backgroundRepeat = "no-repeat";
             divm.style.backgroundSize = "contain";
+            map.flyTo([e.latitude, e.longitude], 16, {
+            animate: true,
+            duration: 2 // in seconds
+                });
+	    alert(this.options.hname);  
           }
 // Add marker to it's individual layer group        
         if (layers !== undefined && layers.length !== 1) {
