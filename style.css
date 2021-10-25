@@ -13,7 +13,7 @@ body {
   visibility: hidden;
 }
 
-#story {
+story {
 		font-size:1vw;
 		width:100%;
 		height:30%;
