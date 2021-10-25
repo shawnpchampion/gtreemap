@@ -140,7 +140,7 @@ $(window).on('load', function() {
 //	.on('click', markerOnClick)  
 	.on('click', () => {
 	    markerOnClick;
-            map.flyTo([point.latitude, point.longitude], 16, {
+            map.flyTo([point.Latitude, point.Longitude], 16, {
             animate: true,
             duration: 2 // in seconds
                 });
