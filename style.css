@@ -6,12 +6,18 @@ body {
   width: 100%;
 }
 
+/*
 #map {
   width: 100vw;
   height: 100vh;
   visibility: hidden;
 }
-
+*/
+#map {
+  width: auto;
+  height: 100%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
 h3 {
   margin: 0;
   font-size: 1.5em;
