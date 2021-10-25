@@ -21,28 +21,19 @@ input[type="radio"], input[type="checkbox"] {
   height: 100%;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
-story {
-		font-size:1vw;
-		width:100%;
-		height:30%;
-		font-family:Arial;
-		position:absolute;
-		z-index:9999;
-    background-color: #92a8d1;
-    bottom: 0;
-  	overflow:auto;
-	}
-#story {
-		font-size:1vw;
-		width:100%;
-		height:30%;
-		font-family:Arial;
-		position:absolute;
-		z-index:9999;
-    background-color: #92a8d1;
-    bottom: 0;
-  	overflow:auto;
-	}
+
+#map2 {
+  width: auto;
+  height: 70%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.map3 {
+  width: auto;
+  height: 70%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
 .story {
 		font-size:1vw;
 		width:100%;
