@@ -102,7 +102,7 @@ $(window).on('load', function() {
 /**
  * Assigns points to appropriate layers and clusters them if needed
  */
-//  var canoeLayer = L.featureGroup().addTo(map);
+
 	
   function mapPoints(points, layers) {
     var markerArray = [];
@@ -110,9 +110,8 @@ $(window).on('load', function() {
     
     for (var i in points) {
       var point = points[i];	    
-//      var canoe = points[i].CPlant;
-      
-    
+
+          
       // If icon contains '.', assume it's a path to a custom icon,
       // otherwise create a Font Awesome icon
       var iconSize = point['Custom Size'];
@@ -154,20 +153,17 @@ $(window).on('load', function() {
             divm.style.backgroundRepeat = "no-repeat";
             divm.style.backgroundSize = "contain";
           }
-        
+// Add marker to it's individual layer group        
         if (layers !== undefined && layers.length !== 1) {
           marker.addTo(layers[point.Group]);
         }
         
-//	if (canoe == 'Yes') {    
-//	  marker.addTo(canoeLayer);
-//        }
-	    
+// Add marker to all marker array	    
         markerArray.push(marker);  
         
       }
     }
-    
+// For group clustering    
     var group = L.featureGroup(markerArray);
     var clusters = (getSetting('_markercluster') === 'on') ? true : false;
      
@@ -196,7 +192,6 @@ $(window).on('load', function() {
         : getSetting('_pointsLegendPos');
           
       var pointsLegend = L.control.layers(null, layers, {
-//        collapsed: false,
 	collapsed: true,      
         position: pos,
       });
@@ -216,40 +211,18 @@ $(window).on('load', function() {
     }
         
 // END LEGEND CODE
+
+//Make Buttons for turning layer groups on/off without layer.control	  
 	  
-$("#avo-btn").click(function(event) {
-    event.preventDefault();
-    if(map.hasLayer(layers[points[1].Group])) {  
-        map.removeLayer(layers[points[1].Group]);    //works, but makes all layer icons dissapear from layer.control
-    } else {
-        map.addLayer(layers[points[1].Group]);        //works     
-    }	
-});
-	  
-$("#ban-btn").click(function(event) {
-    event.preventDefault();
-  for (i in points) {                                     //removes icon from map, but not data table or layer.control, and add layer does not work at all
-    layers[points[i].Group].eachLayer(function (marker) {
-       if (marker.options.group == 'Avocado') {
-	      
-//         map.removeLayer(layers[points[i].Group]);    
-	 layers[points[i].Group].removeLayer(marker);
-       } else {
-//        map.addLayer(layers[points[i].Group]);        
-	layers[points[i].Group].addLayer(marker); 
-	
-       }
-    }) 
-  }
-	
-//  map.eachLayer(function(marker) {            //removes icon from map, but not data table or layer.control, and add layer does not work at all
-//    if (marker.options.group == 'Avocado') {
-//      map.removeLayer(marker);
+//$("#avo-btn").click(function(event) {
+//    event.preventDefault();
+//    if(map.hasLayer(layers[points[1].Group])) {  
+//        map.removeLayer(layers[points[1].Group]);    //works, but makes all layer icons dissapear from layer.control
 //    } else {
-//        map.addLayer(marker);        
+//        map.addLayer(layers[points[1].Group]);        //works     
 //    }	
-//  })
-});
+//});
+
 	  
 
 
@@ -1239,6 +1212,11 @@ map.addLayer(googleSat);
 });
 
 
+$("#street-map-btn").click(function() {
+// if (map.hasLayer(googleSat)) {
+    	map.removeLayer(googleSat);
+});
+
 	
 
 
@@ -1257,11 +1235,31 @@ map.addLayer(googleSat);
 
 
 
-$("#street-map-btn").click(function() {
-// if (map.hasLayer(googleSat)) {
-    	map.removeLayer(googleSat);
-});
-
+	  
+//$("#ban-btn").click(function(event) {
+//    event.preventDefault();
+//  for (i in points) {                                     //removes icon from map, but not data table or layer.control, and add layer does not work at all
+//    layers[points[i].Group].eachLayer(function (marker) {
+//       if (marker.options.group == 'Avocado') {
+	      
+//         map.removeLayer(layers[points[i].Group]);    
+//	 layers[points[i].Group].removeLayer(marker);
+//       } else {
+//        map.addLayer(layers[points[i].Group]);        
+//	layers[points[i].Group].addLayer(marker); 
+	
+//       }
+//    }) 
+//  }
+	
+//  map.eachLayer(function(marker) {            //removes icon from map, but not data table or layer.control, and add layer does not work at all
+//    if (marker.options.group == 'Avocado') {
+//      map.removeLayer(marker);
+//    } else {
+//        map.addLayer(marker);        
+//    }	
+//  })
+//});
  
        
 //$("#sights").click(function(event) {
