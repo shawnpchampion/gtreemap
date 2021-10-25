@@ -223,8 +223,7 @@ $(window).on('load', function() {
 //    }	
 //});
 
-	  
-
+	 
 
 	
 	  
@@ -977,35 +976,18 @@ $(window).on('load', function() {
   }
   
   
-
-  
-// Define Overlays
-//  var groupedOverlays = {
-//    "Trees of Interest": {
-//      "<img src='assets/img/avopin.png' width='24' height='24'>&nbsp;Avacado": avoLayer,              //sizes for control box
-//      "<img src='assets/img/banpin.png' width='24' height='24'>&nbsp;Banana": banLayer,
-//      "<img src='assets/img/ulupin.png' width='24' height='24'>&nbsp;Ulu": uluLayer
-//    }
-//  };
-
-      
-// Create Control Box / Legend
-//      var layerControl = L.control.groupedLayers(baseLayers, {
-//        collapsed: isCollapsed
-//      }).addTo(map);  
-  
 /**
  * Loads the basemap and adds it to the map
  */
   function addBaseMap() {
     var basemap = trySetting('_tileProvider', 'CartoDB.Positron');
-    L.tileLayer.provider(basemap, {
-      maxZoom: 18
-    }).addTo(map);
-//    var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-//    maxZoom: 20,
-//    subdomains:['mt0','mt1','mt2','mt3']
+//    L.tileLayer.provider(basemap, {
+//      maxZoom: 18
 //    }).addTo(map);
+    var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+    }).addTo(map);
     L.control.attribution({
       position: trySetting('_mapAttribution', 'bottomright')
     }).addTo(map);
@@ -1195,10 +1177,10 @@ $(window).on('load', function() {
 
 });
 
-var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-  maxZoom: 20,
-  subdomains:['mt0','mt1','mt2','mt3']
-  });
+//var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+//  maxZoom: 20,
+//  subdomains:['mt0','mt1','mt2','mt3']
+//  });
 
 var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
   maxZoom: 19,
