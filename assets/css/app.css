@@ -41,7 +41,8 @@ input[type="radio"], input[type="checkbox"] {
 		font-family:Arial;
 		position:absolute;
 		z-index:9996;
-    background-color: #24292F;
+/*    background-color: #24292F; */
+	    background-color: #FFF;
     bottom: 0;
   	overflow:auto;
 	}
