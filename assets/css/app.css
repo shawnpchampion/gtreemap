@@ -55,6 +55,13 @@ input[type="radio"], input[type="checkbox"] {
 		cursor:pointer;
 		cursor:hand;
 	}
+
+.forward2 {
+		position:absolute;
+		z-index:9998;
+		top:7%;
+		left:450px;
+	}
 #loading {
   position: absolute;
   width: 220px;
