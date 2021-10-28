@@ -18,21 +18,16 @@ input[type="radio"], input[type="checkbox"] {
 }
 #map {
   width: auto;
-  height: 65%;
+  height: 100%;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 #map2 {
   width: auto;
-  height: 70%;
+  height: 65%;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-.map3 {
-  width: auto;
-  height: 70%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
 
 .story {
 /*		font-size:1vw; */
@@ -50,17 +45,24 @@ input[type="radio"], input[type="checkbox"] {
 .forward {
 		position:absolute;
 		z-index:9999;
-		top:7%;
+		top:6%;
 		left:250px;
 		cursor:pointer;
 		cursor:hand;
+		float: left;
+		padding-left: 30%;
 	}
 
 .forward2 {
-		position:absolute;
+	/*	position:absolute;
 		z-index:9998;
 		top:7%;
-		left:450px;
+		left:450px; */
+	        float:right;
+	        width:300px;
+	        margin-left:5px;
+		float: left;
+		padding-left: 5%;
 	}
 #loading {
   position: absolute;
