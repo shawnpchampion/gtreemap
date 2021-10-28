@@ -147,7 +147,7 @@ $(window).on('load', function() {
             $("#feature-title").html(this.options.name);
             $("#feature-back").html("<img src=" + this.options.bimage + "></img>");
             $("#feature-info").html(content);
-     //       $("#featureModal").modal("show");
+            $("#featureModal").modal("show");
             var bgimgurlm = 'url(' + this.options.bimage + ')';
             var divm = document.getElementById("bgimage");
             divm.style.backgroundImage = bgimgurlm;
