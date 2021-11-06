@@ -9,25 +9,9 @@ $(window).on('load', function() {
   var completePolygons = false;
   var completePolylines = false;
 
-  
-/**
- * Returns an Awesome marker with specified parameters from GSheet
- */
-	
-//  function createMarkerIcon(icon, prefix, markerColor, iconColor) {
-//    return L.AwesomeMarkers.icon({
-//      icon: icon,
-//      prefix: prefix,
-//      markerColor: markerColor,
-//      iconColor: iconColor
-//    });
-//  }
 
-
-/**
- * Given a collection of points, determines the layers based on 'Group'
- * column in the spreadsheet.
- */
+// Given a collection of points, determines the layers based on 'Group' column in the spreadsheet.
+ 
   function determineLayers(points) {
     var groups = [];	  
     var layers = {};
@@ -35,17 +19,15 @@ $(window).on('load', function() {
     for (var i in points) {
       var group = points[i].Group;
       if (group && groups.indexOf(group) === -1) {
-// Add group to groups
         groups.push(group);
 
-// Add color to the crosswalk
         group2color[ group ] = points[i]['Marker Icon'].indexOf('.') > 0
           ? points[i]['Marker Icon']
           : points[i]['Marker Color'];
       }
     }
 
-    // if none of the points have named layers, return no layers
+// if none of the points have named layers, return no layers
     if (groups.length === 0) {
       layers = undefined;
     } else {
@@ -60,21 +42,16 @@ $(window).on('load', function() {
   }
 
   
-/**
- * Assigns points to appropriate layers and clusters them if needed
- */
-
+// Assigns points to appropriate layers and clusters them if needed
 	
   function mapPoints(points, layers) {
     var markerArray = [];
-    // check that map has loaded before adding points to it?
     
     for (var i in points) {
       var point = points[i];	    
 
-          
-      // If icon contains '.', assume it's a path to a custom icon,
-      // otherwise create a Font Awesome icon
+// If icon contains '.', assume it's a path to a custom icon, otherwise create a Font Awesome icon
+	    
       var iconSize = point['Custom Size'];
       var size = (iconSize.indexOf('x') > 0)
         ? [parseInt(iconSize.split('x')[0]), parseInt(iconSize.split('x')[1])]
@@ -82,19 +59,20 @@ $(window).on('load', function() {
       
       var anchor = [size[0] / 2, size[1]];
 
-      var icon = (point['Marker Icon'].indexOf('.') > 0)
-        ? L.icon({
-          iconUrl: point['Marker Icon'],
-          iconSize: size,
-          iconAnchor: anchor
-          })
-        : [];
+      var icon = L.icon({
+	    iconUrl: point['Marker Icon'],
+            iconSize: size,
+            iconAnchor: anchor
+            });
 	    
-//        : createMarkerIcon(point['Marker Icon'],
-//          'fa',
-//          point['Marker Color'].toLowerCase(),
-//          point['Icon Color']
-//        );
+//      var icon = (point['Marker Icon'].indexOf('.') > 0)
+//        ? L.icon({
+//          iconUrl: point['Marker Icon'],
+//          iconSize: size,
+//          iconAnchor: anchor
+//          })
+//        : [];
+	    
       
       if (point.Latitude !== '' && point.Longitude !== '') {
      
@@ -638,7 +616,9 @@ $(window).on('load', function() {
       completePoints = true;
     }
     
-    map.setView([19.408548, -154.914111],16);	  
+    map.setView([19.408548, -154.914111],16);
+    alert(map.getZoom());
+    
 
 
 // Add polylines
