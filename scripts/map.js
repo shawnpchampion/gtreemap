@@ -637,7 +637,7 @@ $(window).on('load', function() {
       completePoints = true;
     }
     
-    map.setView([19.408548, -154.914111],15);	  
+    map.setView([19.408548, -154.914111],16);	  
 
 
 // Add polylines
