@@ -88,12 +88,13 @@ $(window).on('load', function() {
           iconUrl: point['Marker Icon'],
           iconSize: size,
           iconAnchor: anchor
+	  });
 //        })
 //        : createMarkerIcon(point['Marker Icon'],
 //          'fa',
 //          point['Marker Color'].toLowerCase(),
 //          point['Icon Color']
-        );
+//        );
       
       if (point.Latitude !== '' && point.Longitude !== '') {
      
