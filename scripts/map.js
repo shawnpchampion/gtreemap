@@ -985,7 +985,7 @@ $(window).on('load', function() {
   function addBaseMap() {
     var basemap = trySetting('_tileProvider', 'CartoDB.Positron');
     L.tileLayer.provider(basemap, {
-      maxZoom: 18
+      maxZoom: 20
     }).addTo(map);
 //    var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
 //    maxZoom: 20,
