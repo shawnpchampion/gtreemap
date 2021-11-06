@@ -2,12 +2,9 @@ $(window).on('load', function() {
   var documentSettings = {};
   var group2color = {};
 
-  var polygonSettings = [];
-  var polygonsLegend;
 
   var completePoints = false;
-  var completePolygons = false;
-  var completePolylines = false;
+
 
 
 // Given a collection of points, determines the layers based on 'Group' column in the spreadsheet.
@@ -64,16 +61,7 @@ $(window).on('load', function() {
             iconSize: size,
             iconAnchor: anchor
             });
-	    
-//      var icon = (point['Marker Icon'].indexOf('.') > 0)
-//        ? L.icon({
-//          iconUrl: point['Marker Icon'],
-//          iconSize: size,
-//          iconAnchor: anchor
-//          })
-//        : [];
-	    
-      
+	          
       if (point.Latitude !== '' && point.Longitude !== '') {
      
 // DEFINE THE PARAMETERS OF THE MARKERS        
@@ -101,7 +89,7 @@ $(window).on('load', function() {
           marker.addTo(layers[point.Group]);
         }
         
-// Add marker to all marker array	    
+// Add marker to an array that will hold all markers	    
         markerArray.push(marker);  
         
       }
@@ -166,15 +154,12 @@ $(window).on('load', function() {
 //    }	
 //});
 
-	 
-
-	
 	  
 // BEGIN TABLE CODE
     
     var displayTable = getSetting('_displayTable') == 'on' ? true : false;
           
-    // Display table with active points if specified
+// Display table with active points if specified
     var columns = getSetting('_tableColumns').split(',')
                   .map(Function.prototype.call, String.prototype.trim);
       
@@ -185,7 +170,7 @@ $(window).on('load', function() {
       $('#map').css('height', (100 - tableHeight) + 'vh');
       map.invalidateSize();
         
-      // Set background (and text) color of the table header
+// Set background (and text) color of the table header
       var colors = getSetting('_tableHeaderColor').split(',');
       if (colors[0] != '') {
         $('table.display').css('background-color', colors[0]);
@@ -194,12 +179,12 @@ $(window).on('load', function() {
         }
       }
          
-      // Update table every time the map is moved/zoomed or point layers are toggled
+// Update table every time the map is moved/zoomed or point layers are toggled
       map.on('moveend', updateTable);
       map.on('layeradd', updateTable);
       map.on('layerremove', updateTable);
         
-      // Clear table data and add only visible markers to it
+// Clear table data and add only visible markers to it
       function updateTable() {
         var pointsVisible = [];
         for (i in points) {
@@ -216,7 +201,7 @@ $(window).on('load', function() {
         table.draw();
       }
         
-      // Convert Leaflet marker objects into DataTable array
+// Convert Leaflet marker objects into DataTable array
       function pointsToTableData(ms) {
         var data = [];
         for (i in ms) {
@@ -229,7 +214,7 @@ $(window).on('load', function() {
         return data;
       }
         
-      // Transform columns array into array of title objects
+// Transform columns array into array of title objects
       function generateColumnsArray() {
         var c = [];
         for (i in columns) {
@@ -238,7 +223,7 @@ $(window).on('load', function() {
         return c;
       }
     
-      // Initialize DataTable
+// Initialize DataTable
       var table = $('#maptable').DataTable({
         paging: false,
         scrollCollapse: true,
@@ -255,351 +240,13 @@ $(window).on('load', function() {
 
 // END OF POINTS - MARKERS CODE
   
-// BEGINNING OF POLYGONS CODE
-  
-  var polygon = 0; // current active polygon
-  var layer = 0; // number representing current layer among layers in legend
 
-  /**
-   * Store bucket info for Polygons
-   */
-  allDivisors = [];
-  allColors = [];
-  allIsNumerical = [];
-  allGeojsons = [];
-  allPolygonLegends = [];
-  allPolygonLayers = [];
-  allPopupProperties = [];
-  allTextLabelsLayers = [];
-  allTextLabels = [];
-
-  function loadAllGeojsons(p) {
-    if (p < polygonSettings.length && getPolygonSetting(p, '_polygonsGeojsonURL').trim()) {
-      // Pre-process popup properties to be used in onEachFeature below
-      polygon = p;
-      var popupProperties = getPolygonSetting(p, '_popupProp').split(';');
-      for (i in popupProperties) { popupProperties[i] = popupProperties[i].split(','); }
-      allPopupProperties.push(popupProperties);
-
-      // Load geojson
-      $.getJSON(getPolygonSetting(p, '_polygonsGeojsonURL').trim(), function(data) {
-          geoJsonLayer = L.geoJson(data, {
-            onEachFeature: onEachFeature,
-            pointToLayer: function(feature, latlng) {
-              return L.circleMarker(latlng, {
-                className: 'geojson-point-marker'
-              });
-            }
-          });
-          allGeojsons.push(geoJsonLayer);
-          loadAllGeojsons(p+1);
-      });
-    } else {
-      processAllPolygons();
-    }
-  }
-
-  function processAllPolygons() {
-    var p = 0;  // polygon sheet
-
-    while (p < polygonSettings.length && getPolygonSetting(p, '_polygonsGeojsonURL').trim()) {
-      isNumerical = [];
-      divisors = [];
-      colors = [];
-
-      polygonLayers = getPolygonSetting(p, '_polygonLayers').split(';');
-      for (i in polygonLayers) { polygonLayers[i] = polygonLayers[i].split(','); }
-
-      divisors = getPolygonSetting(p, '_bucketDivisors').split(';');
-
-      if (divisors.length != polygonLayers.length) {
-        alert('Error in Polygons: The number of sets of divisors has to match the number of properties');
-        return;
-      }
-
-      colors = getPolygonSetting(p, '_bucketColors').split(';');
-      for (i = 0; i < divisors.length; i++) {
-        divisors[i] = divisors[i].split(',');
-        for (j = 0; j < divisors[i].length; j++) {
-          divisors[i][j] = divisors[i][j].trim();
-        }
-        if (!colors[i]) {
-          colors[i] = [];
-        } else {
-          colors[i] = colors[i].split(',');
-        }
-      }
-
-      for (i = 0; i < divisors.length; i++) {
-        if (divisors[i].length == 0) {
-          alert('Error in Polygons: The number of divisors should be > 0');
-          return; // Stop here
-        } else if (colors[i].length == 0) {
-          // If no colors specified, generate the colors
-          colors[i] = palette(tryPolygonSetting(p, '_colorScheme', 'tol-sq'), divisors[i].length);
-          for (j = 0; j < colors[i].length; j++) {
-            colors[i][j] = '#' + colors[i][j].trim();
-          }
-        } else if (divisors[i].length != colors[i].length) {
-          alert('Error in Polygons: The number of divisors should match the number of colors');
-          return; // Stop here
-        }
-      }
-
-      // For each set of divisors, decide whether textual or numerical
-      for (i = 0; i < divisors.length; i++) {
-        if (!isNaN(parseFloat(divisors[i][0].trim()))) {
-          isNumerical[i] = true;
-          for (j = 0; j < divisors[i].length; j++) {
-            divisors[i][j] = parseFloat(divisors[i][j].trim());
-          }
-        } else {
-          isNumerical[i] = false;
-        }
-      }
-
-      allDivisors.push(divisors);
-      allColors.push(colors);
-      allIsNumerical.push(isNumerical);
-      allPolygonLayers.push(polygonLayers);
-
-      var legendPos = tryPolygonSetting(p, '_polygonsLegendPosition', 'off');
-      polygonsLegend = L.control({position: (legendPos == 'off') ? 'topleft' : legendPos});
-
-      polygonsLegend.onAdd = function(map) {
-        var content = '<h6 class="pointer">' + getPolygonSetting(p, '_polygonsLegendTitle') + '</h6>';
-        content += '<form>';
-
-        for (i in polygonLayers) {
-          var layer = polygonLayers[i][1]
-            ? polygonLayers[i][1].trim()
-            : polygonLayers[i][0].trim();
-
-            layer = (layer == '') ? 'On' : layer;
-
-          content += '<label><input type="radio" name="prop" value="' + p + ';' + i + '"> ';
-          content += layer + '</label><br>';
-        }
-
-        content += '<label><input type="radio" name="prop" value="' + p + ';-1"> Off</label></form><div class="polygons-legend-scale">';
-
-        var div = L.DomUtil.create('div', 'leaflet-control leaflet-control-custom leaflet-bar ladder polygons-legend' + p);
-        div.innerHTML = content;
-        div.innerHTML += '</div>';
-        return div;
-      };
-
-      polygonsLegend.addTo(map);
-      if (getPolygonSetting(p, '_polygonsLegendPosition') == 'off') {
-        $('.polygons-legend' + p).css('display', 'none');
-      }
-      allPolygonLegends.push(polygonsLegend);
-
-      p++;
-    }
-
-    // Generate polygon labels layers
-    for (var i in allTextLabels) {
-      var g = L.featureGroup(allTextLabels[i]);
-      allTextLabelsLayers.push(g);
-    }
-
-    // This is triggered when user changes the radio button
-    $('.ladder input:radio[name="prop"]').change(function() {
-      polygon = parseInt($(this).val().split(';')[0]);
-      layer = parseInt($(this).val().split(';')[1]);
-
-      if (layer == -1) {
-        $('.polygons-legend' + polygon).find('.polygons-legend-scale').hide();
-        if (map.hasLayer(allGeojsons[polygon])) {
-          map.removeLayer(allGeojsons[polygon]);
-          if (map.hasLayer(allTextLabelsLayers[polygon])) {
-            map.removeLayer(allTextLabelsLayers[polygon]);
-          }
-        }
-      } else {
-        updatePolygons();
-      }
-    });
-
-    for (t = 0; t < p; t++) {
-      if (getPolygonSetting(t, '_polygonShowOnStart') == 'on') {
-        $('.ladder input:radio[name="prop"][value="' + t + ';0"]').click();
-      } else {
-        $('.ladder input:radio[name="prop"][value="' + t + ';-1"]').click();
-      }
-    }
-
-    $('.polygons-legend-merged h6').eq(0).click().click();
-
-    completePolygons = true;
-  }
-
-
-  function updatePolygons() {
-    p = polygon;
-    z = layer;
-    allGeojsons[p].setStyle(polygonStyle);
-
-    if (!map.hasLayer(allGeojsons[p])) {
-      map.addLayer(allGeojsons[p]);
-      if (!map.hasLayer(allTextLabelsLayers[p]) && allTextLabelsLayers[p]) {
-        map.addLayer(allTextLabelsLayers[p]);
-      }
-    }
-
-    doubleClickPolylines();
-
-    // If no scale exists: hide the legend. Ugly temporary fix.
-    // Can't use 'hide' because it is later toggled
-    if (allDivisors[p][z] == '') {
-      $('.polygons-legend' + p).find('.polygons-legend-scale').css(
-        {'margin': '0px', 'padding': '0px', 'border': '0px solid'}
-      );
-      return;
-    }
-
-    $('.polygons-legend' + p + ' .polygons-legend-scale').html('');
-
-    var labels = [];
-    var from, to, isNum, color;
-
-    for (var i = 0; i < allDivisors[p][z].length; i++) {
-      var isNum = allIsNumerical[p][z];
-      var from = allDivisors[p][z][i];
-      var to = allDivisors[p][z][i+1];
-
-      var color = getColor(from);
-      from = from ? comma(from) : from;
-      to = to ? comma(to) : to;
-
-      labels.push(
-        '<i style="background:' + color + '; opacity: '
-        + tryPolygonSetting(p, '_colorOpacity', '0.7') + '"></i> ' +
-        from + ((to && isNum) ? '&ndash;' + to : (isNum) ? '+' : ''));
-    }
-
-    $('.polygons-legend' + p + ' .polygons-legend-scale').html(labels.join('<br>'));
-    $('.polygons-legend' + p + ' .polygons-legend-scale').show();
-
-    togglePolygonLabels();
-  }
-
-  
-/**
- * Generates CSS for each geojson feature
- */
-  function polygonStyle(feature) {
-    var value = feature.properties[allPolygonLayers[polygon][layer][0].trim()];
-
-    if (feature.geometry.type == 'Point') {
-      return {  // Point style
-        radius: 4,
-        weight: 1,
-        opacity: 1,
-        color: getColor(value),
-        fillOpacity: tryPolygonSetting(polygon, '_colorOpacity', '0.7'),
-        fillColor: 'white'
-      }
-    } else {
-      return {  // Polygon and Polyline style
-        weight: 2,
-        opacity: 1,
-        color: tryPolygonSetting(polygon, '_outlineColor', 'white'),
-        dashArray: '3',
-        fillOpacity: tryPolygonSetting(polygon, '_colorOpacity', '0.7'),
-        fillColor: getColor(value)
-      }
-    }
-  }
-
-/**
- * Returns a color for polygon property with value d
- */
-  function getColor(d) {
-    var num = allIsNumerical[polygon][layer];
-    var col = allColors[polygon][layer];
-    var div = allDivisors[polygon][layer];
-
-    var i;
-
-    if (num) {
-      i = col.length - 1;
-      while (d < div[i]) i -= 1;
-    } else {
-      for (i = 0; i < col.length - 1; i++) {
-        if (d == div[i]) break;
-      }
-    }
-
-    if (!col[i]) {i = 0}
-    return col[i];
-  }
-
-
-/**
- * Generates popup windows for every polygon
- */
-  function onEachFeature(feature, layer) {
-    // Do not bind popups if 1. no popup properties specified and 2. display
-    // images is turned off.
-    if (getPolygonSetting(polygon, '_popupProp') == ''
-     && getPolygonSetting(polygon, '_polygonDisplayImages') == 'off') return;
-
-    var info = '';
-    props = allPopupProperties[polygon];
-
-    for (i in props) {
-      if (props[i] == '') { continue; }
-
-      info += props[i][1]
-        ? props[i][1].trim()
-        : props[i][0].trim();
-
-      var val = feature.properties[props[i][0].trim()];
-      info += ': <b>' + (val ? comma(val) : val) + '</b><br>';
-    }
-
-    if (getPolygonSetting(polygon, '_polygonDisplayImages') == 'on') {
-      if (feature.properties['img']) {
-        info += '<img src="' + feature.properties['img'] + '">';
-      }
-    }
-
-    layer.bindPopup(info);
-
-    
-    // Add polygon label if needed
-    if (!allTextLabels[polygon]) { allTextLabels.push([]) }
-
-    if (getPolygonSetting(polygon, '_polygonLabel') !== '') {
-      var myTextLabel = L.marker(polylabel(layer.feature.geometry.coordinates, 1.0).reverse(), {
-        icon: L.divIcon({
-          className: 'polygon-label' + polygon + ' polygon-label',
-          html: feature.properties[getPolygonSetting(polygon, '_polygonLabel')],
-        })
-      });
-      allTextLabels[polygon].push(myTextLabel);
-    }
-  }
-
-/**
- * Perform double click on polyline legend checkboxes so that they get
- * redrawn and thus get on top of polygons
- */
-  function doubleClickPolylines() {
-    $('#polylines-legend form label input').each(function(i) {
-      $(this).click().click();
-    });
-  }
-
-// END POLYGON CODE
 // BEGIN GOOGLE SHEET CODE
   
 /**
  * Here all data processing from the spreadsheet happens
  */
-  function onMapDataLoad(options, points, polylines) {
+  function onMapDataLoad(options, points) {
 
     createDocumentSettings(options);
 
@@ -621,20 +268,7 @@ $(window).on('load', function() {
     
 
 
-// Add polylines
-    if (polylines && polylines.length > 0) {
-      processPolylines(polylines);
-    } else {
-      completePolylines = true;
-    }
 
-// Add polygons
-    if (getPolygonSetting(0, '_polygonsGeojsonURL')
-      && getPolygonSetting(0, '_polygonsGeojsonURL').trim()) {
-      loadAllGeojsons(0);
-    } else {
-      completePolygons = true;
-    }
 
 // Add Nominatim Search control
     if (getSetting('_mapSearch') !== 'off') {
@@ -700,16 +334,9 @@ $(window).on('load', function() {
     showMap();
 
     function showMap() {
-      if (completePoints && completePolylines && completePolygons) {
+      if (completePoints) {
         $('.ladder h6').append('<span class="legend-arrow"><i class="fas fa-chevron-down"></i></span>');
         $('.ladder h6').addClass('minimize');
-
-        for (i in allPolygonLegends) {
-          if (getPolygonSetting(i, '_polygonsLegendIcon') != '') {
-            $('.polygons-legend' + i + ' h6').prepend(
-              '<span class="legend-icon"><i class="fas ' + getPolygonSetting(i, '_polygonsLegendIcon') + '"></i></span>');
-          }
-        }
 
         $('.ladder h6').click(function() {
           if ($(this).hasClass('minimize')) {
@@ -737,7 +364,7 @@ $(window).on('load', function() {
           initIntroPopup(getSetting('_introPopupText'), map.getCenter());
         };
 
-        togglePolygonLabels();
+       
       } else {
         setTimeout(showMap, 50);
       }
@@ -780,88 +407,6 @@ $(window).on('load', function() {
   }
 
 
-/**
- * Adds polylines to the map
- */
-  function processPolylines(p) {
-    if (!p || p.length == 0) return;
-
-    var pos = (getSetting('_polylinesLegendPos') == 'off')
-      ? 'topleft'
-      : getSetting('_polylinesLegendPos');
-
-    var polylinesLegend = L.control.layers(null, null, {
-      position: pos,
-      collapsed: false,
-    });
-
-    for (i = 0; i < p.length; i++) {
-      $.getJSON(p[i]['GeoJSON URL'], function(index) {
-        return function(data) {
-          latlng = [];
-
-          for (l in data['features']) {
-            latlng.push(data['features'][l].geometry.coordinates);
-          }
-
-          // Reverse [lon, lat] to [lat, lon] for each point
-          for (l in latlng) {
-            for (c in latlng[l]) {
-              latlng[l][c].reverse();
-              // If coords contained 'z' (altitude), remove it
-              if (latlng[l][c].length == 3) {
-                latlng[l][c].shift();
-              }
-            }
-          }
-
-          line = L.polyline(latlng, {
-            color: (p[index]['Color'] == '') ? 'grey' : p[index]['Color'],
-            weight: trySetting('_polylinesWeight', 2),
-            pane: 'shadowPane'
-          }).addTo(map);
-
-          if (p[index]['Description'] && p[index]['Description'] != '') {
-            line.bindPopup(p[index]['Description']);
-          }
-
-          polylinesLegend.addOverlay(line,
-            '<i class="color-line" style="background-color:' + p[index]['Color']
-            + '"></i> ' + p[index]['Display Name']);
-
-          if (index == 0) {
-            if (polylinesLegend._container) {
-              polylinesLegend._container.id = 'polylines-legend';
-              polylinesLegend._container.className += ' ladder';
-            }
-
-            if (getSetting('_polylinesLegendTitle') != '') {
-              $('#polylines-legend').prepend('<h6 class="pointer">' + getSetting('_polylinesLegendTitle') + '</h6>');
-              if (getSetting('_polylinesLegendIcon') != '') {
-                $('#polylines-legend h6').prepend('<span class="legend-icon"><i class="fas '
-                  + getSetting('_polylinesLegendIcon') + '"></i></span>');
-              }
-
-              // Add map title if set to be displayed in polylines legend
-              if (getSetting('_mapTitleDisplay') == 'in polylines legend') {
-                var title = '<h3>' + getSetting('_mapTitle') + '</h3>';
-                var subtitle = '<h6>' + getSetting('_mapSubtitle') + '</h6>';
-                $('#polylines-legend').prepend(title + subtitle);
-              }
-            }
-          }
-
-          if (p.length == index + 1) {
-            completePolylines = true;
-          }
-        };
-      }(i));
-    }
-
-    if (getSetting('_polylinesLegendPos') !== 'off') {
-      polylinesLegend.addTo(map);
-    }
-  }
 
 
   function initIntroPopup(info, coordinates) {
@@ -883,20 +428,6 @@ $(window).on('load', function() {
       .openOn(map);
   }
 
-/**
- * Turns on and off polygon text labels depending on current map zoom
- */
-  function togglePolygonLabels() {
-    for (i in allTextLabels) {
-      if (map.getZoom() <= tryPolygonSetting(i, '_polygonLabelZoomLevel', 9)) {
-        $('.polygon-label' + i).hide();
-      } else {
-        if ($('.polygons-legend' + i + ' input[name=prop]:checked').val() != '-1') {
-          $('.polygon-label' + i).show();
-        }
-      }
-    }
-  }
 
 /**
  * Changes map attribution (author, GitHub repo, email etc.) in bottom-right
@@ -944,16 +475,7 @@ $(window).on('load', function() {
     return documentSettings[constants[s]];
   }
 
-/**
- * Returns the value of a setting s
- * getSetting(s) is equivalent to documentSettings[constants.s]
- */
-  function getPolygonSetting(p, s) {
-    if (polygonSettings[p]) {
-      return polygonSettings[p][constants[s]];
-    }
-    return false;
-  }
+
 
 /**
  * Returns the value of setting named s from constants.js
@@ -967,11 +489,7 @@ $(window).on('load', function() {
     return s;
   }
 
-  function tryPolygonSetting(p, s, def) {
-    s = getPolygonSetting(p, s);
-    if (!s || s.trim() === '') { return def; }
-    return s;
-  }
+  
 
 /**
  * Triggers the load of the spreadsheet and map creation
@@ -1008,9 +526,9 @@ $(window).on('load', function() {
               // First, read 3 sheets: Options, Points, and Polylines
               $.when(
                 $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
-                $.getJSON(apiUrl + spreadsheetId + '/values/Points?key=' + googleApiKey),
-                $.getJSON(apiUrl + spreadsheetId + '/values/Polylines?key=' + googleApiKey)
-              ).done(function(options, points, polylines) {
+                $.getJSON(apiUrl + spreadsheetId + '/values/Points?key=' + googleApiKey)
+                
+              ).done(function(options, points) {
 
                 // Which sheet names contain polygon data?
                 var polygonSheets = sheets.filter(function(name) { return name.indexOf('Polygons') === 0})
@@ -1022,8 +540,7 @@ $(window).on('load', function() {
                   if (polygonSheets.length === 0) {
                     onMapDataLoad(
                       parse(options),
-                      parse(points),
-                      parse(polylines)
+                      parse(points)
                     )
                   } else {
                     
@@ -1062,9 +579,8 @@ $(window).on('load', function() {
       
         $.when(
           $.get('./csv/Options.csv'),
-          $.get('./csv/Points.csv'),
-          $.get('./csv/Polylines.csv')
-        ).done(function(options, points, polylines) {
+          $.get('./csv/Points.csv')
+        ).done(function(options, points) {
       
           function loadPolygonCsv(n) {
       
@@ -1073,7 +589,7 @@ $(window).on('load', function() {
               loadPolygonCsv(n+1)
             }).fail(function() { 
               // No more sheets to load, initialize the map  
-              onMapDataLoad( parse(options), parse(points), parse(polylines) )
+              onMapDataLoad( parse(options), parse(points))
             })
       
           }
