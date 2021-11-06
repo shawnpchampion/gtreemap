@@ -89,19 +89,6 @@ form {
   margin-top: 2px;
 }
 
-.polygons-legend-scale {
-  margin-top: 4px;
-  padding-top: 7px;
-  border-top: dotted 3px #eee;
-}
-
-.polygons-legend-scale i {
-  width: 18px;
-  height: 18px;
-  float: left;
-  margin-right: 8px;
-}
-
 .leaflet-popup-content {
   min-width: 150px;
 }
@@ -229,25 +216,6 @@ form {
   opacity: 0.8;
 }
 
-#polygonSelect {
-  width: 100%;
-}
-
-.polygon-label {
-  position: absolute;
-  left: -15px;
-  color: #444;
-  font-weight: bold;
-  opacity: 0.9;
-  pointer-events: none !important;
-}
-
-.color-line {
-  display: inline-block;
-  vertical-align: middle;
-  height: 3px;
-  width: 20px;
-}
 
 .markers-legend-icon {
   height: 12px;
