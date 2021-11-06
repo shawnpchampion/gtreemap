@@ -81,15 +81,15 @@ $(window).on('load', function() {
         : [32, 32];
       
       var anchor = [size[0] / 2, size[1]];
-       
+
       var icon = (point['Marker Icon'].indexOf('.') > 0)
-//        ? L.icon({
-          L.icon({
+        ? L.icon({
           iconUrl: point['Marker Icon'],
           iconSize: size,
           iconAnchor: anchor
-	  })
-//        })
+          })
+        : ();
+	    
 //        : createMarkerIcon(point['Marker Icon'],
 //          'fa',
 //          point['Marker Color'].toLowerCase(),
