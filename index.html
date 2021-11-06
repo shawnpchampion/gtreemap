@@ -9,9 +9,6 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
 
   <title>Loading the map...</title>
-
-<!-- jQuery-->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script> -->
   
   <link rel="preload" as="image" href="assets/img/avopin.png">  
   <link rel="preload" as="image" href="assets/img/banpin.png"> 
@@ -25,12 +22,6 @@
   
 <!-- Bootstrap CSS Stuff -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
-  <!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
-  <!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css"> -->
-  <!--   <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css"> -->
-  <!--   <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css"> -->
-  <!--   <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.css"> -->
   <link rel="stylesheet" href="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.css">
   <link rel="stylesheet" href="assets/css/app.css">
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/kalanilogoleaf32.png">
@@ -45,7 +36,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.5/typeahead.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
-  
   
 <!-- Leaflet (CSS and JS) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -93,8 +83,6 @@
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
 
 <!-- BootStrap Template Stuff -->
-  <!-- <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script> -->
-  <!-- <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js"></script> -->
   <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
   
 <!-- Material Icons -->
@@ -104,22 +92,23 @@
 
 <body>
 
-  <div class="loader">Loading...</div>
+    <div class="loader">Loading...</div>
   
 <!-- BEGIN NAV BAR CODE -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
 
-<!-- CODE FOR MENU ICONS ON SMALL SCREENS -->
+<!-- CODE FOR MENU ICONS Toggle ON SMALL SCREENS -->
           <div class="navbar-icon-container">
             <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
-            <!-- <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a> -->
+<!--        <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a> -->
           </div>
           
-          
           <a class="navbar-brand" href="#"><img src="assets/img/kalanilogog.png" width="auto" height="37"></a>
+          
         </div>
+        
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp;About</a></li>
@@ -128,12 +117,12 @@
               <ul class="dropdown-menu">
                 <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="sat-map-btn">&nbsp;&nbsp;Satellite Map</a></li>
                 <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="street-map-btn">&nbsp;&nbsp;Street Map</a></li> 
-   <!--         <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="avo-btn">&nbsp;&nbsp;Avo Layer</a></li>  -->
-   <!--         <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="ban-btn">&nbsp;&nbsp;Ban Layer</a></li>  -->
+<!--            <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="avo-btn">&nbsp;&nbsp;Avo Layer</a></li>  -->
+<!--            <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="ban-btn">&nbsp;&nbsp;Ban Layer</a></li>  -->
               </ul>  
             </li>
-             <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn"><i class="fa fa-leaf white"></i>&nbsp;&nbsp;Canoe Plants</a></li>
-            <!-- <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;Tree List</a></li> -->
+            <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn"><i class="fa fa-leaf white"></i>&nbsp;&nbsp;Canoe Plants</a></li>
+<!--        <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;Tree List</a></li> -->
           </ul>
         </div> <!--/.navbar-collapse -->
       </div>
@@ -142,81 +131,83 @@
   
   
 <!-- BEGIN MAP CODE -->
-  <div id="map"></div>
-  <table id="maptable" class="display"></table>
- <!-- <div class="story">
-    <div class="forward" id="feature-info"></div>
-    <div class="forward2" id="feature-back"></div>
-    </div> -->
-  <script type="text/javascript">
+    <div id="map"></div>
+    <table id="maptable" class="display"></table>
+<!-- 
+    <div class="story">
+         <div class="forward" id="feature-info"></div>
+         <div class="forward2" id="feature-back"></div>
+    </div>
+-->
+    <script type="text/javascript">
+
     var map = L.map('map', {
       attributionControl: false,
       zoomControl: false
-  <!-- scrollWheelZoom: false, -->
-  <!-- tap: false -->
+<!--  scrollWheelZoom: false, -->
+<!--  tap: false -->
       }).setView([41.76,-72.69], 11); // default center is overridden by Google Sheet options and points
-  </script>
+  
+    </script>
 <!-- END MAP CODE --> 
 
-  
-  
-  
+    
 <!-- BEGIN MENU SCREEN ABOUT PAGE POP UP -->
     <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
- <!--       <h4 class="modal-titlea"><img src="assets/img/kalanilogoleaf.png" width="auto" height="50"></h4> -->
-          </div>
-          <div class="modal-bodya">
-            <ul class="nav nav-tabs nav-justified" id="aboutTabs">
-              <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;About the project</a></li>
-              <li><a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact us</a></li>
-            </ul>
-            <div class="tab-content" id="aboutTabsContent">
-              <div class="tab-pane fade active in" id="about">
-                <p>A simple, responsive map of our trees.</p>
-                <div class="panel panel-primary">
-                  <div class="panel-heading">Features</div>
-                  <ul class="list-group">
-                    <li class="list-group-item">Fullscreen mobile-friendly map</li>
-                    <li class="list-group-item">Elegant client-side multi-layer feature search with autocomplete using <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a></li>
-                    <li class="list-group-item">Responsive sidebar feature list synced with map bounds, which includes sorting and filtering via <a href="http://listjs.com/" target="_blank">list.js</a></li>
-                  </ul>
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+ <!--               <h4 class="modal-titlea"><img src="assets/img/kalanilogoleaf.png" width="auto" height="50"></h4> -->
                 </div>
-              </div>
-              <div class="tab-pane fade" id="contact">
-                <form id="contact-form">
-                  <div class="well well-sm">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label for="first-name">First Name:</label>
-                          <input type="text" class="form-control" id="first-name">
+                <div class="modal-bodya">
+                    <ul class="nav nav-tabs nav-justified" id="aboutTabs">
+                        <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;About the project</a></li>
+                        <li><a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact us</a></li>
+                    </ul>
+                    <div class="tab-content" id="aboutTabsContent">
+                        <div class="tab-pane fade active in" id="about">
+                            <p>A simple, responsive map of our trees.</p>
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">Features</div>
+                                <ul class="list-group">
+                                    <li class="list-group-item">Fullscreen mobile-friendly map</li>
+                                    <li class="list-group-item">Responsive sidebar feature list synced with map bounds, which includes sorting and filtering via <a href="http://listjs.com/" target="_blank">list.js</a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="form-group">
-                          <label for="last-name">Last Name:</label>
-                          <input type="text" class="form-control" id="last-email">
-                        </div>
-                        <div class="form-group">
-                          <label for="email">Email:</label>
-                          <input type="text" class="form-control" id="email">
-                        </div>
-                      </div>
-                      <div class="col-md-8">
-                        <label for="message">Message:</label>
-                        <textarea class="form-control" rows="8" id="message"></textarea>
-                      </div>
-                      <div class="col-md-12">
-                        <p>
-                          <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Submit</button>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
+                      
+           <!--             <div class="tab-pane fade" id="contact">
+                            <form id="contact-form">
+                            <div class="well well-sm">
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                      <label for="first-name">First Name:</label>
+                                      <input type="text" class="form-control" id="first-name">
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="last-name">Last Name:</label>
+                                       <input type="text" class="form-control" id="last-email">
+                                  </div>
+                                  <div class="form-group">
+                                       <label for="email">Email:</label>
+                                          <input type="text" class="form-control" id="email">
+                                  </div>
+                                </div>
+                                <div class="col-md-8">
+                                      <label for="message">Message:</label>
+                                      <textarea class="form-control" rows="8" id="message"></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                        <p>
+                                          <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Submit</button>
+                                          </p>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                         </div> -->
             </div><!-- /.tab-content -->
           </div><!-- /.modal-body -->
           <div class="modal-footer">
