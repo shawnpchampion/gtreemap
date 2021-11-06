@@ -612,18 +612,7 @@ $(window).on('load', function() {
     }
   }
 
-  /**
-   * Reformulates polygonSettings as a dictionary, e.g.
-   * {"webpageTitle": "Leaflet Boilerplate", "infoPopupText": "Stuff"}
-   */
-  function createPolygonSettings(settings) {
-    var p = {};
-    for (var i in settings) {
-      var setting = settings[i];
-      p[setting.Setting] = setting.Customize;
-    }
-    polygonSettings.push(p);
-  }
+  
 
   // Returns a string that contains digits of val split by comma evey 3 positions
   // Example: 12345678 -> "12,345,678"
