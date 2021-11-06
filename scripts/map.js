@@ -2,10 +2,7 @@ $(window).on('load', function() {
   var documentSettings = {};
   var group2color = {};
 
-
   var completePoints = false;
-
-
 
 // Given a collection of points, determines the layers based on 'Group' column in the spreadsheet.
  
@@ -34,11 +31,9 @@ $(window).on('load', function() {
         layers[name].addTo(map); // if commented out, data table and layer.control show no data, but markers still show on the map, and marker.layerRemove button still works      
       }
     }
-	    
     return layers;
   }
 
-  
 // Assigns points to appropriate layers and clusters them if needed
 	
   function mapPoints(points, layers) {
@@ -47,13 +42,13 @@ $(window).on('load', function() {
     for (var i in points) {
       var point = points[i];	    
 
-// If icon contains '.', assume it's a path to a custom icon, otherwise create a Font Awesome icon
+// Create Icon
 	    
       var iconSize = point['Custom Size'];
+	    
       var size = (iconSize.indexOf('x') > 0)
         ? [parseInt(iconSize.split('x')[0]), parseInt(iconSize.split('x')[1])]
-        : [32, 32];
-      
+        : [32, 32];   
       var anchor = [size[0] / 2, size[1]];
 
       var icon = L.icon({
@@ -81,9 +76,9 @@ $(window).on('load', function() {
             var divm = document.getElementById("bgimage");
             divm.style.backgroundImage = bgimgurlm;
             divm.style.backgroundRepeat = "no-repeat";
-            divm.style.backgroundSize = "contain";
-//            alert(this.options.hname);  
+            divm.style.backgroundSize = "contain";  
           }
+	      
 // Add marker to it's individual layer group        
         if (layers !== undefined && layers.length !== 1) {
           marker.addTo(layers[point.Group]);
@@ -91,14 +86,14 @@ $(window).on('load', function() {
         
 // Add marker to an array that will hold all markers	    
         markerArray.push(marker);  
-        
       }
     }
+	  
 // For group clustering    
     var group = L.featureGroup(markerArray);
     var clusters = (getSetting('_markercluster') === 'on') ? true : false;
      
-    // if layers.length === 0, add points to map instead of layer
+// if layers.length === 0, add points to map instead of layer
     if (layers === undefined || layers.length === 0) {
       map.addLayer(
         clusters
@@ -107,7 +102,7 @@ $(window).on('load', function() {
       );
     } else {
       if (clusters) {
-        // Add multilayer cluster support
+// Add multilayer cluster support
         multilayerClusterSupport = L.markerClusterGroup.layerSupport();
         multilayerClusterSupport.addTo(map);
              
@@ -143,8 +138,8 @@ $(window).on('load', function() {
         
 // END LEGEND CODE
 
-//Make Buttons for turning layer groups on/off without layer.control	  
 	  
+// Make Buttons for turning layer groups on/off without layer.control	  
 //$("#avo-btn").click(function(event) {
 //    event.preventDefault();
 //    if(map.hasLayer(layers[points[1].Group])) {  
@@ -233,19 +228,18 @@ $(window).on('load', function() {
         columns: generateColumnsArray(),
       });
     }
-   
+// END OF TABLE MAKING
+	  
     completePoints = true;
     return group;
   }
 
-// END OF POINTS - MARKERS CODE
-  
+// END OF POINTS-MARKERS CODE
 
 // BEGIN GOOGLE SHEET CODE
   
-/**
- * Here all data processing from the spreadsheet happens
- */
+// Here all data processing from the spreadsheet happens
+	
   function onMapDataLoad(options, points) {
 
     createDocumentSettings(options);
@@ -263,13 +257,8 @@ $(window).on('load', function() {
       completePoints = true;
     }
     
-    map.setView([19.408548, -154.914111],16);
-    alert(map.getZoom());
+//    map.setView([19.408548, -154.914111],16);
     
-
-
-
-
 // Add Nominatim Search control
     if (getSetting('_mapSearch') !== 'off') {
       var geocoder = L.Control.geocoder({
