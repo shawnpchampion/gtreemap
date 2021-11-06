@@ -11,8 +11,9 @@ $(window).on('load', function() {
 
   
 /**
- * Returns an Awesome marker with specified parameters
+ * Returns an Awesome marker with specified parameters from GSheet
  */
+	
   function createMarkerIcon(icon, prefix, markerColor, iconColor) {
     return L.AwesomeMarkers.icon({
       icon: icon,
@@ -60,6 +61,8 @@ $(window).on('load', function() {
     }
 
     map.setView(center, zoom);
+    
+    alert(center);
   }
 
 
