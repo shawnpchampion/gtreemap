@@ -500,8 +500,7 @@ $(window).on('load', function() {
        url:'./csv/Options.csv',
        type:'HEAD',
        error: function() {
-         // Options.csv does not exist in the root level, so use Papa Parse to fetch data from
-         // the Google sheet
+         // Options.csv does not exist in the root level, so use Papa Parse to fetch data from the Google sheet
 
          if (typeof googleApiKey !== 'undefined' && googleApiKey) {
 
@@ -523,7 +522,7 @@ $(window).on('load', function() {
                 'Could not load data from the Google Sheet'
               }
 
-              // First, read 3 sheets: Options, Points, and Polylines
+              // First, read 2 sheets: Options, Points
               $.when(
                 $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
                 $.getJSON(apiUrl + spreadsheetId + '/values/Points?key=' + googleApiKey)
@@ -546,7 +545,7 @@ $(window).on('load', function() {
                     
                     // Fetch another polygons sheet
                     $.getJSON(apiUrl + spreadsheetId + '/values/' + polygonSheets.shift() + '?key=' + googleApiKey, function(data) {
-                      createPolygonSettings( parse([data]) )
+//                      createPolygonSettings( parse([data]) )
                       fetchPolygonsSheet(polygonSheets)
                     })
 
