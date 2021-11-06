@@ -257,33 +257,7 @@ $(window).on('load', function() {
       completePoints = true;
     }
     
-//    map.setView([19.408548, -154.914111],16);
-    
-// Add Nominatim Search control
-    if (getSetting('_mapSearch') !== 'off') {
-      var geocoder = L.Control.geocoder({
-        expand: 'click',
-        position: getSetting('_mapSearch'),
-        
-        geocoder: L.Control.Geocoder.nominatim({
-          geocodingQueryParams: {
-            viewbox: '',  // by default, viewbox is empty
-            bounded: 1,
-          }
-        }),
-      }).addTo(map);
 
-      function updateGeocoderBounds() {
-        var bounds = map.getBounds();
-        geocoder.options.geocoder.options.geocodingQueryParams.viewbox = [
-            bounds._southWest.lng, bounds._southWest.lat,
-            bounds._northEast.lng, bounds._northEast.lat
-          ].join(',');
-      }
-
-      // Update search viewbox coordinates every time the map moves
-      map.on('moveend', updateGeocoderBounds);
-    }
 
 // Add location control
     if (getSetting('_mapMyLocation') !== 'off') {
@@ -303,6 +277,7 @@ $(window).on('load', function() {
       togglePolygonLabels();
     });
 
+// Add Title	  
     addTitle();
 
 // Change Map attribution to include author's info + urls
@@ -410,7 +385,7 @@ $(window).on('load', function() {
       return;
     }
 
-/* And this is a standard popup for bigger screens */
+// And this is a standard popup for bigger screens
     L.popup({className: 'intro-popup'})
       .setLatLng(coordinates) // this needs to change
       .setContent(info)
@@ -418,9 +393,8 @@ $(window).on('load', function() {
   }
 
 
-/**
- * Changes map attribution (author, GitHub repo, email etc.) in bottom-right
- */
+// Changes map attribution (author, GitHub repo, email etc.) in bottom-right
+ 
   function changeAttribution() {
     var attributionHTML = $('.leaflet-control-attribution')[0].innerHTML;
     var credit = 'View <a href="' + googleDocURL + '" target="_blank">data</a>';
@@ -443,9 +417,8 @@ $(window).on('load', function() {
   }
   
   
-/**
- * Loads the basemap and adds it to the map
- */
+// Loads the basemap and adds it to the map
+ 
   function addBaseMap() {
     var basemap = trySetting('_tileProvider', 'CartoDB.Positron');
     L.tileLayer.provider(basemap, {
@@ -456,10 +429,8 @@ $(window).on('load', function() {
     }).addTo(map);
   }
     
-/** 
- * Returns the value of a setting s
- * getSetting(s) is equivalent to documentSettings[constants.s]
- */ 
+// Returns the value of a setting s getSetting(s) is equivalent to documentSettings[constants.s]
+  
   function getSetting(s) {
     return documentSettings[constants[s]];
   }
@@ -479,10 +450,8 @@ $(window).on('load', function() {
   }
 
   
-
-/**
- * Triggers the load of the spreadsheet and map creation
- */
+// Triggers the load of the spreadsheet and map creation
+ 
    var mapData;
 
    $.ajax({
