@@ -13,6 +13,29 @@ body {
   visibility: hidden;
 }
 
+/* Control for bottom modal fade */
+.fade {
+    transition: opacity 0.55s linear;
+}
+
+.modal-title {
+    margin-bottom: 0;
+    line-height: 1.5;
+        margin-left: 100px;
+}
+
+.modal-header {
+        /* border-bottom: 1px solid #e9ecef; */
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+	margin-left: 100px;
+}
+
 story {
 		font-size:1vw;
 		width:100%;
