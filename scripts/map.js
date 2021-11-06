@@ -35,10 +35,10 @@ $(window).on('load', function() {
     for (var i in points) {
       var group = points[i].Group;
       if (group && groups.indexOf(group) === -1) {
-        // Add group to groups
+// Add group to groups
         groups.push(group);
 
-        // Add color to the crosswalk
+// Add color to the crosswalk
         group2color[ group ] = points[i]['Marker Icon'].indexOf('.') > 0
           ? points[i]['Marker Icon']
           : points[i]['Marker Color'];
@@ -636,7 +636,7 @@ $(window).on('load', function() {
       completePoints = true;
     }
     
-    map.setView([19.408548, -154.914111],16);	  
+    map.setView([19.408548, -154.914111],15);	  
 
 
 // Add polylines
