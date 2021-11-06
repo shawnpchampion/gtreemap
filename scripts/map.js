@@ -676,8 +676,9 @@ $(window).on('load', function() {
     } else {
       completePoints = true;
     }
-
-    centerAndZoomMap(group);
+    
+    map.setView([19.408548, -154.914111],14);	  
+//    centerAndZoomMap(group);
 
 // Add polylines
     if (polylines && polylines.length > 0) {
