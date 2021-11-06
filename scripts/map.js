@@ -88,7 +88,7 @@ $(window).on('load', function() {
           iconSize: size,
           iconAnchor: anchor
           })
-        : ();
+        : [];
 	    
 //        : createMarkerIcon(point['Marker Icon'],
 //          'fa',
