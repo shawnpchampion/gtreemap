@@ -148,11 +148,11 @@ $(window).on('load', function() {
 //            $("#feature-back").html("<img src=" + this.options.bimage + "></img>");
             $("#feature-info").html(content);
             $("#bottom_modal").modal("show");
-//            var bgimgurlm = 'url(' + this.options.bimage + ')';
-//            var divm = document.getElementById("bgimage");
-//            divm.style.backgroundImage = bgimgurlm;
-//            divm.style.backgroundRepeat = "no-repeat";
-//            divm.style.backgroundSize = "contain";
+            var bgimgurlm = 'url(' + this.options.bimage + ')';
+            var divm = document.getElementById("bgimage");
+            divm.style.backgroundImage = bgimgurlm;
+            divm.style.backgroundRepeat = "no-repeat";
+            divm.style.backgroundSize = "contain";
 //            alert(this.options.hname);  
           }
 // Add marker to it's individual layer group        
