@@ -14,14 +14,14 @@ $(window).on('load', function() {
  * Returns an Awesome marker with specified parameters from GSheet
  */
 	
-  function createMarkerIcon(icon, prefix, markerColor, iconColor) {
-    return L.AwesomeMarkers.icon({
-      icon: icon,
-      prefix: prefix,
-      markerColor: markerColor,
-      iconColor: iconColor
-    });
-  }
+//  function createMarkerIcon(icon, prefix, markerColor, iconColor) {
+//    return L.AwesomeMarkers.icon({
+//      icon: icon,
+//      prefix: prefix,
+//      markerColor: markerColor,
+//      iconColor: iconColor
+//    });
+//  }
 
 
 /**
@@ -83,15 +83,16 @@ $(window).on('load', function() {
       var anchor = [size[0] / 2, size[1]];
        
       var icon = (point['Marker Icon'].indexOf('.') > 0)
-        ? L.icon({
+//        ? L.icon({
+          L.icon({
           iconUrl: point['Marker Icon'],
           iconSize: size,
           iconAnchor: anchor
-        })
-        : createMarkerIcon(point['Marker Icon'],
-          'fa',
-          point['Marker Color'].toLowerCase(),
-          point['Icon Color']
+//        })
+//        : createMarkerIcon(point['Marker Icon'],
+//          'fa',
+//          point['Marker Color'].toLowerCase(),
+//          point['Icon Color']
         );
       
       if (point.Latitude !== '' && point.Longitude !== '') {
