@@ -27,6 +27,10 @@ body {
         border-bottom: 0px;
 }
 
+.modal-body {
+        margin-left: 100px;
+}
+
 h3 {
   margin: 0;
   font-size: 1.5em;
