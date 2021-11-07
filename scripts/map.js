@@ -140,7 +140,7 @@ $(window).on('load', function() {
         ? 'topleft'
         : getSetting('_pointsLegendPos');
 
-      var pointsLegend = L.control.layers(null, layers, {    
+      var pointsLegend = L.control.layers(baseMaps, layers, {    
 	collapsed: true,      
         position: pos,
       });
