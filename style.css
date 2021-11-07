@@ -13,6 +13,10 @@ body {
   visibility: hidden;
 }
 
+.leaflet-top .leaflet-control {
+    margin-top: 30px;
+}
+
 /* Control for bottom modal fade */
 .fade {
     transition: opacity 0.55s linear;
