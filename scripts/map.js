@@ -140,6 +140,13 @@ $(window).on('load', function() {
             "ESRI World Imagery": Esri_WorldImagery
       };
 	    
+      var map = L.map('map', {
+      attributionControl: false,
+      zoomControl: false,
+      maxZoom: 22,
+      layers: [CartoDBPositron]
+      }).setView([19.408548, -154.914111],16);	  
+	    
 //      var pointsLegend = L.control.layers(null, layers, {   
         var pointsLegend = L.control.layers(baseMaps, layers, {   
 	collapsed: true,      
@@ -347,7 +354,7 @@ $(window).on('load', function() {
   
 // Loads the basemap and adds it to the map
 
-//	var CartoDB_Positron = 
+//	var CartoDBPositron = 
 	
   function addBaseMap() {
 	  
