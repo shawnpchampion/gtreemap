@@ -97,14 +97,14 @@ $(window).on('load', function() {
     if (layers === undefined || layers.length === 0) {
       map.addLayer(
         clusters
-        ? L.markerClusterGroup().addLayer(group).addTo(map)
+        ? L.markerClusterGroup({ disableClusteringAtZoom: 17 }).addLayer(group).addTo(map)
         : group
       );
     } else {
       if (clusters) {
 	      
 // Add multilayer cluster support
-        multilayerClusterSupport = L.markerClusterGroup.layerSupport();
+        multilayerClusterSupport = L.markerClusterGroup({ disableClusteringAtZoom: 17 }).layerSupport();
         multilayerClusterSupport.addTo(map);
              
         for (i in layers) {
