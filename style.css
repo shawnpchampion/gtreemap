@@ -30,8 +30,8 @@ body {
 }
 
 .table {
-    width: 100%;
-    max-width: 100%;
+    width: 100vw;
+    max-width: 100vw;
     margin-bottom: 1rem;
     background-color: transparent;
 	margin-left: 100px;
