@@ -117,14 +117,8 @@ $(window).on('load', function() {
       var pos = (getSetting('_pointsLegendPos') == 'off')
         ? 'topleft'
         : getSetting('_pointsLegendPos');
-          
 	    
-	    
-	    
-   
-	    
-      var pointsLegend = L.control.layers(null, layers, {
-//	var pointsLegend = L.control.layers(basemaps, layers, {    
+      var pointsLegend = L.control.layers(null, layers, {   
 	collapsed: true,      
         position: pos,
       });
@@ -235,12 +229,12 @@ $(window).on('load', function() {
 // BEGIN GOOGLE SHEET CODE
 	
   function onMapDataLoad(options, points) {
-
+  
     createDocumentSettings(options);
-
+  
     document.title = getSetting('_mapTitle');
     addBaseMap();
-
+  
 // Add point markers to the map
     var layers;
     var group = '';
@@ -250,9 +244,9 @@ $(window).on('load', function() {
     } else {
       completePoints = true;
     }
+     
     
-
-
+    
 // Add location control
     if (getSetting('_mapMyLocation') !== 'off') {
       var locationControl = L.control.locate({
@@ -261,22 +255,13 @@ $(window).on('load', function() {
         position: getSetting('_mapMyLocation')
       }).addTo(map);
     }
-
-// Add zoom control
-    if (getSetting('_mapZoom') !== 'off') {
-      L.control.zoom({position: getSetting('_mapZoom')}).addTo(map);
-    }
-
-    map.on('zoomend', function() {
-      togglePolygonLabels();
-    });
-
+   
 // Add Title	  
-    addTitle();
-
+//    addTitle();
+    
 // Change Map attribution to include author's info + urls
     changeAttribution();
-
+    
 // Append icons to categories in markers legend
     $('#points-legend label span').each(function(i) {
       var g = $(this).text().trim();
@@ -287,15 +272,15 @@ $(window).on('load', function() {
           + '"></i>';
       $(this).prepend(legendIcon);
     });
-
+      
 // When all processing is done, hide the loader and make the map visible
     showMap();
-
+     
     function showMap() {
       if (completePoints) {
         $('.ladder h6').append('<span class="legend-arrow"><i class="fas fa-chevron-down"></i></span>');
         $('.ladder h6').addClass('minimize');
-
+         
         $('.ladder h6').click(function() {
           if ($(this).hasClass('minimize')) {
             $('.ladder h6').addClass('minimize');
@@ -311,80 +296,81 @@ $(window).on('load', function() {
               .addClass('fa-chevron-down');
           }
         });
-
+        
         $('.ladder h6').first().click();
-
+         
         $('#map').css('visibility', 'visible');
         $('.loader').hide();
-
+         
 // Open intro popup window in the center of the map
-        if (getSetting('_introPopupText') != '') {
-          initIntroPopup(getSetting('_introPopupText'), map.getCenter());
-        };
-
-       
-      } else {
-        setTimeout(showMap, 50);
-      }
+//        if (getSetting('_introPopupText') != '') {
+//          initIntroPopup(getSetting('_introPopupText'), map.getCenter());
+//        };
+           
+        
+//      } else {
+        setTimeout(showMap, 10);
+//      }
     }
-
+     
 // Add Google Analytics if the ID exists
-    var ga = getSetting('_googleAnalytics');
-    console.log(ga)
-    if ( ga && ga.length >= 10 ) {
-      var gaScript = document.createElement('script');
-      gaScript.setAttribute('src','https://www.googletagmanager.com/gtag/js?id=' + ga);
-      document.head.appendChild(gaScript);
+//    var ga = getSetting('_googleAnalytics');
+//    console.log(ga)
+//    if ( ga && ga.length >= 10 ) {
+//      var gaScript = document.createElement('script');
+//      gaScript.setAttribute('src','https://www.googletagmanager.com/gtag/js?id=' + ga);
+//      document.head.appendChild(gaScript);
   
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', ga);
-    }
+//      window.dataLayer = window.dataLayer || [];
+//      function gtag(){dataLayer.push(arguments);}
+//      gtag('js', new Date());
+//      gtag('config', ga);
+//    }
+
   }
 
 /**
  * Adds title and subtitle from the spreadsheet to the map
  */
-  function addTitle() {
-    var dispTitle = getSetting('_mapTitleDisplay');
+//  function addTitle() {
+//    var dispTitle = getSetting('_mapTitleDisplay');
 
-    if (dispTitle !== 'off') {
-      var title = '<h3 class="pointer">' + getSetting('_mapTitle') + '</h3>';
-      var subtitle = '<h5>' + getSetting('_mapSubtitle') + '</h5>';
+//    if (dispTitle !== 'off') {
+//      var title = '<h3 class="pointer">' + getSetting('_mapTitle') + '</h3>';
+//      var subtitle = '<h5>' + getSetting('_mapSubtitle') + '</h5>';
 
-      if (dispTitle == 'topleft') {
-        $('div.leaflet-top').prepend('<div class="map-title leaflet-bar leaflet-control leaflet-control-custom">' + title + subtitle + '</div>');
-      } else if (dispTitle == 'topcenter') {
-        $('#map').append('<div class="div-center"></div>');
-        $('.div-center').append('<div class="map-title leaflet-bar leaflet-control leaflet-control-custom">' + title + subtitle + '</div>');
-      }
+//      if (dispTitle == 'topleft') {
+//        $('div.leaflet-top').prepend('<div class="map-title leaflet-bar leaflet-control leaflet-control-custom">' + title + subtitle + '</div>');
+//      } else if (dispTitle == 'topcenter') {
+//        $('#map').append('<div class="div-center"></div>');
+//        $('.div-center').append('<div class="map-title leaflet-bar leaflet-control leaflet-control-custom">' + title + subtitle + '</div>');
+//      }
 
-      $('.map-title h3').click(function() { location.reload(); });
-    }
-  }
-
-
+//      $('.map-title h3').click(function() { location.reload(); });
+//    }
+//  }
 
 
-  function initIntroPopup(info, coordinates) {
+
+
+//  function initIntroPopup(info, coordinates) {
 // This is a pop-up for mobile device
-    if (window.matchMedia("only screen and (max-width: 760px)").matches) {
-      $('body').append('<div id="mobile-intro-popup"><p>' + info +
-        '</p><div id="mobile-intro-popup-close"><i class="fas fa-times"></i></div></div>');
+//    if (window.matchMedia("only screen and (max-width: 760px)").matches) {
+//      $('body').append('<div id="mobile-intro-popup"><p>' + info +
+//        '</p><div id="mobile-intro-popup-close"><i class="fas fa-times"></i></div></div>');
 
-      $('#mobile-intro-popup-close').click(function() {
-        $("#mobile-intro-popup").hide();
-      });
-      return;
-    }
+//      $('#mobile-intro-popup-close').click(function() {
+//        $("#mobile-intro-popup").hide();
+//      });
+//      return;
+//    }
 
 // And this is a standard popup for bigger screens
-    L.popup({className: 'intro-popup'})
-      .setLatLng(coordinates) // this needs to change
-      .setContent(info)
-      .openOn(map);
-  }
+//    L.popup({className: 'intro-popup'})
+//      .setLatLng(coordinates) // this needs to change
+//      .setContent(info)
+//      .openOn(map);
+//  }
 
 
 // Changes map attribution (author, GitHub repo, email etc.) in bottom-right
