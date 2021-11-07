@@ -85,28 +85,8 @@
 
     <div class="loader">Loading...</div>
 
-<!-- BEGIN MAP CODE -->
-    <div id="map"></div>
-    <table id="maptable" class="display"></table>
-  
-<!-- 
-    <div class="story">
-         <div class="forward" id="feature-info"></div>
-         <div class="forward2" id="feature-back"></div>
-    </div>
--->
-  
-    <script type="text/javascript">
 
-    var map = L.map('map', {
-      attributionControl: false,
-      zoomControl: false
-      }).setView([19.408548, -154.914111],16);
-  
-    </script>
-<!-- END MAP CODE --> 
 
-  <!--
     <nav class="navbar fixed-bottom navbar-light bg-light">
         <div class="container-fluid"> 
             <a class="navbar-brand" href="#"><img src="assets/img/kalanilogog.png" width="auto" height="37"></a>
@@ -126,7 +106,27 @@
             </div>
         </div>
     </nav>
- -->
+ 
+  <!-- BEGIN MAP CODE -->
+    <div id="map"></div>
+    <table id="maptable" class="display"></table>
+  
+<!-- 
+    <div class="story">
+         <div class="forward" id="feature-info"></div>
+         <div class="forward2" id="feature-back"></div>
+    </div>
+-->
+  
+    <script type="text/javascript">
+
+    var map = L.map('map', {
+      attributionControl: false,
+      zoomControl: false
+      }).setView([19.408548, -154.914111],16);
+  
+    </script>
+<!-- END MAP CODE --> 
   
 <!-- Points Bottom Modal  -->
     <div class="modal modal-bottom fade" id="bottom_modal" tabindex="-1" role="dialog" aria-labelledby="bottom_modal">
