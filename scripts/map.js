@@ -126,12 +126,12 @@ $(window).on('load', function() {
       if (getSetting('_pointsLegendPos') !== 'off') {
         pointsLegend.addTo(map);
         pointsLegend._container.id = 'points-legend';
-        pointsLegend._container.className += ' ladder';
+//        pointsLegend._container.className += ' ladder';
       }
     }
         
     $('#points-legend').prepend('<h6 class="pointer"><b>' + getSetting('_pointsLegendTitle') + '</b></h6>');
-//    $(".leaflet-control-layers-overlays").prepend("<label><b>Trees of Interest</b></label>");
+    $(".leaflet-control-layers-overlays").prepend("<label><b>Trees of Interest</b></label>");
     if (getSetting('_pointsLegendIcon') != '') {
       $('#points-legend h6').prepend('<span class="legend-icon"><i class="fas '
         + getSetting('_pointsLegendIcon') + '"></i></span>');
