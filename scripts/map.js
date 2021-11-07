@@ -147,17 +147,17 @@ $(window).on('load', function() {
       
       if (getSetting('_pointsLegendPos') !== 'off') {
         pointsLegend.addTo(map);
-        pointsLegend._container.id = 'points-legend';
+//        pointsLegend._container.id = 'points-legend';
 //        pointsLegend._container.className += ' ladder';
       }
     }
         
-    $('#points-legend').prepend('<h6 class="pointer"><b>' + getSetting('_pointsLegendTitle') + '</b></h6>');
+//    $('#points-legend').prepend('<h6 class="pointer"><b>' + getSetting('_pointsLegendTitle') + '</b></h6>');
 //    $(".leaflet-control-layers-overlays").prepend("<label><b>Trees of Interest</b></label>");
-    if (getSetting('_pointsLegendIcon') != '') {
-      $('#points-legend h6').prepend('<span class="legend-icon"><i class="fas '
-        + getSetting('_pointsLegendIcon') + '"></i></span>');
-    }
+//    if (getSetting('_pointsLegendIcon') != '') {
+//      $('#points-legend h6').prepend('<span class="legend-icon"><i class="fas '
+//        + getSetting('_pointsLegendIcon') + '"></i></span>');
+//    }
         
 // END LEGEND CODE
 
@@ -278,15 +278,15 @@ $(window).on('load', function() {
     }
     
 // Append icons to categories in markers legend
-    $('#points-legend label span').each(function(i) {
-      var g = $(this).text().trim();
-      var legendIcon = (group2color[ g ].indexOf('.') > 0)
-        ? '<img src="' + group2color[ g ] + '" class="markers-legend-icon">'
-        : '&nbsp;<i class="fas fa-map-marker" style="color: '
-          + group2color[ g ]
-          + '"></i>';
-      $(this).prepend(legendIcon);
-    });
+//    $('#points-legend label span').each(function(i) {
+//      var g = $(this).text().trim();
+//      var legendIcon = (group2color[ g ].indexOf('.') > 0)
+//        ? '<img src="' + group2color[ g ] + '" class="markers-legend-icon">'
+//        : '&nbsp;<i class="fas fa-map-marker" style="color: '
+//          + group2color[ g ]
+//          + '"></i>';
+//      $(this).prepend(legendIcon);
+//    });
       
 // When all processing is done, hide the loader and make the map visible
     showMap();
