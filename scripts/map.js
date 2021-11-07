@@ -430,7 +430,7 @@ $(window).on('load', function() {
   }
 
   
-// Triggers the load of the spreadsheet and map creation
+/// Triggers the load of the spreadsheet and map creation
  
    var mapData;
 
