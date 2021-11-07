@@ -128,14 +128,14 @@ $(window).on('load', function() {
         maxZoom: 20
       });
 
-      var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      var CartoDBPositron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 	subdomains: 'abcd',
 	maxZoom: 20
       });	    
 
       var baseMaps = {
-	    "Positron": CartoDB_Positron,
+	    "Positron": CartoDBPositron,
             "OpenStreetMap": OSM,
             "ESRI World Imagery": Esri_WorldImagery
       };
@@ -153,12 +153,12 @@ $(window).on('load', function() {
       }
     }
         
-//    $('#points-legend').prepend('<h6 class="pointer"><b>' + getSetting('_pointsLegendTitle') + '</b></h6>');
+    $('#points-legend').prepend('<h6 class="pointer"><b>' + getSetting('_pointsLegendTitle') + '</b></h6>');
 //    $(".leaflet-control-layers-overlays").prepend("<label><b>Trees of Interest</b></label>");
-//    if (getSetting('_pointsLegendIcon') != '') {
-//      $('#points-legend h6').prepend('<span class="legend-icon"><i class="fas '
-//        + getSetting('_pointsLegendIcon') + '"></i></span>');
-//    }
+    if (getSetting('_pointsLegendIcon') != '') {
+      $('#points-legend h6').prepend('<span class="legend-icon"><i class="fas '
+        + getSetting('_pointsLegendIcon') + '"></i></span>');
+    }
         
 // END LEGEND CODE
 
