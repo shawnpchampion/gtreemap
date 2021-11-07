@@ -119,14 +119,14 @@ $(window).on('load', function() {
         : getSetting('_pointsLegendPos');
           
       var pointsLegend = L.control.layers(null, layers, {
-	collapsed: false,      
+	collapsed: true,      
         position: pos,
       });
       
       if (getSetting('_pointsLegendPos') !== 'off') {
         pointsLegend.addTo(map);
         pointsLegend._container.id = 'points-legend';
-//        pointsLegend._container.className += ' ladder';
+        pointsLegend._container.className += ' ladder';
       }
     }
         
