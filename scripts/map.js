@@ -370,7 +370,7 @@ $(window).on('load', function() {
 //      .setLatLng(coordinates) // this needs to change
 //      .setContent(info)
 //      .openOn(map);
-//  }
+  }
 
 
 // Changes map attribution (author, GitHub repo, email etc.) in bottom-right
