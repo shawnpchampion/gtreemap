@@ -560,7 +560,6 @@ $(window).on('load', function() {
       return val;
   }
 
-});
 
 
 
