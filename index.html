@@ -88,8 +88,6 @@
 
     <div class="loader">Loading...</div>
 
-
-
     <nav class="navbar fixed-bottom navbar-light bg-light">
         <div class="container-fluid"> 
             <a class="navbar-brand" href="#"><img src="assets/img/kalanilogog.png" width="auto" height="37"></a>
@@ -110,24 +108,19 @@
         </div>
     </nav>
  
-  <!-- BEGIN MAP CODE -->
+<!-- BEGIN MAP CODE -->
+	
     <div id="map"></div>
     <table id="maptable" class="display"></table>
-  
-<!-- 
-    <div class="story">
-         <div class="forward" id="feature-info"></div>
-         <div class="forward2" id="feature-back"></div>
-    </div>
--->
+ 
   
     <script type="text/javascript">
       
-      var CartoDBPositron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-	    subdomains: 'abcd',
-	    maxZoom: 20
-      });
+    var CartoDBPositron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 20
+    });
       
     var map = L.map('map', {
       attributionControl: false,
@@ -135,12 +128,11 @@
       maxZoom: 20,
       layers: [CartoDBPositron]
       }).setView([19.408548, -154.914111],16);
-  
+    
     </script>
- 
-<!-- END MAP CODE --> 
   
-<!-- Points Bottom Modal  -->
+<!-- BOTTOM MODAL POPUP  -->
+	
     <div class="modal modal-bottom fade" id="bottom_modal" tabindex="-1" role="dialog" aria-labelledby="bottom_modal">
         <div class="modal-dialog" role="document">
             <div class="modal-content" id="bgimage">
@@ -155,7 +147,11 @@
             </div>
         </div>
     </div>
-  
+
+<!-- Dark Overlay element -->
+	
+    <div class="overlay"></div>  
+
 <!-- LOAD REST OF JS CODE -->  
     <script type="text/javascript" src="./google-doc-url.js"></script>
     <script type="text/javascript" src="./scripts/constants.js"></script>
