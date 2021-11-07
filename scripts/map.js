@@ -469,10 +469,10 @@ $(window).on('load', function() {
 
                 // Which sheet names contain polygon data?
                 var polygonSheets = sheets.filter(function(name) { return name.indexOf('Polygons') === 0})
-
+                
                 // Define a recursive function to fetch data from a polygon sheet
                 var fetchPolygonsSheet = function(polygonSheets) {
-
+                
                   // Load map once all polygon sheets have been loaded (if any)
                   if (polygonSheets.length === 0) {
                     onMapDataLoad(
@@ -486,16 +486,13 @@ $(window).on('load', function() {
 //                      createPolygonSettings( parse([data]) )
                       fetchPolygonsSheet(polygonSheets)
                     })
-
                   }
-
                 }
-
+                 
                 // Start recursive function
                 fetchPolygonsSheet( polygonSheets )
-
-              })
               
+              })
             }
           )
 
@@ -560,9 +557,6 @@ $(window).on('load', function() {
       return val;
   }
 
-
-
-
       var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
         maxZoom: 20,
         subdomains:['mt0','mt1','mt2','mt3']
@@ -609,13 +603,11 @@ $("#street-map-btn").click(function() {
 //  for (i in points) {                                     //removes icon from map, but not data table or layer.control, and add layer does not work at all
 //    layers[points[i].Group].eachLayer(function (marker) {
 //       if (marker.options.group == 'Avocado') {
-	      
 //         map.removeLayer(layers[points[i].Group]);    
 //	 layers[points[i].Group].removeLayer(marker);
 //       } else {
 //        map.addLayer(layers[points[i].Group]);        
-//	layers[points[i].Group].addLayer(marker); 
-	
+//	layers[points[i].Group].addLayer(marker); 	
 //       }
 //    }) 
 //  }
@@ -627,7 +619,7 @@ $("#street-map-btn").click(function() {
 //        map.addLayer(marker);        
 //    }	
 //  })
-//});
+// });
  
        
 
@@ -645,7 +637,7 @@ $("#street-map-btn").click(function() {
 
 
 
-//$("#sights").click(function(event) {
+// $("#sights").click(function(event) {
 //    event.preventDefault();
 //    if(map.hasLayer(basemaps)) {
 //        $(this).removeClass('selected');
@@ -654,4 +646,4 @@ $("#street-map-btn").click(function() {
 //        map.addLayer(googleSat);                 
 //        $(this).addClass('selected');
 //   }
-//});
+// });
