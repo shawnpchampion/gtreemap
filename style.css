@@ -6,14 +6,32 @@ body {
   width: 100%;
 }
 
-
 #map {
   width: 100vw;
   height: 100vh;
   visibility: hidden;
 }
 
+.overlay {
+    display: none;
+    position: fixed;
+    /* full screen */
+    width: 100vw;
+    height: 100vh;
+    /* transparent black */
+    background: rgba(0, 0, 0, 0.7);
+    /* middle layer, i.e. appears below the sidebar */
+    z-index: 998;
+    opacity: 0;
+    /* animate the transition */
+    transition: all 0.5s ease-in-out;
+}
 
+/* display .overlay when it has the .active class */
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
 /* Control for bottom modal fade */
 .fade {
     transition: opacity 0.55s linear;
