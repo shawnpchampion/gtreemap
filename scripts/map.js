@@ -10,7 +10,7 @@ $(window).on('load', function() {
 	
   var roads = L.gridLayer
       .googleMutant({
-      type: "terrain", // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
+      type: "roapmap", // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
   });
 	
   var baseMaps = {
