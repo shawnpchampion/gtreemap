@@ -3,12 +3,9 @@ var constants = {
   notesSheetName: 'Notes',
   optionsSheetName: 'Options',
   pointsSheetName: 'Points',
-// OPTIONS
 // Map Info
   _mapTitle: 'Map Title',
-  _mapTitleDisplay: 'Display Title',
 // Map Settings
-  _tileProvider: 'Basemap Tiles',
   _markercluster: 'Cluster Markers',
 // Map Controls
 	_mapMyLocation: 'Show My Location',
