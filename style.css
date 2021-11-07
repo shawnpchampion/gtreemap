@@ -20,7 +20,7 @@ body {
 .modal-title {
     margin-bottom: 0;
     line-height: 1.5;
-        margin-left: 100px;
+/*        margin-left: 100px; */
 }
 
 .modal-header {
@@ -28,7 +28,7 @@ body {
 }
 
 .modal-body {
-        margin-left: 100px;
+ /*       margin-left: 100px; */
 }
 
 h3 {
