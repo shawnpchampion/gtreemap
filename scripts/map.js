@@ -2,6 +2,28 @@ $(window).on('load', function() {
   var documentSettings = {};
   var group2color = {};
 
+      var OSM = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 20
+      });
+		
+      var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+        maxZoom: 20
+      });
+
+      var CartoDBPositron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 20
+      });	    
+
+      var baseMaps = {
+	    "Positron": CartoDBPositron,
+            "OpenStreetMap": OSM,
+            "ESRI World Imagery": Esri_WorldImagery
+      };	
+	
   var completePoints = false;
 
 // Given a collection of points, determines the layers based on 'Group' column in the spreadsheet.
