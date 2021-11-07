@@ -21,7 +21,7 @@ $(window).on('load', function() {
       }
     }
 
-// if none of the points have named layers, return no layers
+// if none of the points have named layers, return no layers, or create the layer group and add it to the map
     if (groups.length === 0) {
       layers = undefined;
     } else {
@@ -59,7 +59,7 @@ $(window).on('load', function() {
 	          
       if (point.Latitude !== '' && point.Longitude !== '') {
      
-// DEFINE THE PARAMETERS OF THE MARKER, AND ADD TO THE MAP        
+// DEFINE THE PARAMETERS OF THE MARKER, AND ADD IT TO THE MAP        
         var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon})
 	.on('click', markerOnClick)  
         .addTo(map);
@@ -84,7 +84,7 @@ $(window).on('load', function() {
           marker.addTo(layers[point.Group]);
         }
         
-// Add marker to an array that will hold all markers	    
+// Then also add marker to an array that will hold all markers	    
         markerArray.push(marker);  
       }
     }
@@ -117,8 +117,31 @@ $(window).on('load', function() {
       var pos = (getSetting('_pointsLegendPos') == 'off')
         ? 'topleft'
         : getSetting('_pointsLegendPos');
+
+      var OSM = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 18
+      });
+		
+      var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+        maxZoom: 20
+      });
+
+      var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 20
+      });	    
+
+      var baseMaps = {
+	    "Positron": CartoDB_Positron,
+            "OpenStreetMap": OSM,
+            "ESRI World Imagery": Esri_WorldImagery
+      };
 	    
-      var pointsLegend = L.control.layers(null, layers, {   
+//      var pointsLegend = L.control.layers(null, layers, {   
+        var pointsLegend = L.control.layers(baseMaps, layers, {   
 	collapsed: true,      
         position: pos,
       });
@@ -233,6 +256,7 @@ $(window).on('load', function() {
     createDocumentSettings(options);
   
     document.title = getSetting('_mapTitle');
+	  
     addBaseMap();
   
 // Add point markers to the map
@@ -300,38 +324,45 @@ $(window).on('load', function() {
   
 // Changes map attribution (author, GitHub repo, email etc.) in bottom-right
  
-  function changeAttribution() {
-    var attributionHTML = $('.leaflet-control-attribution')[0].innerHTML;
-    var credit = 'View <a href="' + googleDocURL + '" target="_blank">data</a>';
-    var name = getSetting('_authorName');
-    var url = getSetting('_authorURL');
+//  function changeAttribution() {
+//    var attributionHTML = $('.leaflet-control-attribution')[0].innerHTML;
+//    var credit = 'View <a href="' + googleDocURL + '" target="_blank">data</a>';
+//    var name = getSetting('_authorName');
+//    var url = getSetting('_authorURL');
 
-    if (name && url) {
-      if (url.indexOf('@') > 0) { url = 'mailto:' + url; }
-      credit += ' by <a href="' + url + '">' + name + '</a> | ';
-    } else if (name) {
-      credit += ' by ' + name + ' | ';
-    } else {
-      credit += ' | ';
-    }
-
-    credit += 'View <a href="' + getSetting('_githubRepo') + '">code</a>';
-    if (getSetting('_codeCredit')) credit += ' by ' + getSetting('_codeCredit');
-    credit += ' with ';
-    $('.leaflet-control-attribution')[0].innerHTML = credit + attributionHTML;
-  }
+//    if (name && url) {
+//      if (url.indexOf('@') > 0) { url = 'mailto:' + url; }
+//      credit += ' by <a href="' + url + '">' + name + '</a> | ';
+//    } else if (name) {
+//      credit += ' by ' + name + ' | ';
+//    } else {
+//      credit += ' | ';
+//    }
+//   credit += 'View <a href="' + getSetting('_githubRepo') + '">code</a>';
+//    if (getSetting('_codeCredit')) credit += ' by ' + getSetting('_codeCredit');
+//    credit += ' with ';
+//    $('.leaflet-control-attribution')[0].innerHTML = credit + attributionHTML;
+//  }
   
   
 // Loads the basemap and adds it to the map
- 
+
+//	var CartoDB_Positron = 
+	
   function addBaseMap() {
-    var basemap = trySetting('_tileProvider', 'CartoDB.Positron');
-    L.tileLayer.provider(basemap, {
-      maxZoom: 18
-    }).addTo(map);
-    L.control.attribution({
-      position: trySetting('_mapAttribution', 'bottomright')
-    }).addTo(map);
+	  
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+	subdomains: 'abcd',
+	maxZoom: 20
+      }).addTo(map);	  
+//    var basemap = trySetting('_tileProvider', 'CartoDB.Positron');
+//    L.tileLayer.provider(basemap, {
+//      maxZoom: 20
+//    }).addTo(map);
+//    L.control.attribution({
+//      position: trySetting('_mapAttribution', 'bottomright')
+//    }).addTo(map);
+	  
   }
     
 // Returns the value of a setting s getSetting(s) is equivalent to documentSettings[constants.s]
