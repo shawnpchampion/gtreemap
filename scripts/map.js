@@ -59,7 +59,7 @@ $(window).on('load', function() {
 	          
       if (point.Latitude !== '' && point.Longitude !== '') {
      
-// DEFINE THE PARAMETERS OF THE MARKERS, AND ADD TO THE MAP        
+// DEFINE THE PARAMETERS OF THE MARKER, AND ADD TO THE MAP        
         var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon})
 	.on('click', markerOnClick)  
         .addTo(map);
@@ -118,7 +118,24 @@ $(window).on('load', function() {
         ? 'topleft'
         : getSetting('_pointsLegendPos');
           
-      var pointsLegend = L.control.layers(null, layers, {
+	    
+      var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+      });
+
+      var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
+        maxZoom: 20,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
+      });	    
+	    
+      var basemaps = {
+        "Street Map": cartoLight,
+        "Satellite": googleSat
+      };    
+	    
+//      var pointsLegend = L.control.layers(null, layers, {
+	var pointsLegend = L.control.layers(basemaps, layers, {    
 	collapsed: true,      
         position: pos,
       });
@@ -138,17 +155,6 @@ $(window).on('load', function() {
     }
         
 // END LEGEND CODE
-
-	  
-// Make Buttons for turning layer groups on/off without layer.control	  
-//$("#avo-btn").click(function(event) {
-//    event.preventDefault();
-//    if(map.hasLayer(layers[points[1].Group])) {  
-//        map.removeLayer(layers[points[1].Group]);    //works, but makes all layer icons dissapear from layer.control
-//    } else {
-//        map.addLayer(layers[points[1].Group]);        //works     
-//    }	
-//});
 
 	  
 // BEGIN TABLE CODE
@@ -583,15 +589,7 @@ $(window).on('load', function() {
 
 });
 
-var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-  maxZoom: 20,
-  subdomains:['mt0','mt1','mt2','mt3']
-  });
 
-var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
-  maxZoom: 20,
-  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
-  });
 
 $("#sat-map-btn").click(function(event) {
 map.addLayer(googleSat);
@@ -650,6 +648,21 @@ $("#street-map-btn").click(function() {
 //});
  
        
+
+// Make Buttons for turning layer groups on/off without layer.control	  
+//$("#avo-btn").click(function(event) {
+//    event.preventDefault();
+//    if(map.hasLayer(layers[points[1].Group])) {  
+//        map.removeLayer(layers[points[1].Group]);    //works, but makes all layer icons dissapear from layer.control
+//    } else {
+//        map.addLayer(layers[points[1].Group]);        //works     
+//    }	
+//});
+
+
+
+
+
 //$("#sights").click(function(event) {
 //    event.preventDefault();
 //    if(map.hasLayer(basemaps)) {
