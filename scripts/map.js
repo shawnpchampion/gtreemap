@@ -14,7 +14,7 @@ $(window).on('load', function() {
   });
 	
   var baseMaps = {
-      "Positron": CartoDBPositron,
+      "Street Map": CartoDBPositron,
       "Satellite": roads	  
   };	
 	
