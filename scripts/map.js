@@ -85,7 +85,6 @@ $(window).on('load', function() {
           {
             var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + this.options.hname + "</td></tr>" + "<tr><th>Canoe Plant:</th><td>" + this.options.cplant + "</td></tr>" + "<tr><th>Harvest:</th><td>" + this.options.harvest + "</td></tr>" + "<table>";
             $("#feature-title").html(this.options.name);
-//            $("#feature-back").html("<img src=" + this.options.bimage + "></img>");
             $("#feature-info").html(content);
             $("#bottom_modal").modal("show");
             var bgimgurlm = 'url(' + this.options.bimage + ')';
