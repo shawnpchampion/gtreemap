@@ -248,10 +248,8 @@ $(window).on('load', function() {
     createDocumentSettings(options);
   
     document.title = getSetting('_mapTitle');
-	  
- //   addBaseMap();
   
-// Add point markers to the map
+// Add points to layers and groups
     var layers;
     var group = '';
     if (points && points.length > 0) {
@@ -321,15 +319,6 @@ $(window).on('load', function() {
     }
   }
 // Closes onMapDataLoad Function
-  
-// Loads the basemap and adds it to the map
-	
-//  function addBaseMap() {
-//      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-//  	subdomains: 'abcd',
-//  	maxZoom: 20
-//      }).addTo(map);	  	  
-//  }
     
 // Returns the value of a setting s getSetting(s) is equivalent to documentSettings[constants.s]
   
@@ -466,8 +455,6 @@ $(window).on('load', function() {
       documentSettings[setting.Setting] = setting.Customize;
     }
   }
-
-  
 
   // Returns a string that contains digits of val split by comma evey 3 positions
   // Example: 12345678 -> "12,345,678"
