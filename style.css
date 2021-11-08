@@ -14,7 +14,7 @@ body {
 
 /* Control for bottom modal fade */
 .fade {
-    transition: opacity 0.55s linear;
+    transition: opacity 0.35s linear;
 }
 
 .modal-title {
