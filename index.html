@@ -137,10 +137,9 @@
 	    	function onLocationFound(e) {
 		var radius = e.accuracy / 2;
 
-		L.marker(e.latlng).addTo(map)
-			.bindPopup("You are within " + radius + " meters from this point").openPopup();
+			alert("You are within " + radius + " meters from" + e.latlng);
 
-		L.circle(e.latlng, radius).addTo(map);
+		
 	        }
 
 	function onLocationError(e) {
@@ -150,7 +149,7 @@
 	map.on('locationfound', onLocationFound);
 	map.on('locationerror', onLocationError);
 
-	map.locate({setView: true, maxZoom: 16, watch: true});
+	map.locate({maxZoom: 20, watch: true});
 	    
 	    
     </script>
