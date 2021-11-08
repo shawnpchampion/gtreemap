@@ -291,7 +291,7 @@ $(window).on('load', function() {
       
 // When all processing is done, hide the loader and make the map visible
     showMap();
-    map.locate({watch: true});
+    
     function showMap() {
       if (completePoints) {
         $('.ladder h6').append('<span class="legend-arrow"><i class="fas fa-chevron-down"></i></span>');
