@@ -82,6 +82,10 @@
   <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
 
+<!-- Easy Button -->	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+<script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+
 </head>
 
 <body>
@@ -127,6 +131,28 @@
       maxZoom: 20,
       layers: [roads]
       }).setView([19.408548, -154.914111],16);
+
+    var stateChangingButton = L.easyButton({
+        states: [{
+                stateName: 'zoom-to-forest',        // name the state
+                icon:      'fa-tree',               // and define its properties
+                title:     'zoom to a forest',      // like its title
+                onClick: function(btn, map) {       // and its callback
+                    map.setView([19.408548, -154.915111],18);
+                    btn.state('zoom-to-school');    // change state on click!
+                }
+            }, {
+                stateName: 'zoom-to-school',
+                icon:      'fa-university',
+                title:     'zoom to a school',
+                onClick: function(btn, map) {
+                    map.setView(19.401548, -154.917111],20);
+                    btn.state('zoom-to-forest');
+                }
+        }]
+    });
+
+    stateChangingButton.addTo(map);	    
     	    
     </script>
   
