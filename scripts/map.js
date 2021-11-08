@@ -249,7 +249,7 @@ $(window).on('load', function() {
   
     document.title = getSetting('_mapTitle');
 	  
-    addBaseMap();
+ //   addBaseMap();
   
 // Add point markers to the map
     var layers;
@@ -316,12 +316,12 @@ $(window).on('load', function() {
   
 // Loads the basemap and adds it to the map
 	
-  function addBaseMap() {
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-  	subdomains: 'abcd',
-  	maxZoom: 20
-      }).addTo(map);	  	  
-  }
+//  function addBaseMap() {
+//      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+//  	subdomains: 'abcd',
+//  	maxZoom: 20
+//      }).addTo(map);	  	  
+//  }
     
 // Returns the value of a setting s getSetting(s) is equivalent to documentSettings[constants.s]
   
