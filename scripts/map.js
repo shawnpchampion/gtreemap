@@ -263,11 +263,12 @@ $(window).on('load', function() {
      
 // Add location control
     if (getSetting('_mapMyLocation') !== 'off') {
-      var locationControl = L.control.locate({
-        keepCurrentZoomLevel: true,
-        returnToPrevBounds: true,
-        position: getSetting('_mapMyLocation')
-      }).addTo(map);
+      map.locate({watch: true})
+//      var locationControl = L.control.locate({
+//        keepCurrentZoomLevel: true,
+//        returnToPrevBounds: true,
+//        position: getSetting('_mapMyLocation')
+//      }).addTo(map);
     }
 
 //    $("#locate-btn").click(function() {
