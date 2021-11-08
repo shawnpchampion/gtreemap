@@ -274,7 +274,7 @@ $(window).on('load', function() {
 //	  var lc = L.control.locate({
 //        locateOptions: {
 //               enableHighAccuracy: true
-          }}).addTo(map);
+//          }}).addTo(map);
 //        lc.start();
 //    });	  
 
