@@ -111,31 +111,6 @@
             </div>
         </div>
     </nav>
- 
-<!-- BEGIN MAP CODE -->
-	
-    <div id="map"></div>
-    <table id="maptable" class="display"></table>
- 
-  
-    <script type="text/javascript">
-    
-    var roads = L.gridLayer
-      .googleMutant({
-      type: "satellite", // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
-    });
-      
-    var map = L.map('map', {
-      attributionControl: false,
-      zoomControl: false,
-      maxZoom: 20,
-      tapTolerance: 50,
-      tap: true,	    
-      layers: [roads]
-      }).setView([19.408548, -154.914111],16);
-	    
-    	    
-    </script>
   
 <!-- BOTTOM MODAL POPUP --> 
 	
@@ -170,6 +145,33 @@
       </div> 
     </div> 
 <!-- END POP UP FOR POINTS -->	
+
+	
+	
+<!-- BEGIN MAP CODE -->
+	
+    <div id="map"></div>
+    <table id="maptable" class="display"></table>
+ 
+  
+    <script type="text/javascript">
+    
+    var roads = L.gridLayer
+      .googleMutant({
+      type: "satellite", // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
+    });
+      
+    var map = L.map('map', {
+      attributionControl: false,
+      zoomControl: false,
+      maxZoom: 20,
+      tapTolerance: 50,
+      tap: true,	    
+      layers: [roads]
+      }).setView([19.408548, -154.914111],16);
+	    
+    	    
+    </script>
 	
 <!-- LOAD REST OF JS CODE -->  
     <script type="text/javascript" src="./google-doc-url.js"></script>
