@@ -38,10 +38,7 @@
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.5/typeahead.bundle.min.js"></script> -->
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script> -->
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script> -->
-
-<!-- Google Map API Key -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFupEV3m1KmMBb9VjGbzt3FcY2VZZx5yE" async defer></script>   
-  
+     
 <!-- Leaflet (CSS and JS) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -50,9 +47,6 @@
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
   crossorigin=""></script>
-
-<!-- Google Mutant Plugin -->
-  <script src="https://unpkg.com/leaflet.gridlayer.googlemutant@latest/dist/Leaflet.GoogleMutant.js"></script>
      
 <!-- PapaParse JS-->
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
@@ -157,10 +151,10 @@
   
     <script type="text/javascript">
     
-    var roads = L.gridLayer
-      .googleMutant({
-      type: "satellite", // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
-    });
+     var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+      });
       
     var map = L.map('map', {
       attributionControl: false,
@@ -168,7 +162,7 @@
       maxZoom: 20,
       tapTolerance: 50,
       tap: true,	    
-      layers: [roads]
+      layers: [googleSat]
       }).setView([19.408548, -154.914111],16);
 	    
     	    
