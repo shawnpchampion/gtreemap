@@ -8,14 +8,14 @@ $(window).on('load', function() {
       maxZoom: 20
   });	   
 	
-  var roads = L.gridLayer
-      .googleMutant({
-      type: "satellite", // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
-  });
+     var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+      });
 	
   var baseMaps = {
       "Street Map": CartoDBPositron,
-      "Satellite": roads	  
+      "Satellit": googleSat	  
   };	
 	
   var completePoints = false;
