@@ -76,14 +76,14 @@ $(window).on('load', function() {
       if (point.Latitude !== '' && point.Longitude !== '') {
      
 // DEFINE THE PARAMETERS OF THE MARKER, AND ADD IT TO THE MAP        
-        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon})
+        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant'], icon: icon})
 	.on('click', markerOnClick)  
         .addTo(map);
         
 // DEFINE THE FEATURES FOR THE MODAL POPUP	
         function markerOnClick(e)
           {
-            var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + this.options.hname + "</td></tr>" + "<tr><th>Canoe Plant:</th><td>" + this.options.cplant + "</td></tr>" + "<tr><th>Harvest:</th><td>" + this.options.harvest + "</td></tr>" + "<table>";
+            var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + this.options.hname + "</td></tr>" + "<tr><th>Canoe Plant:</th><td>" + this.options.tags + "</td></tr>" + "<tr><th>Harvest:</th><td>" + this.options.harvest + "</td></tr>" + "<table>";
             $("#feature-title").html(this.options.name);
             $("#feature-info").html(content);
             $("#bottom_modal").modal("show");
@@ -167,6 +167,18 @@ $(window).on('load', function() {
 //    });
 	  
 //    stateChangingButton.addTo(map);	 
+	  
+	  
+	L.control.tagFilterButton({
+        data: ['Yes', 'No'],
+        icon: '<i class="fa fa-suitcase"></i>',
+        filterOnEveryClick: true
+        }).addTo( map );	  
+	  
+	  
+	  
+	  
+	  
         
 //    $('#points-legend').prepend('<h6 class="pointer"><b>' + getSetting('_pointsLegendTitle') + '</b></h6>');
 //    $(".leaflet-control-layers-overlays").prepend("<label><b>Trees of Interest</b></label>");
