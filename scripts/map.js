@@ -172,8 +172,8 @@ $(window).on('load', function() {
 	L.control.tagFilterButton({
         data: ['Yes', 'No'],
         icon: '<i class="fa fa-suitcase"></i>',
-        filterOnEveryClick: true
-	console.log('button clicked');
+        filterOnEveryClick: true,
+	console.log('button clicked')
         }).addTo( map );	  
 	  
 	  
