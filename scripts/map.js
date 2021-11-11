@@ -8,10 +8,10 @@ $(window).on('load', function() {
       maxZoom: 20
   });	   
 	
-     var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-        maxZoom: 20,
-        subdomains:['mt0','mt1','mt2','mt3']
-      });
+  var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+      maxZoom: 20,
+      subdomains:['mt0','mt1','mt2','mt3']
+  });
 	
   var baseMaps = {
       "Street Map": CartoDBPositron,
@@ -30,7 +30,7 @@ $(window).on('load', function() {
       var group = points[i].Group;
       if (group && groups.indexOf(group) === -1) {
         groups.push(group);
-
+     
         group2color[ group ] = points[i]['Marker Icon'].indexOf('.') > 0
           ? points[i]['Marker Icon']
           : points[i]['Marker Color'];
@@ -87,8 +87,8 @@ $(window).on('load', function() {
 //            $("#feature-title").html(this.options.name);
             $("#feature-title").html(point['Name']);
             $("#feature-info").html(content);
-            $("#bottom_modal").modal("show");
-//	    $("#featureModal").modal("show");	  
+//            $("#bottom_modal").modal("show");
+	    $("#featureModal").modal("show");	  
             var bgimgurlm = 'url(' + this.options.bimage + ')';
             var divm = document.getElementById("bgimage");
             divm.style.backgroundImage = bgimgurlm;
@@ -103,6 +103,13 @@ $(window).on('load', function() {
         
 // Then also add marker to an array that will hold all markers	    
         markerArray.push(marker);  
+	      
+	            L.control.tagFilterButton({
+       data: ['Yes', 'No'],
+        icon: '<i class="fa fa-suitcase"></i>',
+        filterOnEveryClick: true,
+        }).addTo( map );
+	      
       }
     }
 	  
@@ -170,11 +177,7 @@ $(window).on('load', function() {
 //    stateChangingButton.addTo(map);	 
 	  
 	  
-// var tagbutton =	L.control.tagFilterButton({
-//       data: ["Yes", "No"],
-//        icon: '<i class="fa fa-suitcase"></i>',
-//        filterOnEveryClick: true,
-//        }).addTo( map );	  
+	  
 	  	  
 	  
 	  
