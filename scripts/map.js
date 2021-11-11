@@ -170,11 +170,11 @@ $(window).on('load', function() {
 //    stateChangingButton.addTo(map);	 
 	  
 	  
-var tagbutton =	L.control.tagFilterButton({
-        data: ["Yes", "No"],
-        icon: '<i class="fa fa-suitcase"></i>',
-        filterOnEveryClick: true,
-        }).addTo( map );	  
+// var tagbutton =	L.control.tagFilterButton({
+//       data: ["Yes", "No"],
+//        icon: '<i class="fa fa-suitcase"></i>',
+//        filterOnEveryClick: true,
+//        }).addTo( map );	  
 	  	  
 	  
 	  
