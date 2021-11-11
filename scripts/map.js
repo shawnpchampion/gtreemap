@@ -169,14 +169,13 @@ $(window).on('load', function() {
 //    stateChangingButton.addTo(map);	 
 	  
 	  
-	L.control.tagFilterButton({
+var tagbutton =	L.control.tagFilterButton({
         data: ['Yes', 'No'],
         icon: '<i class="fa fa-suitcase"></i>',
         filterOnEveryClick: true,
-	alert("button clicked")
         }).addTo( map );	  
 	  
-	  
+console.log(tagbutton);	  
 	  
 	  
 	  
