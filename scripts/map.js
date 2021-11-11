@@ -170,12 +170,12 @@ $(window).on('load', function() {
 	  
 	  
 var tagbutton =	L.control.tagFilterButton({
-        data: ['Yes', 'No'],
+        data: ["Yes", "No"],
         icon: '<i class="fa fa-suitcase"></i>',
         filterOnEveryClick: true,
         }).addTo( map );	  
 	  
-console.log(tagbutton);	  
+alert(tagbutton);	  
 	  
 	  
 	  
