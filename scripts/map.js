@@ -173,7 +173,7 @@ $(window).on('load', function() {
         data: ['Yes', 'No'],
         icon: '<i class="fa fa-suitcase"></i>',
         filterOnEveryClick: true,
-	console.log('button clicked')
+	alert("button clicked")
         }).addTo( map );	  
 	  
 	  
