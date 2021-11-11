@@ -17,19 +17,34 @@ body {
     transition: opacity 0.35s linear;
 }
 
+
 .modal-title {
-    margin-bottom: 0;
-    line-height: 1.5;
-/*        margin-left: 100px; */
+    margin: 0;
+    padding-left: 40%;
+    line-height: 1.42857143;
 }
 
 .modal-header {
-        border-bottom: 0px;
+    min-height: 16.43px;
+    padding: 15px;
+    border-bottom: 0px solid #e5e5e5;
 }
 
 .modal-body {
- /*       margin-left: 100px; */
+    position: relative;
+    padding-left: 40%;
+  /*  padding-top: 15px; */
+  /*  padding-right: 15px; */
+  /*  padding-left: 300px; */
+  /*  padding-bottom: 15px; */
 }
+
+.modal-footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 0px solid #e5e5e5;
+}
+
 
 h3 {
   margin: 0;
