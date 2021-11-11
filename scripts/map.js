@@ -76,7 +76,7 @@ $(window).on('load', function() {
       if (point.Latitude !== '' && point.Longitude !== '') {
      
 // DEFINE THE PARAMETERS OF THE MARKER, AND ADD IT TO THE MAP        
-        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: 'point['CPlant']', icon: icon})
+        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant'], icon: icon})
 	.on('click', markerOnClick)  
         .addTo(map);
         
@@ -170,12 +170,11 @@ $(window).on('load', function() {
 	  
 	  
 var tagbutton =	L.control.tagFilterButton({
-        data: ["Yes", "No"],
+        data: ['Now', 'How'],
         icon: '<i class="fa fa-suitcase"></i>',
         filterOnEveryClick: true,
         }).addTo( map );	  
-	  
-alert(tagbutton);	  
+	  	  
 	  
 	  
 	  
