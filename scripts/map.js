@@ -104,12 +104,6 @@ $(window).on('load', function() {
 // Then also add marker to an array that will hold all markers	    
         markerArray.push(marker);  
 	      
-	            L.control.tagFilterButton({
-       data: ['Yes', 'No'],
-        icon: '<i class="fa fa-suitcase"></i>',
-        filterOnEveryClick: true,
-        }).addTo( map );
-	      
       }
     }
 	  
