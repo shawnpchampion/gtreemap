@@ -84,7 +84,8 @@ $(window).on('load', function() {
         function markerOnClick(e)
           {
             var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + this.options.hname + "</td></tr>" + "<tr><th>Canoe Plant:</th><td>" + this.options.tags + "</td></tr>" + "<tr><th>Harvest:</th><td>" + this.options.harvest + "</td></tr>" + "<table>";
-            $("#feature-title").html(this.options.name);
+//            $("#feature-title").html(this.options.name);
+            $("#feature-title").html(point['Name']);
             $("#feature-info").html(content);
             $("#bottom_modal").modal("show");
 //	    $("#featureModal").modal("show");	  
