@@ -80,16 +80,10 @@ $(window).on('load', function() {
 	     
 //        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant'], icon: icon})									
        
-	marker = L.circleMarker([point.Latitude, point.Longitude], {color: point['Color'], radius: 2, name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant']})									  
+	marker = L.circleMarker([point.Latitude, point.Longitude], {color: point['Color'], radius: 3, name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant']})									  
 	.on('click', markerOnClick)  
         .addTo(map);
 	      
-	         
-    
-    circle = L.circleMarker([2,1] ).addTo(map);
- 
-//circle.setStyle({color: 'green'});
-
 
         
 // DEFINE THE FEATURES FOR THE MODAL POPUP	
@@ -182,10 +176,6 @@ $(window).on('load', function() {
 //    });
 	  
 //    stateChangingButton.addTo(map);	 
-	  
-	  
-	  
-	  	  
 	  
 	  
 	  
