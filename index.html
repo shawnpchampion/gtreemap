@@ -136,10 +136,11 @@
  
     <script type="text/javascript">
     
- //    var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
- //       maxZoom: 20,
- //       subdomains:['mt0','mt1','mt2','mt3']
- //     });
+    var CartoDBPositron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 20
+    });
       
     var map = L.map('map', {
       attributionControl: false,
@@ -147,7 +148,7 @@
       maxZoom: 20,
       tapTolerance: 50,
       tap: true,	    
- //     layers: [googleSat]
+      layers: [CartoDBPositron]
       }).setView([19.408548, -154.914111],16);
 	    
     	    
