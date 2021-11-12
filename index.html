@@ -80,16 +80,14 @@
 <!-- Easy Button -->	
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
   <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
-<!-- Tag Filter -->
-  <link rel="stylesheet" href="leaflet-tag-filter-button.css" />
-  <script src="./leaflet-tag-filter-button.js"></script>
+
 
 </head>
 
 <body>
 
     <div class="loader">Loading...</div>
-
+<!--
     <nav class="navbar fixed-bottom navbar-light bg-light">
         <div class="container-fluid"> 
             <a class="navbar-brand" href="#"><img src="assets/img/kalanilogog.png" width="auto" height="37"></a>
@@ -109,7 +107,7 @@
             </div>
         </div>
     </nav>
-  
+-->  
 <!-- BOTTOM MODAL POPUP 
 	
     <div class="modal modal-bottom fade" id="bottom_modal" tabindex="-1" role="dialog" aria-labelledby="bottom_modal">
@@ -145,15 +143,12 @@
       </div> 
     </div> 
 <!-- END POP UP FOR POINTS -->	
-
-	<!-- <div class="rainbow-box"></div> -->
 	
 <!-- BEGIN MAP CODE -->
 	
     <div id="map"></div>
     <table id="maptable" class="display"></table>
  
-  
     <script type="text/javascript">
     
      var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
