@@ -156,27 +156,11 @@ $(window).on('load', function() {
       }
     }
 	  
-    var stateChangingButton = L.easyButton({
-        states: [{
-                stateName: 'Satellite Map',        // name the state
-                icon:      'fa-tree',               // and define its properties
-                title:     'Show Satellite Map',      // like its title
-                onClick: function(btn, map) {       // and its callback
-                    map.addLayer(googleSat);
-                    btn.state('Street Map');    // change state on click!
-                }
-            }, {
-                stateName: 'Street Map',
-                icon:      'fa-university',
-                title:     'Show Carto Map',
-                onClick: function(btn, map) {
-                    map.addLayer(CartoDBPositron);
-                    btn.state('Satellite Map');
-                }
-        }], position: 'topright'
-    });
+L.easyButton( 'fa-star', function(){
+  alert('you just clicked a font awesome icon');
+}).addTo(map);
 	  
-    stateChangingButton.addTo(map);	 
+   	 
 	  
 	  
 	  
