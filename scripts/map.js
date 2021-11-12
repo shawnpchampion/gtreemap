@@ -66,7 +66,7 @@ $(window).on('load', function() {
         ? [parseInt(iconSize.split('x')[0]), parseInt(iconSize.split('x')[1])]
         : [32, 32];   
       var anchor = [size[0] / 2, size[1]];
-var imgg = "<img src='' />";
+
       var icon = L.icon({
 	    iconUrl: point['Marker Icon'],
             iconSize: size,
@@ -80,7 +80,7 @@ var imgg = "<img src='' />";
 	     
 //        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant'], icon: icon})									
        
-	var marker = L.circlemarker([point.Latitude, point.Longitude], {radius: 5, color: '#FF0000', name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant'], icon: icon})									  
+	var marker = L.circlemarker([point.Latitude, point.Longitude], {radius: 5, color: '#FF0000', name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant']})									  
 	.on('click', markerOnClick)  
         .addTo(map);
         
