@@ -68,8 +68,9 @@ $(window).on('load', function() {
       var anchor = [size[0] / 2, size[1]];
 
       var icon = L.icon({
-	    iconUrl: point['Marker Icon'],
-            iconSize: size,
+	  //  iconUrl: point['Marker Icon'],
+	    className: 'image-icon',
+           // iconSize: size,
             iconAnchor: anchor
             });
 	          
