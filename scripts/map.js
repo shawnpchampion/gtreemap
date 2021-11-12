@@ -88,7 +88,7 @@ $(window).on('load', function() {
     
     circle = L.circleMarker([2,1] ).addTo(map);
  
-marker.setStyle({color: 'green'});
+//circle.setStyle({color: 'green'});
 
 
         
