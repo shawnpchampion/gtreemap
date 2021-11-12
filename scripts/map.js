@@ -160,6 +160,11 @@ L.easyButton( 'fa-star', function(){
   alert('you just clicked a font awesome icon');
 }).addTo(map);
 	  
+L.easyButton( 'fa-star', function(){
+  alert('you just clicked');
+	map.addLayer(googleSat);
+}).addTo(map);
+	  
    	 
 	  
 	  
