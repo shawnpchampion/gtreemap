@@ -267,6 +267,12 @@ span.legend-icon {
     border-style: hidden!important;
 }
 
+.table td, .table th {
+    padding: 0;
+    vertical-align: top;
+    border-top: 0;
+}
+
 .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
      border: 0px solid #ddd;
 }
