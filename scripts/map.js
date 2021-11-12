@@ -170,7 +170,7 @@ $(window).on('load', function() {
                 icon:      'fa-university',
                 title:     'Show Street Map',
                 onClick: function(btn, map) {
-                    map.removeLayer(googleSat);
+                    map.addLayer(CartoDBPositron);
                     btn.state('Satellite Map');
                 }
         }], position: 'topright'
