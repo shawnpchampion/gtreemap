@@ -136,10 +136,10 @@
  
     <script type="text/javascript">
     
-     var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-        maxZoom: 20,
-        subdomains:['mt0','mt1','mt2','mt3']
-      });
+ //    var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+ //       maxZoom: 20,
+ //       subdomains:['mt0','mt1','mt2','mt3']
+ //     });
       
     var map = L.map('map', {
       attributionControl: false,
@@ -147,7 +147,7 @@
       maxZoom: 20,
       tapTolerance: 50,
       tap: true,	    
-      layers: [googleSat]
+ //     layers: [googleSat]
       }).setView([19.408548, -154.914111],16);
 	    
     	    
