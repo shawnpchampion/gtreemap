@@ -78,7 +78,9 @@ var imgg = "<img src='' />";
      
 // DEFINE THE PARAMETERS OF THE MARKER, AND ADD IT TO THE MAP 
 	     
-        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant'], icon: icon})									
+//        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant'], icon: icon})									
+       
+	var marker = L.Circlemarker([point.Latitude, point.Longitude], {radius: 5, color: '#FF0000', name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant'], icon: icon})									  
 	.on('click', markerOnClick)  
         .addTo(map);
         
