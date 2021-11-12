@@ -157,7 +157,8 @@ $(window).on('load', function() {
     }
 	  
 L.easyButton( 'fa-star', function(){
-  alert('you just clicked a font awesome icon');
+  alert('you just clicked a font awe');
+	map.removeLayer(googleSat);
 }).addTo(map);
 	  
 L.easyButton( 'fa-star', function(){
