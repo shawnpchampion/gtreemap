@@ -320,7 +320,7 @@ $(window).on('load', function() {
 //        : '&nbsp;<i class="fas fa-map-marker" style="color: '
 //          + group2color[ g ]
 //          + '"></i>';
-      var legendIcon = '<img src="' + group2color[ g ] + '" class="markers-legend-icon">';     
+      var legendIcon = '<img src="' + group2color[ group ] + '" class="markers-legend-icon">';     
       $(this).prepend(legendIcon);
     });
       
