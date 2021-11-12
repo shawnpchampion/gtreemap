@@ -16,7 +16,17 @@ body {
 .fade {
     transition: opacity 0.35s linear;
 }
+#map {
+    height: 400px;
+}
 
+  .image-icon img {
+    height: 52px !important;
+    width: 52px !important;
+    border-radius: 50%;
+    border: solid;
+    border-color: green;
+}
 .rainbow-box {
     width: 80vw;
     height: 200px;
