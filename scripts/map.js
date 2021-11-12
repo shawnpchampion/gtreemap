@@ -168,7 +168,7 @@ $(window).on('load', function() {
             }, {
                 stateName: 'Street Map',
                 icon:      'fa-university',
-                title:     'Show Street Map',
+                title:     'Show Carto Map',
                 onClick: function(btn, map) {
                     map.addLayer(CartoDBPositron);
                     btn.state('Satellite Map');
