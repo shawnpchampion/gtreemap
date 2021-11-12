@@ -80,17 +80,17 @@ $(window).on('load', function() {
 	     
         var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant'], icon: icon})									
        
-//	var marker = L.circlemarker([point.Latitude, point.Longitude], {radius: 5, color: '#FF0000', name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant']})									  
+//	var marker = L.circlemarker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant']})									  
 	.on('click', markerOnClick)  
         .addTo(map);
 	      
-	          circle2 = L.circleMarker([5,8]  ).addTo(map);
+	         
     
     circle = L.circleMarker([2,1] ).addTo(map);
  
-circle.setStyle({color: 'green'});
+marker.setStyle({color: 'green'});
 
-circle2.setStyle({color: 'red'});
+
         
 // DEFINE THE FEATURES FOR THE MODAL POPUP	
         function markerOnClick(e)
