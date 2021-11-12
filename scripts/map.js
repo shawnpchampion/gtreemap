@@ -277,7 +277,6 @@ $(window).on('load', function() {
 // END OF POINTS-MARKERS CODE
 
 	
-	L.circle([50.5, 30.5], {radius: 200}).addTo(map);
 // BEGIN GOOGLE SHEET CODE
   	
   function onMapDataLoad(options, points) {
@@ -314,15 +313,15 @@ $(window).on('load', function() {
 //    });	  
 
 // Append icons to categories in markers legend
-    $('#points-legend label span').each(function(i) {
-      var g = $(this).text().trim();
-      var legendIcon = (group2color[ g ].indexOf('.') > 0)
-        ? '<img src="' + group2color[ g ] + '" class="markers-legend-icon">'
-        : '&nbsp;<i class="fas fa-map-marker" style="color: '
-          + group2color[ g ]
-          + '"></i>';
-      $(this).prepend(legendIcon);
-    });
+//    $('#points-legend label span').each(function(i) {
+//      var g = $(this).text().trim();
+//      var legendIcon = (group2color[ g ].indexOf('.') > 0)
+//        ? '<img src="' + group2color[ g ] + '" class="markers-legend-icon">'
+//        : '&nbsp;<i class="fas fa-map-marker" style="color: '
+//          + group2color[ g ]
+//          + '"></i>';
+//      $(this).prepend(legendIcon);
+//    });
       
 // When all processing is done, hide the loader and make the map visible
     showMap();
