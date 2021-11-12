@@ -68,8 +68,8 @@ $(window).on('load', function() {
       var anchor = [size[0] / 2, size[1]];
 
       var icon = L.icon({
-	  //  iconUrl: point['Marker Icon'],
-	    className: 'image-icon',
+	    iconUrl: point['Marker Icon'],
+	 //   className: 'image-icon',
            // iconSize: size,
             iconAnchor: anchor
             });
@@ -77,13 +77,7 @@ $(window).on('load', function() {
       if (point.Latitude !== '' && point.Longitude !== '') {
      
 // DEFINE THE PARAMETERS OF THE MARKER, AND ADD IT TO THE MAP        
-        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant'], icon: L.divIcon({
-        html: img,
-    
-        className: 'image-icon',
-        
-        iconSize: [52, 52]
-        })})									
+        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant'], icon: icon})									
 	.on('click', markerOnClick)  
         .addTo(map);
         
