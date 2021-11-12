@@ -34,7 +34,7 @@ body {
 .modal-body {
     position: relative;
     padding: 0;
-  /*  padding-left: 40%; */
+    padding-left: 40%; 
   /*  padding-top: 15px; */
   /*  padding-right: 15px; */
   /*  padding-left: 300px; */
@@ -254,4 +254,23 @@ span.legend-icon {
 
 .ladder form, .ladder div {
   display: block;
+}
+
+
+.table {
+  margin-bottom: 0px;
+  background-color: transparent;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: transparent;
+    border-style: hidden!important;
+}
+
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+     border: 0px solid #ddd;
+}
+
+.table-bordered {
+    border: 0px solid #ddd;
 }
