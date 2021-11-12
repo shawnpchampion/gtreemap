@@ -180,12 +180,12 @@ $(window).on('load', function() {
 	  
 	  
         
-    $('#points-legend').prepend('<h6 class="pointer"><b>' + getSetting('_pointsLegendTitle') + '</b></h6>');
+//    $('#points-legend').prepend('<h6 class="pointer"><b>' + getSetting('_pointsLegendTitle') + '</b></h6>');
 //    $(".leaflet-control-layers-overlays").prepend("<label><b>Trees of Interest</b></label>");
-    if (getSetting('_pointsLegendIcon') != '') {
-      $('#points-legend h6').prepend('<span class="legend-icon"><i class="fas '
-        + getSetting('_pointsLegendIcon') + '"></i></span>');
-    }
+//    if (getSetting('_pointsLegendIcon') != '') {
+//      $('#points-legend h6').prepend('<span class="legend-icon"><i class="fas '
+//        + getSetting('_pointsLegendIcon') + '"></i></span>');
+//    }
         
 // END LEGEND CODE
 
