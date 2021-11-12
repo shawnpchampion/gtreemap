@@ -130,6 +130,7 @@ $(window).on('load', function() {
           layers[i].addTo(map);               
         }
       }
+
 	    
 // BEGIN "LEGEND" LAYER.CONTROL CODE 
       var pos = (getSetting('_pointsLegendPos') == 'off')
@@ -273,6 +274,8 @@ $(window).on('load', function() {
 
 // END OF POINTS-MARKERS CODE
 
+	
+	L.circle([50.5, 30.5], {radius: 200}).addTo(map);
 // BEGIN GOOGLE SHEET CODE
   	
   function onMapDataLoad(options, points) {
