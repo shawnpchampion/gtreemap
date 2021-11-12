@@ -150,7 +150,7 @@ $(window).on('load', function() {
       
       if (getSetting('_pointsLegendPos') !== 'off') {
         pointsLegend.addTo(map);
-//        pointsLegend._container.id = 'points-legend';
+        pointsLegend._container.id = 'points-legend';
 //        pointsLegend._container.className += ' ladder';
       }
     }
@@ -314,13 +314,13 @@ $(window).on('load', function() {
 
 // Append icons to categories in markers legend
     $('#points-legend label span').each(function(i) {
-//      var g = $(this).text().trim();
+      var g = $(this).text().trim();
 //      var legendIcon = (group2color[ g ].indexOf('.') > 0)
 //        ? '<img src="' + group2color[ g ] + '" class="markers-legend-icon">'
 //        : '&nbsp;<i class="fas fa-map-marker" style="color: '
 //          + group2color[ g ]
 //          + '"></i>';
-      var legendIcon = '<img src="' + group2color[ group ] + '" class="markers-legend-icon">';     
+      var legendIcon = '<img src="' + group2color[ g ] + '" class="markers-legend-icon">';     
       $(this).prepend(legendIcon);
     });
       
