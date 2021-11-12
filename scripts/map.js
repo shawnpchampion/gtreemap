@@ -303,14 +303,7 @@ $(window).on('load', function() {
         position: getSetting('_mapMyLocation')
       }).addTo(map);
     }
-
-//    $("#locate-btn").click(function() {
-//	  var lc = L.control.locate({
-//        locateOptions: {
-//               enableHighAccuracy: true
-//          }}).addTo(map);
-//        lc.start();
-//    });	  
+	  
 
 // Append icons to categories in markers legend
     $('#points-legend label span').each(function(i) {
