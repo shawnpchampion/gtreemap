@@ -156,27 +156,27 @@ $(window).on('load', function() {
       }
     }
 	  
-//    var stateChangingButton = L.easyButton({
-//        states: [{
-//                stateName: 'zoom-to-forest',        // name the state
-//                icon:      'fa-tree',               // and define its properties
-//                title:     'zoom to a forest',      // like its title
-//                onClick: function(btn, map) {       // and its callback
-//                    map.setView([19.408548, -154.915111],18);
-//                    btn.state('zoom-to-school');    // change state on click!
-//                }
-//            }, {
-//                stateName: 'zoom-to-school',
-//                icon:      'fa-university',
-//                title:     'zoom to a school',
-//                onClick: function(btn, map) {
-//                    map.setView([19.401548, -154.917111],20);
-//                    btn.state('zoom-to-forest');
-//                }
-//        }], position: 'topright'
-//    });
+    var stateChangingButton = L.easyButton({
+        states: [{
+                stateName: 'Satellite Map',        // name the state
+                icon:      'fa-tree',               // and define its properties
+                title:     'Show Satellite Map',      // like its title
+                onClick: function(btn, map) {       // and its callback
+                    map.addLayer(googleSat);
+                    btn.state('Street Map');    // change state on click!
+                }
+            }, {
+                stateName: 'Street Map',
+                icon:      'fa-university',
+                title:     'Show Street Map',
+                onClick: function(btn, map) {
+                    map.removeLayer(googleSat);
+                    btn.state('Satellite Map');
+                }
+        }], position: 'topright'
+    });
 	  
-//    stateChangingButton.addTo(map);	 
+    stateChangingButton.addTo(map);	 
 	  
 	  
 	  
