@@ -261,6 +261,7 @@ span.legend-icon {
   margin-bottom: 0px;
   width: 80%;
   background-color: transparent;
+  font-size: 14px;
 }
 
 .table-striped>tbody>tr:nth-of-type(odd) {
@@ -269,7 +270,7 @@ span.legend-icon {
 }
 
 .table td, .table th {
-    padding: 0;
+    padding: 3px;
     vertical-align: top;
     border-top: 0;
 }
