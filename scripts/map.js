@@ -342,7 +342,7 @@ $(window).on('load', function() {
               var sheets = data.sheets.map(function(o) { return o.properties.title })
                                  
               $.when(
-                $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
+//                $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
                 $.getJSON(apiUrl + spreadsheetId + '/values/Points?key=' + googleApiKey)
                 
               ).done(function(options, points) {
