@@ -250,7 +250,6 @@ $(window).on('load', function() {
 //  function onMapDataLoad(points) {
 	  
   function onMapDataLoad(options, points) { 
-//    createDocumentSettings(options);
       
     document.title = 'Kalani Tree Map';	  
 	 
@@ -365,19 +364,9 @@ $(window).on('load', function() {
        }    
    });
 
-  /**
-   * Reformulates documentSettings as a dictionary, e.g.
-   * {"webpageTitle": "Leaflet Boilerplate", "infoPopupText": "Stuff"}
-   */
-//  function createDocumentSettings(settings) {
-//    for (var i in settings) {
-//      var setting = settings[i];
-//      documentSettings[setting.Setting] = setting.Customize;
-//    }
-//  }
-
-  // Returns a string that contains digits of val split by comma evey 3 positions
-  // Example: 12345678 -> "12,345,678"
+// Returns a string that contains digits of val split by comma evey 3 positions
+// Example: 12345678 -> "12,345,678"
+	
   function comma(val) {
       while (/(\d+)(\d{3})/.test(val.toString())) {
           val = val.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
