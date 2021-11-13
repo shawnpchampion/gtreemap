@@ -348,7 +348,7 @@ $(window).on('load', function() {
               ).done(function(options, points) {
 //	      ).done(function(points) {                    	
                 onMapDataLoad(
-                  parse(options),
+//                  parse(options),
                   parse(points)
                 )
               })
