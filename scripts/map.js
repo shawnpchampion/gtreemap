@@ -333,8 +333,7 @@ $(window).on('load', function() {
   }
 
 /**
- * Returns the value of setting named s from constants.js
- * or def if setting is either not set or does not exist
+ * Returns the value of setting named s from constants.js, or def if setting is either not set or does not exist
  * Both arguments are strings
  * e.g. trySetting('_authorName', 'No Author')
  */
@@ -352,43 +351,48 @@ $(window).on('load', function() {
    $.ajax({
        url:'./csv/Options.csv',
        type:'HEAD',
+       
+// If Options.csv does not exist in the root level, give error and use Papa Parse to fetch data from the Google sheet
+          
        error: function() {
-         // Options.csv does not exist in the root level, so use Papa Parse to fetch data from the Google sheet
-
          if (typeof googleApiKey !== 'undefined' && googleApiKey) {
-
+         
           var parse = function(res) {
             return Papa.parse(Papa.unparse(res[0].values), {header: true} ).data;
           }
-
+         
           var apiUrl = 'https://sheets.googleapis.com/v4/spreadsheets/'
           var spreadsheetId = googleDocURL.indexOf('/d/') > 0
             ? googleDocURL.split('/d/')[1].split('/')[0]
             : googleDocURL
-
+          
           $.getJSON(
             apiUrl + spreadsheetId + '?key=' + googleApiKey
           ).then(function(data) {
               var sheets = data.sheets.map(function(o) { return o.properties.title })
-
+                 
               if (sheets.length === 0 || !sheets.includes('Options')) {
                 'Could not load data from the Google Sheet'
               }
-
-              // First, read 2 sheets: Options, Points
+            
+// First, read 2 sheets: Options, Points
+           	  
               $.when(
                 $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
                 $.getJSON(apiUrl + spreadsheetId + '/values/Points?key=' + googleApiKey)
                 
               ).done(function(options, points) {
-
-                // Which sheet names contain polygon data?
+              
+// Which sheet names contain polygon data?
+                       
                 var polygonSheets = sheets.filter(function(name) { return name.indexOf('Polygons') === 0})
                 
-                // Define a recursive function to fetch data from a polygon sheet
+// Define a recursive function to fetch data from a polygon sheet
+                
                 var fetchPolygonsSheet = function(polygonSheets) {
                 
-                  // Load map once all polygon sheets have been loaded (if any)
+ // Load map once all polygon sheets have been loaded (if any)
+                 	
                   if (polygonSheets.length === 0) {
                     onMapDataLoad(
                       parse(options),
@@ -396,57 +400,56 @@ $(window).on('load', function() {
                     )
                   } else {
                     
-                    // Fetch another polygons sheet
+ // Fetch another polygons sheet
+           	  	  
                     $.getJSON(apiUrl + spreadsheetId + '/values/' + polygonSheets.shift() + '?key=' + googleApiKey, function(data) {
-//                      createPolygonSettings( parse([data]) )
                       fetchPolygonsSheet(polygonSheets)
                     })
                   }
                 }
-                 
-                // Start recursive function
+          	
+// Start recursive function
+              	
                 fetchPolygonsSheet( polygonSheets )
-              
+                
               })
             }
           )
-
+         
          } else {
           alert('You load data from a Google Sheet, you need to add a free Google API key')
          }
-
        },
-
-       /*
-       Loading data from CSV files.
-       */
+       
+// If Options.csv does existm load data from CSV files.
+       
        success: function() {
-
+       
         var parse = function(s) {
           return Papa.parse(s[0], {header: true}).data
         }
-      
+        
         $.when(
           $.get('./csv/Options.csv'),
           $.get('./csv/Points.csv')
         ).done(function(options, points) {
-      
+         
           function loadPolygonCsv(n) {
-      
+          
             $.get('./csv/Polygons' + (n === 0 ? '' : n) + '.csv', function(data) {
               createPolygonSettings( parse([data]) )
               loadPolygonCsv(n+1)
             }).fail(function() { 
-              // No more sheets to load, initialize the map  
+		    
+// No more sheets to load, initialize the map  
+		    
               onMapDataLoad( parse(options), parse(points))
-            })
-      
+            })      
           }
-      
+          
           loadPolygonCsv(0)
-      
+          
         })
-
        }
    });
 
