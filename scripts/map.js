@@ -156,19 +156,13 @@ $(window).on('load', function() {
       }
     }
 	  
-L.easyButton( 'fa-star', function(){
-  alert('you just clicked a font awe');
-	map.removeLayer(googleSat);
-}).addTo(map);
+//    L.easyButton( 'fa-star', function(){
+//      map.removeLayer(googleSat);
+//    }).addTo(map);
 	  
-L.easyButton( 'fa-star', function(){
-  alert('you just clicked');
-	map.addLayer(googleSat);
-}).addTo(map);
-	  
-   	 
-	  
-	  
+//    L.easyButton( 'fa-star', function(){
+//      map.addLayer(googleSat);
+//    }).addTo(map);
 	  
         
 //    $('#points-legend').prepend('<h6 class="pointer"><b>' + getSetting('_pointsLegendTitle') + '</b></h6>');
