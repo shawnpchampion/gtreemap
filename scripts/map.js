@@ -20,7 +20,7 @@ $(window).on('load', function() {
 	
   var completePoints = false;
 
-// Given a collection of points, determines the layers based on 'Group' column in the spreadsheet.
+// Determines the layers based on 'Group' column in the spreadsheet.
  
   function determineLayers(points) {
     var groups = [];	  
@@ -39,12 +39,12 @@ $(window).on('load', function() {
       for (var i in groups) {
         var name = groups[i];
         layers[name] = L.layerGroup();      
-        layers[name].addTo(map); // if commented out, data table and layer.control show no data, but markers still show on the map, and marker.layerRemove button still works      
+        layers[name].addTo(map); // if this is commented out, data table and layer.control show no data, but markers still show on the map, and marker.layerRemove button still works      
       }
     return layers;
   }
 
-// Assigns points to appropriate layers and clusters them if needed
+// Assigns points to appropriate layers and cluster them
 	
   function mapPoints(points, layers) {
     var markerArray = [];
@@ -70,16 +70,17 @@ $(window).on('load', function() {
      
 // DEFINE THE PARAMETERS OF THE MARKER, AND ADD IT TO THE MAP 
 	     
-        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant'], icon: icon})									
+        var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon})									
        
 //	marker = L.circleMarker([point.Latitude, point.Longitude], {color: point['Color'], radius: 3, name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant']})									  
 	.on('click', markerOnClick)  
         .addTo(map);
 	      
 // DEFINE THE FEATURES FOR THE MODAL POPUP	
+	      
         function markerOnClick(e)
           {
-            var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + this.options.hname + "</td></tr>" + "<tr><th>Canoe Plant:</th><td>" + this.options.tags + "</td></tr>" + "<tr><th>Harvest:</th><td>" + this.options.harvest + "</td></tr>" + "<table>";
+            var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + this.options.hname + "</td></tr>" + "<tr><th>Canoe Plant:</th><td>" + this.options.cplant + "</td></tr>" + "<tr><th>Harvest:</th><td>" + this.options.harvest + "</td></tr>" + "<table>";
             $("#feature-title").html(this.options.name);
 //            $("#feature-title").html(point['Name']);
             $("#feature-info").html(content);
@@ -92,7 +93,7 @@ $(window).on('load', function() {
             divm.style.backgroundSize = "contain";  
           }
 	      
-// Add marker to it's individual layer group, and to an array that will hold all markers	      
+// Add marker to it's individual layer group, and to an array that holds all markers	      
       
         marker.addTo(layers[point.Group]);
       
@@ -101,9 +102,9 @@ $(window).on('load', function() {
       }
     }
 	  
-// For group clustering    
+// For group clustering: adjust with "true" or "false"    
+	  
     var group = L.featureGroup(markerArray);
-//    var clusters = (getSetting('_markercluster') === 'on') ? true : false;
 
     var clusters = true;
 	  
@@ -118,6 +119,7 @@ $(window).on('load', function() {
       if (clusters) {
 	      
 // Add multilayer cluster support
+	      
         multilayerClusterSupport = L.markerClusterGroup.layerSupport({ disableClusteringAtZoom: 19, spiderfyOnMaxZoom: false, showCoverageOnHover: false });
         multilayerClusterSupport.addTo(map);
              
@@ -128,7 +130,7 @@ $(window).on('load', function() {
       }
 
 	    
-// BEGIN "LEGEND" LAYER.CONTROL CODE 
+// BEGIN "LEGEND" LAYER.CONTROL CODE: 
 	    
 //      var pointsLegend = L.control.layers(baseMaps, layers, {    
       var pointsLegend = L.control.layers(null, layers, { 
@@ -136,11 +138,9 @@ $(window).on('load', function() {
         position: 'topright',
       });
       
-//      if (getSetting('_pointsLegendPos') !== 'off') {
-        pointsLegend.addTo(map);
-        pointsLegend._container.id = 'points-legend';
-//        pointsLegend._container.className += ' ladder';
-//      }
+      pointsLegend.addTo(map);
+      pointsLegend._container.id = 'points-legend';
+	    
     }
 	  
 //    L.easyButton( 'fa-star', function(){
@@ -167,6 +167,7 @@ $(window).on('load', function() {
     var displayTable = getSetting('_displayTable') == 'on' ? true : false;
           
 // Display table with active points if specified
+	  
     var columns = getSetting('_tableColumns').split(',')
                   .map(Function.prototype.call, String.prototype.trim);
       
@@ -177,7 +178,6 @@ $(window).on('load', function() {
       $('#map').css('height', (100 - tableHeight) + 'vh');
       map.invalidateSize();
         
-// Set background (and text) color of the table header
       var colors = getSetting('_tableHeaderColor').split(',');
       if (colors[0] != '') {
         $('table.display').css('background-color', colors[0]);
@@ -187,11 +187,13 @@ $(window).on('load', function() {
       }
          
 // Update table every time the map is moved/zoomed or point layers are toggled
+	   
       map.on('moveend', updateTable);
       map.on('layeradd', updateTable);
       map.on('layerremove', updateTable);
         
 // Clear table data and add only visible markers to it
+	   
       function updateTable() {
         var pointsVisible = [];
         for (i in points) {
@@ -209,6 +211,7 @@ $(window).on('load', function() {
       }
         
 // Convert Leaflet marker objects into DataTable array
+	   
       function pointsToTableData(ms) {
         var data = [];
         for (i in ms) {
@@ -222,6 +225,7 @@ $(window).on('load', function() {
       }
         
 // Transform columns array into array of title objects
+	   
       function generateColumnsArray() {
         var c = [];
         for (i in columns) {
@@ -231,6 +235,7 @@ $(window).on('load', function() {
       }
     
 // Initialize DataTable
+	   
       var table = $('#maptable').DataTable({
         paging: false,
         scrollCollapse: true,
@@ -240,24 +245,28 @@ $(window).on('load', function() {
         columns: generateColumnsArray(),
       });
     }
+	  
 // END OF TABLE MAKING
 	  
     completePoints = true;
     return group;
+	  
   }
 
 // END OF POINTS-MARKERS CODE
 
-	
 // BEGIN GOOGLE SHEET CODE
   	
   function onMapDataLoad(options, points) {
   
     createDocumentSettings(options);
   
-    document.title = getSetting('_mapTitle');
-  
+//    document.title = getSetting('_mapTitle');
+      
+    document.title = 'Kalani Tree Map';	  
+	 
 // Add points to layers and groups
+	  
     var layers;
     var group = '';
     if (points && points.length > 0) {
@@ -267,29 +276,24 @@ $(window).on('load', function() {
       completePoints = true;
     }
      
-// Add location control
-    if (getSetting('_mapMyLocation') !== 'off') {
-      var locationControl = L.control.locate({
-        keepCurrentZoomLevel: true,
-        returnToPrevBounds: true,
-        position: getSetting('_mapMyLocation')
-      }).addTo(map);
-    }
+// Add Location Control
 	  
-
-// Append icons to categories in markers legend
+    var locationControl = L.control.locate({
+      keepCurrentZoomLevel: true,
+      returnToPrevBounds: true,
+      position: 'topleft'
+    }).addTo(map);
+    
+// Append Icons to categories in markers legend
+	  
     $('#points-legend label span').each(function(i) {
       var g = $(this).text().trim();
-//      var legendIcon = (group2color[ g ].indexOf('.') > 0)
-//        ? '<img src="' + group2color[ g ] + '" class="markers-legend-icon">'
-//        : '&nbsp;<i class="fas fa-map-marker" style="color: '
-//          + group2color[ g ]
-//          + '"></i>';
       var legendIcon = '<img src="' + group2color[ g ] + '" class="markers-legend-icon">';     
       $(this).prepend(legendIcon);
     });
       
 // When all processing is done, hide the loader and make the map visible
+	  
     showMap();
     
     function showMap() {
@@ -328,20 +332,19 @@ $(window).on('load', function() {
     return documentSettings[constants[s]];
   }
 
-
 /**
  * Returns the value of setting named s from constants.js
  * or def if setting is either not set or does not exist
  * Both arguments are strings
  * e.g. trySetting('_authorName', 'No Author')
  */
+	
   function trySetting(s, def) {
     s = getSetting(s);
     if (!s || s.trim() === '') { return def; }
     return s;
   }
 
-  
 // Triggers the load of the spreadsheet and map creation
  
    var mapData;
