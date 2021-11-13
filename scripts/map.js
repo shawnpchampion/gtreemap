@@ -319,7 +319,7 @@ $(window).on('load', function() {
    var mapData;
 
    $.ajax({
-       url:'./csv/Options.csv',
+       url:'./csv/ptions.csv',
        type:'HEAD',
        
 // If Options.csv does not exist in the root level, give error and use Papa Parse to fetch data from the Google sheet
