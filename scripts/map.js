@@ -339,10 +339,9 @@ $(window).on('load', function() {
           $.getJSON(
             apiUrl + spreadsheetId + '?key=' + googleApiKey
           ).then(function(data) {
-//              var sheets = data.sheets.map(function(o) { return o.properties.title })
                                  
               $.when(
-                $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
+//                $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
                 $.getJSON(apiUrl + spreadsheetId + '/values/Points?key=' + googleApiKey)
                 
               ).done(function(options, points) {
@@ -354,9 +353,6 @@ $(window).on('load', function() {
               })
             }
           )
-//         } else {
-//          alert('You load data from a Google Sheet, you need to add a free Google API key')
-//         }
        }    
    });
 
