@@ -317,9 +317,9 @@ $(window).on('load', function() {
     
 // Returns the value of a setting s getSetting(s) is equivalent to documentSettings[constants.s]
   
-//  function getSetting(s) {
-//    return documentSettings[constants[s]];
-//  }
+  function getSetting(s) {
+    return documentSettings[constants[s]];
+  }
 
 /**
  * Returns the value of setting named s from constants.js, or def if setting is either not set or does not exist
@@ -327,11 +327,11 @@ $(window).on('load', function() {
  * e.g. trySetting('_authorName', 'No Author')
  */
 	
-//  function trySetting(s, def) {
-//    s = getSetting(s);
-//    if (!s || s.trim() === '') { return def; }
-//    return s;
-//  }
+  function trySetting(s, def) {
+    s = getSetting(s);
+    if (!s || s.trim() === '') { return def; }
+    return s;
+  }
 
 // Triggers the load of the spreadsheet and map creation
  
@@ -360,18 +360,18 @@ $(window).on('load', function() {
           ).then(function(data) {
               var sheets = data.sheets.map(function(o) { return o.properties.title })
                  
-//              if (sheets.length === 0 || !sheets.includes('Options')) {
-//                'Could not load data from the Google Sheet'
-//              }
+              if (sheets.length === 0 || !sheets.includes('Options')) {
+                'Could not load data from the Google Sheet'
+              }
             
 // First, read 2 sheets: Options, Points
            	  
               $.when(
-//                $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
+                $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
                 $.getJSON(apiUrl + spreadsheetId + '/values/Points?key=' + googleApiKey)
                 
-//              ).done(function(options, points) {
-	      ).done(function(points) {
+              ).done(function(options, points) {
+//	      ).done(function(points) {
               
 // Which sheet names contain polygon data?
                        
@@ -385,7 +385,7 @@ $(window).on('load', function() {
                  	
                   if (polygonSheets.length === 0) {
                     onMapDataLoad(
-//                      parse(options),
+                      parse(options),
                       parse(points)
                     )
                   } else {
@@ -411,7 +411,7 @@ $(window).on('load', function() {
          }
        },
        
-// If Options.csv does existm load data from CSV files.
+// If Options.csv does exist, load data from CSV files.
        
        success: function() {
        
