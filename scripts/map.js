@@ -247,10 +247,10 @@ $(window).on('load', function() {
 
 // BEGIN GOOGLE SHEET CODE
   
-  function onMapDataLoad(points) {
+//  function onMapDataLoad(points) {
 	  
-//  function onMapDataLoad(options, points) { 
-//    createDocumentSettings(options);
+  function onMapDataLoad(options, points) { 
+    createDocumentSettings(options);
       
     document.title = 'Kalani Tree Map';	  
 	 
