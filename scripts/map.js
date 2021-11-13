@@ -134,7 +134,7 @@ $(window).on('load', function() {
 	    
 //      var pointsLegend = L.control.layers(baseMaps, layers, {    
       var pointsLegend = L.control.layers(null, layers, { 
-	collapsed: false,      
+	collapsed: true,      
         position: 'topright',
       });
       
