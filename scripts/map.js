@@ -1,5 +1,5 @@
 $(window).on('load', function() {
-  var documentSettings = {};
+//  var documentSettings = {};
   var group2color = {};
 
   var CartoDBPositron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -250,7 +250,7 @@ $(window).on('load', function() {
 //  function onMapDataLoad(points) {
 	  
   function onMapDataLoad(options, points) { 
-    createDocumentSettings(options);
+//    createDocumentSettings(options);
       
     document.title = 'Kalani Tree Map';	  
 	 
@@ -369,12 +369,12 @@ $(window).on('load', function() {
    * Reformulates documentSettings as a dictionary, e.g.
    * {"webpageTitle": "Leaflet Boilerplate", "infoPopupText": "Stuff"}
    */
-  function createDocumentSettings(settings) {
-    for (var i in settings) {
-      var setting = settings[i];
-      documentSettings[setting.Setting] = setting.Customize;
-    }
-  }
+//  function createDocumentSettings(settings) {
+//    for (var i in settings) {
+//      var setting = settings[i];
+//      documentSettings[setting.Setting] = setting.Customize;
+//    }
+//  }
 
   // Returns a string that contains digits of val split by comma evey 3 positions
   // Example: 12345678 -> "12,345,678"
