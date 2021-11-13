@@ -29,27 +29,18 @@ $(window).on('load', function() {
     for (var i in points) {
       var group = points[i].Group;
       if (group && groups.indexOf(group) === -1) {
-        groups.push(group);
-     
- //       group2color[ group ] = points[i]['Marker Icon'].indexOf('.') > 0
- //         ? points[i]['Marker Icon']
- //         : points[i]['Marker Color'];
-     	  
-       group2color[ group ] = points[i]['Marker Icon'];    
-       	      
+        groups.push(group);	  
+        group2color[ group ] = points[i]['Marker Icon'];          
       }
     }
   
-// if none of the points have named layers, return no layers, or create the layer group and add it to the map
-//    if (groups.length === 0) {
-//      layers = undefined;
-//    } else {
+// Create the layer group and add it to the map
+	  
       for (var i in groups) {
         var name = groups[i];
         layers[name] = L.layerGroup();      
         layers[name].addTo(map); // if commented out, data table and layer.control show no data, but markers still show on the map, and marker.layerRemove button still works      
       }
-//    }
     return layers;
   }
 
@@ -60,23 +51,25 @@ $(window).on('load', function() {
     
     for (var i in points) {
       var point = points[i];	    
-
+      
 // Create Icon
-	    
+          
       var iconSize = point['Custom Size'];
+          
+//      var size = (iconSize.indexOf('x') > 0)
+//        ? [parseInt(iconSize.split('x')[0]), parseInt(iconSize.split('x')[1])]
+//        : [32, 32];   
+      
+      var size = [parseInt(iconSize.split('x')[0]), parseInt(iconSize.split('x')[1])];
 	    
-      var size = (iconSize.indexOf('x') > 0)
-        ? [parseInt(iconSize.split('x')[0]), parseInt(iconSize.split('x')[1])]
-        : [32, 32];   
       var anchor = [size[0] / 2, size[1]];
-
+          
       var icon = L.icon({
-	    iconUrl: point['Marker Icon'],
-            iconSize: size,
-            iconAnchor: anchor
-
-            });
-	          
+        iconUrl: point['Marker Icon'],
+        iconSize: size,
+        iconAnchor: anchor
+        });
+                
       if (point.Latitude !== '' && point.Longitude !== '') {
      
 // DEFINE THE PARAMETERS OF THE MARKER, AND ADD IT TO THE MAP 
@@ -87,8 +80,6 @@ $(window).on('load', function() {
 	.on('click', markerOnClick)  
         .addTo(map);
 	      
-
-        
 // DEFINE THE FEATURES FOR THE MODAL POPUP	
         function markerOnClick(e)
           {
@@ -106,9 +97,9 @@ $(window).on('load', function() {
           }
 	      
 // Add marker to it's individual layer group        
-        if (layers !== undefined && layers.length !== 1) {
+//        if (layers !== undefined && layers.length !== 1) {
           marker.addTo(layers[point.Group]);
-        }
+//        }
         
 // Then also add marker to an array that will hold all markers	    
         markerArray.push(marker);  
@@ -118,8 +109,10 @@ $(window).on('load', function() {
 	  
 // For group clustering    
     var group = L.featureGroup(markerArray);
-    var clusters = (getSetting('_markercluster') === 'on') ? true : false;
-     
+//    var clusters = (getSetting('_markercluster') === 'on') ? true : false;
+
+    var clusters = false;
+	  
 // if layers.length === 0, add points to map instead of layer
     if (layers === undefined || layers.length === 0) {
       map.addLayer(
@@ -142,21 +135,22 @@ $(window).on('load', function() {
 
 	    
 // BEGIN "LEGEND" LAYER.CONTROL CODE 
-      var pos = (getSetting('_pointsLegendPos') == 'off')
-        ? 'topleft'
-        : getSetting('_pointsLegendPos');
+//      var pos = (getSetting('_pointsLegendPos') == 'off')
+//        ? 'topleft'
+//        : getSetting('_pointsLegendPos');
 
+	    
 //      var pointsLegend = L.control.layers(baseMaps, layers, {    
       var pointsLegend = L.control.layers(null, layers, { 
 	collapsed: true,      
-        position: pos,
+        position: 'topright',
       });
       
-      if (getSetting('_pointsLegendPos') !== 'off') {
+//      if (getSetting('_pointsLegendPos') !== 'off') {
         pointsLegend.addTo(map);
         pointsLegend._container.id = 'points-legend';
 //        pointsLegend._container.className += ' ladder';
-      }
+//      }
     }
 	  
 //    L.easyButton( 'fa-star', function(){
