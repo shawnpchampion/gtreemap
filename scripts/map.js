@@ -54,11 +54,7 @@ $(window).on('load', function() {
       
 // Create Icon
           
-      var iconSize = point['Custom Size'];
-          
-//      var size = (iconSize.indexOf('x') > 0)
-//        ? [parseInt(iconSize.split('x')[0]), parseInt(iconSize.split('x')[1])]
-//        : [32, 32];   
+      var iconSize = point['Custom Size'];  
       
       var size = [parseInt(iconSize.split('x')[0]), parseInt(iconSize.split('x')[1])];
 	    
@@ -96,14 +92,12 @@ $(window).on('load', function() {
             divm.style.backgroundSize = "contain";  
           }
 	      
-// Add marker to it's individual layer group        
-//        if (layers !== undefined && layers.length !== 1) {
-          marker.addTo(layers[point.Group]);
-//        }
-        
-// Then also add marker to an array that will hold all markers	    
+// Add marker to it's individual layer group, and to an array that will hold all markers	      
+      
+        marker.addTo(layers[point.Group]);
+      
         markerArray.push(marker);  
-	      
+      
       }
     }
 	  
@@ -111,7 +105,7 @@ $(window).on('load', function() {
     var group = L.featureGroup(markerArray);
 //    var clusters = (getSetting('_markercluster') === 'on') ? true : false;
 
-    var clusters = false;
+    var clusters = true;
 	  
 // if layers.length === 0, add points to map instead of layer
     if (layers === undefined || layers.length === 0) {
@@ -135,10 +129,6 @@ $(window).on('load', function() {
 
 	    
 // BEGIN "LEGEND" LAYER.CONTROL CODE 
-//      var pos = (getSetting('_pointsLegendPos') == 'off')
-//        ? 'topleft'
-//        : getSetting('_pointsLegendPos');
-
 	    
 //      var pointsLegend = L.control.layers(baseMaps, layers, {    
       var pointsLegend = L.control.layers(null, layers, { 
