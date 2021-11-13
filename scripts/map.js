@@ -106,7 +106,7 @@ $(window).on('load', function() {
 	  
     var group = L.featureGroup(markerArray);
 
-    var clusters = true;
+    var clusters = false;
 	  
 // if layers.length === 0, add points to map instead of layer
 	  
@@ -162,20 +162,18 @@ $(window).on('load', function() {
 // END LEGEND CODE
 
 	  
-// BEGIN TABLE CODE
-    
-//    var displayTable = getSetting('_displayTable') == 'on' ? true : false;
+// BEGIN TABLE CODE: Adjust with "true" or "false"
  
     var displayTable = false;	  
           
-// Display table with active points if specified
+// Display table with active points
 	  
-    var columns = getSetting('_tableColumns').split(',')
+//    var columns = getSetting('_tableColumns').split(',')
+    var columns = 'Name,CPlant'.split(',')
                   .map(Function.prototype.call, String.prototype.trim);
       
    if (displayTable && columns.length > 1) {
 	
-//      tableHeight = trySetting('_tableHeight', 40);
       tableHeight = 40;	   
       if (tableHeight < 10 || tableHeight > 90) {tableHeight = 40;}
       $('#map').css('height', (100 - tableHeight) + 'vh');
