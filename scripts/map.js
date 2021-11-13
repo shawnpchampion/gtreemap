@@ -164,11 +164,10 @@ $(window).on('load', function() {
 	  
 // BEGIN TABLE CODE: Adjust with "true" or "false"
  
-    var displayTable = true;	  
+    var displayTable = false;	  
           
 // Display table with active points
 	  
-//    var columns = getSetting('_tableColumns').split(',')
     var columns = 'Name,CPlant,HName'.split(',')
                   .map(Function.prototype.call, String.prototype.trim);
       
@@ -178,22 +177,12 @@ $(window).on('load', function() {
       if (tableHeight < 10 || tableHeight > 90) {tableHeight = 40;}
       $('#map').css('height', (100 - tableHeight) + 'vh');
       map.invalidateSize();
-        
-//      var colors = getSetting('_tableHeaderColor').split(',');
-//      if (colors[0] != '') {
-//        $('table.display').css('background-color', colors[0]);
-//        if (colors.length >= 2) {
-//          $('table.display').css('color', colors[1]);
-//        }
-//      }
          
-// Update table every time the map is moved/zoomed or point layers are toggled
+// Update table every time the map is moved/zoomed or layers are toggled
 	   
       map.on('moveend', updateTable);
       map.on('layeradd', updateTable);
       map.on('layerremove', updateTable);
-        
-// Clear table data and add only visible markers to it
 	   
       function updateTable() {
         var pointsVisible = [];
@@ -257,10 +246,11 @@ $(window).on('load', function() {
 // END OF POINTS-MARKERS CODE
 
 // BEGIN GOOGLE SHEET CODE
-  	
-  function onMapDataLoad(options, points) {
   
-    createDocumentSettings(options);
+  function onMapDataLoad(points) {
+	  
+//  function onMapDataLoad(options, points) { 
+//    createDocumentSettings(options);
       
     document.title = 'Kalani Tree Map';	  
 	 
@@ -327,9 +317,9 @@ $(window).on('load', function() {
     
 // Returns the value of a setting s getSetting(s) is equivalent to documentSettings[constants.s]
   
-  function getSetting(s) {
-    return documentSettings[constants[s]];
-  }
+//  function getSetting(s) {
+//    return documentSettings[constants[s]];
+//  }
 
 /**
  * Returns the value of setting named s from constants.js, or def if setting is either not set or does not exist
@@ -337,11 +327,11 @@ $(window).on('load', function() {
  * e.g. trySetting('_authorName', 'No Author')
  */
 	
-  function trySetting(s, def) {
-    s = getSetting(s);
-    if (!s || s.trim() === '') { return def; }
-    return s;
-  }
+//  function trySetting(s, def) {
+//    s = getSetting(s);
+//    if (!s || s.trim() === '') { return def; }
+//    return s;
+//  }
 
 // Triggers the load of the spreadsheet and map creation
  
@@ -370,17 +360,18 @@ $(window).on('load', function() {
           ).then(function(data) {
               var sheets = data.sheets.map(function(o) { return o.properties.title })
                  
-              if (sheets.length === 0 || !sheets.includes('Options')) {
-                'Could not load data from the Google Sheet'
-              }
+//              if (sheets.length === 0 || !sheets.includes('Options')) {
+//                'Could not load data from the Google Sheet'
+//              }
             
 // First, read 2 sheets: Options, Points
            	  
               $.when(
-                $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
+//                $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
                 $.getJSON(apiUrl + spreadsheetId + '/values/Points?key=' + googleApiKey)
                 
-              ).done(function(options, points) {
+//              ).done(function(options, points) {
+	      ).done(function(points) {
               
 // Which sheet names contain polygon data?
                        
@@ -394,7 +385,7 @@ $(window).on('load', function() {
                  	
                   if (polygonSheets.length === 0) {
                     onMapDataLoad(
-                      parse(options),
+//                      parse(options),
                       parse(points)
                     )
                   } else {
