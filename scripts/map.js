@@ -341,7 +341,7 @@ $(window).on('load', function() {
           ).then(function(data) {
                                  
               $.when(
-//                $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
+                $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
                 $.getJSON(apiUrl + spreadsheetId + '/values/Points?key=' + googleApiKey)
                 
               ).done(function(options, points) {
