@@ -31,9 +31,12 @@ $(window).on('load', function() {
       if (group && groups.indexOf(group) === -1) {
         groups.push(group);
      
-        group2color[ group ] = points[i]['Marker Icon'].indexOf('.') > 0
-          ? points[i]['Marker Icon']
-          : points[i]['Marker Color'];
+ //       group2color[ group ] = points[i]['Marker Icon'].indexOf('.') > 0
+ //         ? points[i]['Marker Icon']
+ //         : points[i]['Marker Color'];
+	  
+	group2color[ group ] = points[i]['Marker Icon'];    
+	      
       }
     }
 
