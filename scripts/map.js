@@ -340,17 +340,17 @@ $(window).on('load', function() {
             apiUrl + spreadsheetId + '?key=' + googleApiKey
           ).then(function(data) {
                                  
-              $.when(
-                $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
+//              $.when(
+//                $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
                 $.getJSON(apiUrl + spreadsheetId + '/values/Points?key=' + googleApiKey)
                 
-              ).done(function(options, points) {
+//              ).done(function(options, points) {
 //	      ).done(function(points) {                    	
                 onMapDataLoad(
-                  parse(options),
+//                  parse(options),
                   parse(points)
                 )
-              })
+//              })
             }
           )
        }    
