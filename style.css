@@ -290,3 +290,59 @@ span.legend-icon {
 .table-bordered {
     border: 0px solid #ddd;
 }
+
+
+
+
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+/*    background: #f8f9fa; */
+    background: #3a0b1c;
+    color: #fffaef;
+    transition: all 1.5s;
+    box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+}
+
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #3a0b1c;
+    color: #fffaef;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #D1AD54;
+}
+
+#sidebar ul p {
+    color: #fffaef;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: #;
+  /*  background: #17a2b8; */
+    background: #D1AD54;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+/*    color: #fff;
+    background: #17a2b8;*/
+}
