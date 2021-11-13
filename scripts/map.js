@@ -341,9 +341,9 @@ $(window).on('load', function() {
           ).then(function(data) {
               var sheets = data.sheets.map(function(o) { return o.properties.title })
                  
-              if (sheets.length === 0 || !sheets.includes('Options')) {
-                'Could not load data from the Google Sheet'
-              }
+//              if (sheets.length === 0 || !sheets.includes('Options')) {
+//                'Could not load data from the Google Sheet'
+//              }
                 
               $.when(
                 $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
