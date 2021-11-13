@@ -17,8 +17,10 @@ body {
     transition: opacity 0.35s linear;
 }
 
+@media (min-width: 768px)
 .modal-dialog {
-   width: 455px; 
+    width: 455px;
+    margin: 30px auto;
 }
 
 .modal-title {
