@@ -346,3 +346,70 @@ a[aria-expanded="true"] {
 /*    color: #fff;
     background: #17a2b8;*/
 }
+
+#content {
+    width: calc(100% - 250px);
+/*    padding: 40px; */
+    min-height: 100vh;
+    transition: all 1.5s;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #00FF00;
+}
+
+#content.active {
+    width: 100%;
+}
+
+.navbar {
+    padding: 15px 0px;
+    background-color: transparent!important;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+/*    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.navbar-nav {
+    text-align: RIGHT;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+.btn-info {
+    color: #fff;
+    background-color: #450D21;
+    border-color: #450D21;
+}
+
+.btn-info:hover {
+    color: #fff;
+    background-color: #D1AD54;
+    border-color: #D1AD54;
+}
+
+.btn-info.focus, .btn-info:focus {
+    /* box-shadow: 0 0 0 0.2rem rgb(23 162 184 / 50%); */
+}
+
+.btn.focus, .btn:focus {
+    /* outline: 0; */
+    /* box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%); */
+}
