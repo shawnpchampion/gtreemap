@@ -269,7 +269,7 @@ $(window).on('load', function() {
     var locationControl = L.control.locate({
       keepCurrentZoomLevel: true,
       returnToPrevBounds: true,
-      position: 'topleft'
+      position: 'topright'
     }).addTo(map);
     
 // Append Icons to categories in markers legend
