@@ -25,7 +25,7 @@ $(window).on('load', function() {
   function determineLayers(points) {
     var groups = [];	  
     var layers = {};
-
+  
     for (var i in points) {
       var group = points[i].Group;
       if (group && groups.indexOf(group) === -1) {
@@ -34,22 +34,22 @@ $(window).on('load', function() {
  //       group2color[ group ] = points[i]['Marker Icon'].indexOf('.') > 0
  //         ? points[i]['Marker Icon']
  //         : points[i]['Marker Color'];
-	  
-	group2color[ group ] = points[i]['Marker Icon'];    
-	      
+     	  
+       group2color[ group ] = points[i]['Marker Icon'];    
+       	      
       }
     }
-
+  
 // if none of the points have named layers, return no layers, or create the layer group and add it to the map
-    if (groups.length === 0) {
-      layers = undefined;
-    } else {
+//    if (groups.length === 0) {
+//      layers = undefined;
+//    } else {
       for (var i in groups) {
         var name = groups[i];
         layers[name] = L.layerGroup();      
         layers[name].addTo(map); // if commented out, data table and layer.control show no data, but markers still show on the map, and marker.layerRemove button still works      
       }
-    }
+//    }
     return layers;
   }
 
