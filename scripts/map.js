@@ -109,6 +109,7 @@ $(window).on('load', function() {
     var clusters = true;
 	  
 // if layers.length === 0, add points to map instead of layer
+	  
     if (layers === undefined || layers.length === 0) {
       map.addLayer(
         clusters
@@ -129,7 +130,6 @@ $(window).on('load', function() {
         }
       }
 
-	    
 // BEGIN "LEGEND" LAYER.CONTROL CODE: 
 	    
 //      var pointsLegend = L.control.layers(baseMaps, layers, {    
@@ -164,7 +164,9 @@ $(window).on('load', function() {
 	  
 // BEGIN TABLE CODE
     
-    var displayTable = getSetting('_displayTable') == 'on' ? true : false;
+//    var displayTable = getSetting('_displayTable') == 'on' ? true : false;
+ 
+    var displayTable = false;	  
           
 // Display table with active points if specified
 	  
@@ -173,18 +175,19 @@ $(window).on('load', function() {
       
    if (displayTable && columns.length > 1) {
 	
-      tableHeight = trySetting('_tableHeight', 40);
+//      tableHeight = trySetting('_tableHeight', 40);
+      tableHeight = 40;	   
       if (tableHeight < 10 || tableHeight > 90) {tableHeight = 40;}
       $('#map').css('height', (100 - tableHeight) + 'vh');
       map.invalidateSize();
         
-      var colors = getSetting('_tableHeaderColor').split(',');
-      if (colors[0] != '') {
-        $('table.display').css('background-color', colors[0]);
-        if (colors.length >= 2) {
-          $('table.display').css('color', colors[1]);
-        }
-      }
+//      var colors = getSetting('_tableHeaderColor').split(',');
+//      if (colors[0] != '') {
+//        $('table.display').css('background-color', colors[0]);
+//        if (colors.length >= 2) {
+//          $('table.display').css('color', colors[1]);
+//        }
+//      }
          
 // Update table every time the map is moved/zoomed or point layers are toggled
 	   
@@ -260,8 +263,6 @@ $(window).on('load', function() {
   function onMapDataLoad(options, points) {
   
     createDocumentSettings(options);
-  
-//    document.title = getSetting('_mapTitle');
       
     document.title = 'Kalani Tree Map';	  
 	 
