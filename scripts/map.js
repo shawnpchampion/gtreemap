@@ -364,44 +364,20 @@ $(window).on('load', function() {
                 'Could not load data from the Google Sheet'
               }
             
-// First, read 2 sheets: Options, Points
+// First sheets: Options, Points
                 
               $.when(
                 $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
                 $.getJSON(apiUrl + spreadsheetId + '/values/Points?key=' + googleApiKey)
                 
               ).done(function(options, points) {
-//	      ).done(function(points) {
-              
-// Which sheet names contain polygon data?
-                       
-//                var polygonSheets = sheets.filter(function(name) { return name.indexOf('Polygons') === 0})
-                
-// Define a recursive function to fetch data from a polygon sheet
-                
-//                var fetchPolygonsSheet = function(polygonSheets) {
-                
-// Load map once all polygon sheets have been loaded (if any)
-                 	
-//                  if (polygonSheets.length === 0) {
+//	      ).done(function(points) {    
+
+// Parse the data                 	
                     onMapDataLoad(
                       parse(options),
                       parse(points)
                     )
-//                  } else {
-                    
-// Fetch another polygons sheet
-                     	  
-//                    $.getJSON(apiUrl + spreadsheetId + '/values/' + polygonSheets.shift() + '?key=' + googleApiKey, function(data) {
-//                      fetchPolygonsSheet(polygonSheets)
-//                    })
-//                  }
-//                }
-              
-// Start recursive function
-              	
-//                fetchPolygonsSheet( polygonSheets )
-                
               })
             }
           )
