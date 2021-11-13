@@ -325,7 +325,7 @@ $(window).on('load', function() {
 // If Options.csv does not exist in the root level, give error and use Papa Parse to fetch data from the Google sheet
           
        error: function() {
-         if (typeof googleApiKey !== 'undefined' && googleApiKey) {
+ //        if (typeof googleApiKey !== 'undefined' && googleApiKey) {
          
           var parse = function(res) {
             return Papa.parse(Papa.unparse(res[0].values), {header: true} ).data;
@@ -339,7 +339,7 @@ $(window).on('load', function() {
           $.getJSON(
             apiUrl + spreadsheetId + '?key=' + googleApiKey
           ).then(function(data) {
-              var sheets = data.sheets.map(function(o) { return o.properties.title })
+//              var sheets = data.sheets.map(function(o) { return o.properties.title })
                                  
               $.when(
                 $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
@@ -354,9 +354,9 @@ $(window).on('load', function() {
               })
             }
           )
-         } else {
-          alert('You load data from a Google Sheet, you need to add a free Google API key')
-         }
+//         } else {
+//          alert('You load data from a Google Sheet, you need to add a free Google API key')
+//         }
        }    
    });
 
