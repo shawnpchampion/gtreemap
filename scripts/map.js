@@ -317,9 +317,9 @@ $(window).on('load', function() {
     
 // Returns the value of a setting s getSetting(s) is equivalent to documentSettings[constants.s]
   
-  function getSetting(s) {
-    return documentSettings[constants[s]];
-  }
+//  function getSetting(s) {
+//    return documentSettings[constants[s]];
+//  }
 
 /**
  * Returns the value of setting named s from constants.js, or def if setting is either not set or does not exist
@@ -327,11 +327,11 @@ $(window).on('load', function() {
  * e.g. trySetting('_authorName', 'No Author')
  */
 	
-  function trySetting(s, def) {
-    s = getSetting(s);
-    if (!s || s.trim() === '') { return def; }
-    return s;
-  }
+//  function trySetting(s, def) {
+//    s = getSetting(s);
+//    if (!s || s.trim() === '') { return def; }
+//    return s;
+//  }
 
 // Triggers the load of the spreadsheet and map creation
  
