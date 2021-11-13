@@ -385,38 +385,39 @@ $(window).on('load', function() {
          } else {
           alert('You load data from a Google Sheet, you need to add a free Google API key')
          }
-       },
-       
+//       },
+       }    
+	  
 // If Options.csv does exist, load data from CSV files.
        
-       success: function() {
+//       success: function() {
        
-        var parse = function(s) {
-          return Papa.parse(s[0], {header: true}).data
-        }
+//        var parse = function(s) {
+//          return Papa.parse(s[0], {header: true}).data
+//        }
         
-        $.when(
-          $.get('./csv/Options.csv'),
-          $.get('./csv/Points.csv')
-        ).done(function(options, points) {
+//        $.when(
+//          $.get('./csv/Options.csv'),
+//          $.get('./csv/Points.csv')
+//        ).done(function(options, points) {
          
-          function loadPolygonCsv(n) {
+//          function loadPolygonCsv(n) {
           
-            $.get('./csv/Polygons' + (n === 0 ? '' : n) + '.csv', function(data) {
-              createPolygonSettings( parse([data]) )
-              loadPolygonCsv(n+1)
-            }).fail(function() { 
-		    
+//            $.get('./csv/Polygons' + (n === 0 ? '' : n) + '.csv', function(data) {
+//              createPolygonSettings( parse([data]) )
+//              loadPolygonCsv(n+1)
+//            }).fail(function() { 
+           	    
 // No more sheets to load, initialize the map  
-		    
-              onMapDataLoad( parse(options), parse(points))
-            })      
-          }
+         	    
+//              onMapDataLoad( parse(options), parse(points))
+//            })      
+//          }
           
-          loadPolygonCsv(0)
+//          loadPolygonCsv(0)
           
-        })
-       }
+//        })
+//       }
    });
 
   /**
