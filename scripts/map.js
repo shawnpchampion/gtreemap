@@ -169,7 +169,7 @@ $(window).on('load', function() {
 // Display table with active points
 	  
 //    var columns = getSetting('_tableColumns').split(',')
-    var columns = 'Name,CPlant'.split(',')
+    var columns = 'Name,CPlant,HName'.split(',')
                   .map(Function.prototype.call, String.prototype.trim);
       
    if (displayTable && columns.length > 1) {
