@@ -365,7 +365,7 @@ $(window).on('load', function() {
               }
             
 // First, read 2 sheets: Options, Points
-           	  
+                
               $.when(
                 $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
                 $.getJSON(apiUrl + spreadsheetId + '/values/Points?key=' + googleApiKey)
@@ -375,32 +375,32 @@ $(window).on('load', function() {
               
 // Which sheet names contain polygon data?
                        
-                var polygonSheets = sheets.filter(function(name) { return name.indexOf('Polygons') === 0})
+//                var polygonSheets = sheets.filter(function(name) { return name.indexOf('Polygons') === 0})
                 
 // Define a recursive function to fetch data from a polygon sheet
                 
-                var fetchPolygonsSheet = function(polygonSheets) {
+//                var fetchPolygonsSheet = function(polygonSheets) {
                 
- // Load map once all polygon sheets have been loaded (if any)
+// Load map once all polygon sheets have been loaded (if any)
                  	
-                  if (polygonSheets.length === 0) {
+//                  if (polygonSheets.length === 0) {
                     onMapDataLoad(
                       parse(options),
                       parse(points)
                     )
-                  } else {
+//                  } else {
                     
- // Fetch another polygons sheet
-           	  	  
-                    $.getJSON(apiUrl + spreadsheetId + '/values/' + polygonSheets.shift() + '?key=' + googleApiKey, function(data) {
-                      fetchPolygonsSheet(polygonSheets)
-                    })
-                  }
-                }
-          	
+// Fetch another polygons sheet
+                     	  
+//                    $.getJSON(apiUrl + spreadsheetId + '/values/' + polygonSheets.shift() + '?key=' + googleApiKey, function(data) {
+//                      fetchPolygonsSheet(polygonSheets)
+//                    })
+//                  }
+//                }
+              
 // Start recursive function
               	
-                fetchPolygonsSheet( polygonSheets )
+//                fetchPolygonsSheet( polygonSheets )
                 
               })
             }
