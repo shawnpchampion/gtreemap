@@ -345,7 +345,7 @@ $(window).on('load', function() {
 //                $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
                 $.getJSON(apiUrl + spreadsheetId + '/values/Points?key=' + googleApiKey)
                 
-              ).done(function(options, points) {
+//              ).done(function(options, points) {
 	      ).done(function(points) {                    	
                 onMapDataLoad(
 //                  parse(options),
