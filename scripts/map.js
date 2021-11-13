@@ -247,9 +247,9 @@ $(window).on('load', function() {
 
 // BEGIN GOOGLE SHEET CODE
   
-//  function onMapDataLoad(points) {
+  function onMapDataLoad(points) {
       
-  function onMapDataLoad(options, points) { 
+//  function onMapDataLoad(options, points) { 
       
     document.title = 'Kalani Tree Map';	  
  
@@ -345,8 +345,8 @@ $(window).on('load', function() {
 //                $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
                 $.getJSON(apiUrl + spreadsheetId + '/values/Points?key=' + googleApiKey)
                 
-              ).done(function(options, points) {
-//	      ).done(function(points) {                    	
+//              ).done(function(options, points) {
+	      ).done(function(points) {                    	
                 onMapDataLoad(
 //                  parse(options),
                   parse(points)
