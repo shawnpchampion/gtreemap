@@ -164,7 +164,7 @@ $(window).on('load', function() {
 	  
 // BEGIN TABLE CODE: Adjust with "true" or "false"
  
-    var displayTable = false;	  
+    var displayTable = true;	  
           
 // Display table with active points
 	  
