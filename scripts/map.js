@@ -345,11 +345,13 @@ $(window).on('load', function() {
                 $.getJSON(apiUrl + spreadsheetId + '/values/Points?key=' + googleApiKey)
                 
 //              ).done(function(options, points) {
-//	      ).done(function(points) {                    	
+//	      ).done(function(points) {         
+		function(points){  
                 onMapDataLoad(
 //                  parse(options),
                   parse(points)
                 )
+		}	
 //              })
             }
           )
