@@ -1,5 +1,5 @@
 $(window).on('load', function() {
-//  var documentSettings = {};
+
   var group2color = {};
 
   var CartoDBPositron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -247,12 +247,12 @@ $(window).on('load', function() {
 
 // BEGIN GOOGLE SHEET CODE
   
-//  function onMapDataLoad(points) {
-	  
-  function onMapDataLoad(options, points) { 
+  function onMapDataLoad(points) {
+      
+//  function onMapDataLoad(options, points) { 
       
     document.title = 'Kalani Tree Map';	  
-	 
+ 
 // Add points to layers and groups
 	  
     var layers;
@@ -341,18 +341,18 @@ $(window).on('load', function() {
           ).then(function(data) {
               var sheets = data.sheets.map(function(o) { return o.properties.title })
                  
-              if (sheets.length === 0 || !sheets.includes('Options')) {
-                'Could not load data from the Google Sheet'
-              }
+//              if (sheets.length === 0 || !sheets.includes('Options')) {
+//                'Could not load data from the Google Sheet'
+//              }
                 
               $.when(
-                $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
+//                $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
                 $.getJSON(apiUrl + spreadsheetId + '/values/Points?key=' + googleApiKey)
                 
-              ).done(function(options, points) {
-//	      ).done(function(points) {                    	
+//              ).done(function(options, points) {
+	      ).done(function(points) {                    	
                 onMapDataLoad(
-                  parse(options),
+//                  parse(options),
                   parse(points)
                 )
               })
