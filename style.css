@@ -12,7 +12,7 @@ body {
   visibility: hidden;
 }
 
-/* Control for modal */
+/* Control for Modal */
 
 .fade {
     transition: opacity 0.35s linear;
