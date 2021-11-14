@@ -17,13 +17,13 @@ $(window).on('load', function() {
       "Street Map": CartoDBPositron,
       "Satellit": googleSat	  
   };	
-	L.easyButton( 'fa-star', {position: 'topright', function(){
+	L.easyButton( 'fa-star', function(){
          map.removeLayer(googleSat);
-        }}).addTo(map);
+        }, {position: 'topright'}).addTo(map);
 	  
         L.easyButton( 'fa-star',  function(){
          map.addLayer(googleSat);
-        }).addTo(map);
+        }, {position: 'topright'}).addTo(map);
 	
   var completePoints = false;
 
