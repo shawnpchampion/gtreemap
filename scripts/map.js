@@ -25,6 +25,12 @@ $(window).on('load', function() {
          map.addLayer(googleSat);
         }, {position: 'topright'}).addTo(map);
 	
+  var locationControl = L.control.locate({
+      keepCurrentZoomLevel: true,
+      returnToPrevBounds: true,
+      position: 'topright'
+  }).addTo(map);
+	
   var completePoints = false;
 
 // Determines the layers based on 'Group' column in the spreadsheet.
@@ -267,11 +273,11 @@ $(window).on('load', function() {
      
 // Add Location Control
 	  
-    var locationControl = L.control.locate({
-      keepCurrentZoomLevel: true,
-      returnToPrevBounds: true,
-      position: 'topright'
-    }).addTo(map);
+//    var locationControl = L.control.locate({
+//      keepCurrentZoomLevel: true,
+//      returnToPrevBounds: true,
+//      position: 'topright'
+//    }).addTo(map);
     
 // Append Icons to categories in markers legend
 	  
