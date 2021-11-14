@@ -88,28 +88,28 @@ $(window).on('load', function() {
         var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon})									
         
 //	marker = L.circleMarker([point.Latitude, point.Longitude], {color: point['Color'], radius: 3, name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant']})									  
-//	.on('click', markerOnClick)  
+	.on('click', markerOnClick)  
         .addTo(map);
 	      
-	marker.bindTooltip(point['Name']).addTo(map);
+//	marker.bindTooltip(point['Name']).addTo(map);
 	      
 //	marker.bindPopup('<h2>' + point['Name'] + '</h2>');      
 	      
 // DEFINE THE FEATURES FOR THE MODAL POPUP	
 	      
-//        function markerOnClick(e)
-//          {
+        function markerOnClick(e)
+          {
 //            var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Hawaiian Name:</th><td>" + this.options.hname + "</td></tr>" + "<tr><th>Canoe Plant:</th><td>" + this.options.cplant + "</td></tr>" + "<tr><th>Description:</th><td>" + this.options.descript + "</td></tr>" + "<tr><th>Harvest:</th><td>" + this.options.harvest + "</td></tr>" + "<table>";
-//            $("#feature-title").html(this.options.name);
-//            $("#feature-info").html(content);
+            $("#feature-title").html(this.options.name);
+            $("#feature-info").html(content);
 //            $("#bottom_modal").modal("show");
-//	      $("#featureModal").modal("show");	  
+	      $("#featureModal").modal("show");	  
 //            var bgimgurlm = 'url(' + this.options.bimage + ')';
 //            var divm = document.getElementById("bgimage");
 //            divm.style.backgroundImage = bgimgurlm;
 //            divm.style.backgroundRepeat = "no-repeat";
 //            divm.style.backgroundSize = "contain";  
-//          }
+          }
 	      
 // Add marker to it's individual layer group, and to an array that holds all markers	      
       
