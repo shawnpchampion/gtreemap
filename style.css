@@ -322,3 +322,8 @@ span.legend-icon {
     background-image: url(https://shawnpchampion.github.io/gtreemap/assets/img/fatree52.png) !important;
     background-size: 20px 26px !important;
 }
+
+/* This can control veritcal (both) or horizontal (unset) */
+.leaflet-control {
+    clear: both !important;
+}
