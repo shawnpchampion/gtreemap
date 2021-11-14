@@ -69,9 +69,17 @@ $(window).on('load', function() {
       if (point.Latitude !== '' && point.Longitude !== '') {
      
 // DEFINE THE PARAMETERS OF THE MARKER, AND ADD IT TO THE MAP 
-	     
+	
+        L.easyButton( 'fa-star', function(){
+         map.removeLayer(googleSat);
+        }).addTo(map);
+	  
+        L.easyButton( 'fa-star', function(){
+         map.addLayer(googleSat);
+        }).addTo(map);
+	      
         var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon})									
-       
+        
 //	marker = L.circleMarker([point.Latitude, point.Longitude], {color: point['Color'], radius: 3, name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant']})									  
 	.on('click', markerOnClick)  
         .addTo(map);
@@ -143,13 +151,7 @@ $(window).on('load', function() {
 	    
     }
 	  
-//    L.easyButton( 'fa-star', function(){
-//      map.removeLayer(googleSat);
-//    }).addTo(map);
-	  
-//    L.easyButton( 'fa-star', function(){
-//      map.addLayer(googleSat);
-//    }).addTo(map);
+
 	  
         
 //    $('#points-legend').prepend('<h6 class="pointer"><b>' + getSetting('_pointsLegendTitle') + '</b></h6>');
