@@ -91,7 +91,7 @@ $(window).on('load', function() {
 	.on('click', markerOnClick)  
         .addTo(map);
 	      
-//	marker.bindTooltip(point['Name']).addTo(map);
+	marker.bindTooltip(point['Name']).addTo(map);
 	      
 //	marker.bindPopup('<h2>' + point['Name'] + '</h2>');      
 	      
