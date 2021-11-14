@@ -312,3 +312,7 @@ span.legend-icon {
     padding: 4px !important;
     line-height: 36px;
 }
+
+@media (hover: none) {
+  .leaflet-tooltip-pane { display: none; }
+}
