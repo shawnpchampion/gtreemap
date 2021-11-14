@@ -319,5 +319,5 @@ span.legend-icon {
 
 .leaflet-retina .leaflet-control-layers-toggle {
     background-image: url(https://shawnpchampion.github.io/gtreemap/assets/img/fatree52.png) !important;
-    background-size: 26px 26px;
+    background-size: 20px 26px !important;
 }
