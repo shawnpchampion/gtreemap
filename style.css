@@ -30,8 +30,9 @@ body {
 
 .modal-title {
     margin: 0;
-    padding-left: 40%;
+/*    padding-left: 40%; */
     line-height: 1.42857143;
+    text-align: center;
 }
 
 .modal-header {
@@ -43,7 +44,8 @@ body {
 .modal-body {
     position: relative;
     padding: 0;
-    padding-left: 40%; 
+    padding-left: 20%; 
+    padding-right: 20%
 }
 
 .modal-footer {
@@ -262,7 +264,7 @@ span.legend-icon {
 
 .table {
   margin-bottom: 0px;
-  width: 80%;
+/*  width: 80%; */
   background-color: transparent;
   font-size: 14px;
 }
