@@ -90,7 +90,7 @@ $(window).on('load', function() {
 //	marker = L.circleMarker([point.Latitude, point.Longitude], {color: point['Color'], radius: 3, name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant']})									  
 //	.on('click', markerOnClick)
 	.bindTooltip(point['Name'])
-	.bindPopup('<h2>' + point['Name'] + '</h2>')
+	.bindPopup('<h5>' + point['Name'] + '</h5>')
         .addTo(map);
 	      
 //	marker.bindTooltip(point['Name']).addTo(map);
