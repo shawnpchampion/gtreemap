@@ -91,6 +91,8 @@ $(window).on('load', function() {
 	.on('click', markerOnClick)  
         .addTo(map);
 	      
+	marker.bindTooltip("my tooltip text").openTooltip();
+	      
 // DEFINE THE FEATURES FOR THE MODAL POPUP	
 	      
         function markerOnClick(e)
