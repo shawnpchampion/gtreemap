@@ -17,13 +17,14 @@ $(window).on('load', function() {
       "Street Map": CartoDBPositron,
       "Satellit": googleSat	  
   };	
-	L.easyButton( 'fa-star', function(){
+	
+	L.easyButton( 'fa-satellite',  function(){
+         map.addLayer(googleSat);
+        }, {position: 'topright'}).addTo(map);
+	L.easyButton( 'fa-map', function(){
          map.removeLayer(googleSat);
         }, {position: 'topright'}).addTo(map);
 	  
-        L.easyButton( 'fa-star',  function(){
-         map.addLayer(googleSat);
-        }, {position: 'topright'}).addTo(map);
 	
   var locationControl = L.control.locate({
       keepCurrentZoomLevel: true,
