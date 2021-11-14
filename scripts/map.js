@@ -17,6 +17,13 @@ $(window).on('load', function() {
       "Street Map": CartoDBPositron,
       "Satellit": googleSat	  
   };	
+	L.easyButton( 'fa-star', {position: 'topright', function(){
+         map.removeLayer(googleSat);
+        }}).addTo(map);
+	  
+        L.easyButton( 'fa-star',  function(){
+         map.addLayer(googleSat);
+        }).addTo(map);
 	
   var completePoints = false;
 
@@ -69,14 +76,6 @@ $(window).on('load', function() {
       if (point.Latitude !== '' && point.Longitude !== '') {
      
 // DEFINE THE PARAMETERS OF THE MARKER, AND ADD IT TO THE MAP 
-	
-        L.easyButton( 'fa-star', function(){
-         map.removeLayer(googleSat);
-        }).addTo(map);
-	  
-        L.easyButton( 'fa-star', function(){
-         map.addLayer(googleSat);
-        }).addTo(map);
 	      
         var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon})									
         
