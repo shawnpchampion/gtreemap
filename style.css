@@ -325,5 +325,5 @@ span.legend-icon {
 
 /* This can control veritcal (both) or horizontal (unset) */
 .leaflet-control {
-    clear: both !important;
+    clear: unset !important;
 }
