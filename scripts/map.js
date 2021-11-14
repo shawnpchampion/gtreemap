@@ -93,7 +93,7 @@ $(window).on('load', function() {
 	      
 	marker.bindTooltip(point['Name']).addTo(map);
 	      
-	marker.bindPopup('<h2>' + point['Name'] + '</h2>');      
+//	marker.bindPopup('<h2>' + point['Name'] + '</h2>');      
 	      
 // DEFINE THE FEATURES FOR THE MODAL POPUP	
 	      
