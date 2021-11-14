@@ -81,12 +81,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
   <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
 
-
 </head>
 
 <body>
 
     <div class="loader">Loading...</div>
+	
 <!--
     <nav class="navbar fixed-bottom navbar-light bg-light">
         <div class="container-fluid"> 
@@ -108,6 +108,7 @@
         </div>
     </nav>
 -->  
+	
 <!-- BOTTOM MODAL POPUP 
 	
     <div class="modal modal-bottom fade" id="bottom_modal" tabindex="-1" role="dialog" aria-labelledby="bottom_modal">
@@ -124,11 +125,8 @@
             </div>
         </div>
     </div>
- 
 --> 
 
-
-	
 <!-- BEGIN MAP CODE -->
 	
     <div id="map"></div>
@@ -136,57 +134,25 @@
  
     <script type="text/javascript">
     
-    var CartoDBPositron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: 'abcd',
-      maxZoom: 20
-    });
+      var CartoDBPositron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 20
+      });
       
-    var map = L.map('map', {
-      attributionControl: false,
-      zoomControl: false,
-      maxZoom: 20,
-      tapTolerance: 50,
-      tap: true,	    
-      layers: [CartoDBPositron]
-      }).setView([19.408548, -154.914111],16);
-	    
-    	    
-    </script>
-	
-<!-- Sidebar  -->
+      var map = L.map('map', {
+        attributionControl: false,
+        zoomControl: false,
+        maxZoom: 20,
+        tapTolerance: 50,
+        tap: true,	    
+        layers: [CartoDBPositron]
+        }).setView([19.408548, -154.914111],16);
     
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>Kalani Maps</h3>
-            </div>
-            
-            <ul class="list-unstyled components">
-                <p>Map Layers</p>
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Options</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Option 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Option 2</a>
-                        </li>
-                    </ul>
-                </li> 
-            </ul>
-
-   <!--         <ul class="list-unstyled CTAs">
-             <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li>
-                <li>
-                    <a href="https://shawnpchampion.github.io/leafletgsheets/" class="article">Reset Map</a>
-                </li>
-            </ul> -->
-        </nav>	
-	
+    </script>
+		
 <!-- BEGIN POP UP FOR POINTS -->
+	
     <div class="modal fade" id="featureModal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content" id="bgimage">
@@ -200,58 +166,12 @@
           </div>
         </div> 
       </div> 
-    </div> 
+    </div>
+	
 <!-- END POP UP FOR POINTS -->		
-	
-	
-        <div id="content"> 
-           
-          
-            <nav class="navbar navbar-light bg-light">
-             
-                <div class="container-fluid"> 
-                
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                    </button>
-                    
-                    <button class="btn btn-dark d-inline-block ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">                        
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-                     
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Street View</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Satellite</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-		
-	
-	
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
-
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar, #content').toggleClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
-        });
-            
-    </script>	
-		
-</div>		
+				
 <!-- LOAD REST OF JS CODE -->  
+	
     <script type="text/javascript" src="./google-doc-url.js"></script>
     <script type="text/javascript" src="./scripts/constants.js"></script>
     <script type="text/javascript" src="./scripts/map.js"></script>
