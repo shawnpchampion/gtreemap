@@ -289,3 +289,8 @@ span.legend-icon {
 .fixed-bottom {
     box-shadow: 0 3px 9px rgb(0 0 0 / 50%);
 }
+
+.leaflet-bar button {
+  height: 36px !important; /* easyButton's height default */
+  width: 36px !important;  /*  easyButton's width default */
+}
