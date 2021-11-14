@@ -316,3 +316,8 @@ span.legend-icon {
 @media (hover: none) {
   .leaflet-tooltip-pane { display: none; }
 }
+
+.leaflet-retina .leaflet-control-layers-toggle {
+    background-image: url(https://shawnpchampion.github.io/gtreemap/assets/img/fatree52.png) !important;
+    background-size: 26px 26px;
+}
