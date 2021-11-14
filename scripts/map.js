@@ -88,10 +88,12 @@ $(window).on('load', function() {
         var marker = L.marker([point.Latitude, point.Longitude], {name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], cplant: point['CPlant'], icon: icon})									
         
 //	marker = L.circleMarker([point.Latitude, point.Longitude], {color: point['Color'], radius: 3, name: point['Name'], group: point['Group'], descript: point['Description'], bimage: point['Image'], harvest: point['Harvest'], hname: point['HName'], tags: point['CPlant']})									  
-	.on('click', markerOnClick)  
+//	.on('click', markerOnClick)
+	.bindTooltip(point['Name'])
+	.bindPopup('<h2>' + point['Name'] + '</h2>')
         .addTo(map);
 	      
-	marker.bindTooltip(point['Name']).addTo(map);
+//	marker.bindTooltip(point['Name']).addTo(map);
 	      
 //	marker.bindPopup('<h2>' + point['Name'] + '</h2>');      
 	      
@@ -103,7 +105,7 @@ $(window).on('load', function() {
             $("#feature-title").html(this.options.name);
             $("#feature-info").html(content);
 //            $("#bottom_modal").modal("show");
-	      $("#featureModal").modal("show");	  
+	    $("#featureModal").modal("show");	  
 //            var bgimgurlm = 'url(' + this.options.bimage + ')';
 //            var divm = document.getElementById("bgimage");
 //            divm.style.backgroundImage = bgimgurlm;
