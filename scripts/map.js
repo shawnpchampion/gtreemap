@@ -161,7 +161,7 @@ $(window).on('load', function() {
       pointsLegend.addTo(map);
       pointsLegend._container.id = 'points-legend';
 	    
-	    var oldLayerControl = layerControl.getContainer();
+	    var oldLayerControl = pointsLegend.getContainer();
             var newLayerControl = $("#layercontrol");
             newLayerControl.append(oldLayerControl);
 	    
