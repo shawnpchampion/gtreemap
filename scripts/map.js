@@ -19,7 +19,8 @@ $(window).on('load', function() {
   };	
 	
 	L.easyButton( 'fa-rocket',  function(){
-         map.addLayer(googleSat);
+//         map.addLayer(googleSat);
+	$("#featureModal").modal("show");	
         }, {position: 'topright'}).addTo(map);
 	
 	L.easyButton( 'fa-map', function(){
