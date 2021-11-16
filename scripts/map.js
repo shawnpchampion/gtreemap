@@ -30,7 +30,7 @@ $(window).on('load', function() {
   var locationControl = L.control.locate({
       keepCurrentZoomLevel: true,
       returnToPrevBounds: true,
-      position: 'topright'
+      position: 'bottomright'
   }).addTo(map);
 	
   var completePoints = false;
