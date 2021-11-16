@@ -35,9 +35,6 @@ $(window).on('load', function() {
 	
   var completePoints = false;
 
- 	
-	
-	
 	
 // Determines the layers based on 'Group' column in the spreadsheet.
  
@@ -128,7 +125,7 @@ $(window).on('load', function() {
 
     var clusters = false;
 	  
-// if layers.length === 0, add points to map instead of layer
+// If layers.length === 0, add points to map instead of layer
 	  
     if (layers === undefined || layers.length === 0) {
       map.addLayer(
@@ -154,16 +151,18 @@ $(window).on('load', function() {
 	    
 //      var pointsLegend = L.control.layers(baseMaps, layers, {    
       var pointsLegend = L.control.layers(null, layers, { 
-	collapsed: true,      
+	collapsed: false,      
         position: 'topright',
       });
       
       pointsLegend.addTo(map);
       pointsLegend._container.id = 'points-legend';
+
+// Adds Layer.Control to any DIV you want to put it in
 	    
-	    var oldLayerControl = pointsLegend.getContainer();
-            var newLayerControl = $("#layercontrol");
-            newLayerControl.append(oldLayerControl);
+      var oldLayerControl = pointsLegend.getContainer();
+      var newLayerControl = $("#layercontrol");
+      newLayerControl.append(oldLayerControl);
 	    
     }
 	      
