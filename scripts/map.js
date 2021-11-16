@@ -35,6 +35,10 @@ $(window).on('load', function() {
 	
   var completePoints = false;
 
+ 	
+	
+	
+	
 // Determines the layers based on 'Group' column in the spreadsheet.
  
   function determineLayers(points) {
@@ -161,6 +165,10 @@ $(window).on('load', function() {
       pointsLegend.addTo(map);
       pointsLegend._container.id = 'points-legend';
 	    
+	    var oldLayerControl = layerControl.getContainer();
+            var newLayerControl = $("#layercontrol");
+            newLayerControl.append(oldLayerControl);
+	    
     }
 	      
 //    $('#points-legend').prepend('<h6 class="pointer"><b>' + getSetting('_pointsLegendTitle') + '</b></h6>');
@@ -275,13 +283,6 @@ $(window).on('load', function() {
       completePoints = true;
     }
      
-// Add Location Control
-	  
-//    var locationControl = L.control.locate({
-//      keepCurrentZoomLevel: true,
-//      returnToPrevBounds: true,
-//      position: 'topright'
-//    }).addTo(map);
     
 // Append Icons to categories in markers legend
 	  
