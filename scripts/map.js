@@ -39,8 +39,7 @@ $(window).on('load', function() {
       },
       title: 'remove gmap'
     }]	  
-//  });
-  }, {position: 'topright'});
+  });
 	
   togle.addTo(map);	
 	  
