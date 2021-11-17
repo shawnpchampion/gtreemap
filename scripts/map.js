@@ -20,10 +20,10 @@ $(window).on('load', function() {
 
 	
   var togle = L.easyButton({
+    position: 'topright',
     states: [{
       stateName: 'add-gmap',
       icon: 'fa-map-marker',
-      position: 'topright',
       title: 'add gmap',
       onClick: function(control) {
         map.addLayer(googleSat);
@@ -31,8 +31,7 @@ $(window).on('load', function() {
       }	    
     }, {
       icon: 'fa-undo',
-      stateName: 'remove-gmap',
-      position: 'topright',	  
+      stateName: 'remove-gmap',	  
       onClick: function(control) {
         map.removeLayer(googleSat);
         control.state('add-gmap');
