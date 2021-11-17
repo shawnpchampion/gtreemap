@@ -345,7 +345,21 @@ label {
 }
 
 .modal-content {
-/*  box-shadow: 0 3px 9px rgb(0 0 0 / 50%); Used when modal has background color */
-  box-shadow: 0 3px 9px rgb(0 0 0 / 0%); /* Used when modal has transparent background */
-  background: transparent;
+box-shadow: 0 3px 9px rgb(0 0 0 / 50%);
+}
+
+.modal-contenta {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: transparent;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 0.3rem;
+    outline: 0;
+    box-shadow: 0 3px 9px rgb(0 0 0 / 0%); 
 }
