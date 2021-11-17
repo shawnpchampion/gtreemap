@@ -331,10 +331,14 @@ span.legend-icon {
 
 /* This can control vertical (block) or horizontal (inline-block) when layer control is in modal */
 .leaflet-control-layers label {
-    display: inline-block;
+    display: inline-block !important;
 } 
 
 /* Use this when layer control is in modal */
 .leaflet-control-layers {
-    box-shadow: 0 1px 5px rgb(0 0 0 / 0%) !important;
+    box-shadow: 0 1px 5px rgb(0 0 0 / 40%) !important;
+}
+
+.leaflet-control-layers-expanded {
+    width: 100% !important;
 }
