@@ -328,7 +328,7 @@ span.legend-icon {
     clear: unset !important;
 }
 
-/* This can control vertical (block) or horizontal (inline block) when layer control is in modal 
+/* This can control vertical (block) or horizontal (inline-block) when layer control is in modal */
 .leaflet-control-layers label {
-    display: block;
-} */
+    display: inline-block;
+} 
