@@ -18,14 +18,15 @@ $(window).on('load', function() {
       "Satellit": googleSat	  
   };	
 	
-	L.easyButton( 'fa-rocket',  function(){
-//         map.addLayer(googleSat);
-	$("#bottom_modal").modal("show");	
-        }, {position: 'topright'}).addTo(map);
+  L.easyButton( 'fa-rocket',  function(){
+
+      $("#bottom_modal").modal("show");	
+  }, {position: 'topright'}).addTo(map);
 	
-	L.easyButton( 'fa-map', function(){
-         map.removeLayer(googleSat);
-        }, {position: 'topright'}).addTo(map);
+  L.easyButton( 'fa-map', function(){
+      map.addLayer(googleSat);
+//      map.removeLayer(googleSat);
+  }, {position: 'topright'}).addTo(map);
 	  
 	
   var locationControl = L.control.locate({
