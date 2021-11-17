@@ -330,5 +330,5 @@ span.legend-icon {
 
 /* This can control vertical (block) or horizontal (inline block) when layer control is in modal */
 .leaflet-control-layers label {
-    display: inline block;
+    display: inline block !important;
 }
