@@ -323,7 +323,12 @@ span.legend-icon {
     background-size: 20px 26px !important;
 }
 
-/* This can control veritcal (both) or horizontal (unset) */
+/* This can control veritcal (both) or horizontal (unset) when layer control is default location */
 .leaflet-control {
     clear: unset !important;
+}
+
+/* This can control vertical (block) or horizontal (inline block) when layer control is in modal */
+.leaflet-control-layers label {
+    display: inline block;
 }
