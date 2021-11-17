@@ -19,37 +19,35 @@ $(window).on('load', function() {
   };	
 
 	
-var togle = L.easyButton({
-  states: [{
-    stateName: 'add-gmap',
-    icon: 'fa-map-marker',
-    position: 'topright',
-    title: 'add gmap',
-    onClick: function(control) {
-      map.addLayer(googleSat);
-      control.state('remove-gmap');
-    }	    
-  }, {
-    icon: 'fa-undo',
-    stateName: 'remove-gmap',
-    position: 'topright',	  
-    onClick: function(control) {
-      map.removeLayer(googleSat);
-      control.state('add-gmap');
-    },
-    title: 'remove gmap'
-  }]	  
-});
-togle.addTo(map);	
-	  
-	  
-	  
-	  
+  var togle = L.easyButton({
+    states: [{
+      stateName: 'add-gmap',
+      icon: 'fa-map-marker',
+      position: 'topright',
+      title: 'add gmap',
+      onClick: function(control) {
+        map.addLayer(googleSat);
+        control.state('remove-gmap');
+      }	    
+    }, {
+      icon: 'fa-undo',
+      stateName: 'remove-gmap',
+      position: 'topright',	  
+      onClick: function(control) {
+        map.removeLayer(googleSat);
+        control.state('add-gmap');
+      },
+      title: 'remove gmap'
+    }]	  
+//  });
+  }, {position: 'topright'});
+	
+  togle.addTo(map);	
 	  
   L.easyButton( 'fa-rocket',  function(){
       $("#bottom_modal").modal("show");	
-  }).addTo(map);
-//  }, {position: 'topright'}).addTo(map);
+//  }).addTo(map);
+  }, {position: 'topright'}).addTo(map);
 	
 //  L.easyButton( 'fa-map', function(){
 //      map.addLayer(googleSat); // map.removeLayer(googleSat);
