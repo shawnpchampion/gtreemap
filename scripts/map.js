@@ -48,7 +48,8 @@ togle.addTo(map);
 	  
   L.easyButton( 'fa-rocket',  function(){
       $("#bottom_modal").modal("show");	
-  }, {position: 'topright'}).addTo(map);
+  }).addTo(map);
+//  }, {position: 'topright'}).addTo(map);
 	
 //  L.easyButton( 'fa-map', function(){
 //      map.addLayer(googleSat); // map.removeLayer(googleSat);
