@@ -17,16 +17,41 @@ $(window).on('load', function() {
       "Street Map": CartoDBPositron,
       "Satellit": googleSat	  
   };	
-	
-  L.easyButton( 'fa-rocket',  function(){
 
-      $("#bottom_modal").modal("show");	
-  }, {position: 'topright'}).addTo(map);
 	
-  L.easyButton( 'fa-map', function(){
+var togle = L.easyButton({
+  states: [{
+    stateName: 'add-gmap',
+    icon: 'fa-map-marker',
+    position: 'topright',
+    title: 'add gmap',
+    onClick: function(control) {
       map.addLayer(googleSat);
-//      map.removeLayer(googleSat);
-  }, {position: 'topright'}).addTo(map);
+      control.state('remove-gmap');
+    }	    
+  }, {
+    icon: 'fa-undo',
+    stateName: 'remove-gmap',
+    onClick: function(control) {
+      map.removeLayer(googleSat);
+      control.state('add-gmap');
+    },
+    title: 'remove gmap'
+  }]	  
+});
+togle.addTo(map);	
+	  
+	  
+	  
+	  
+	  
+//  L.easyButton( 'fa-rocket',  function(){
+//      $("#bottom_modal").modal("show");	
+//  }, {position: 'topright'}).addTo(map);
+	
+//  L.easyButton( 'fa-map', function(){
+//      map.addLayer(googleSat); // map.removeLayer(googleSat);
+//  }, {position: 'topright'}).addTo(map);
 	  
 	
   var locationControl = L.control.locate({
