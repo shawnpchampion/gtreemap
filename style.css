@@ -37,7 +37,8 @@ body {
 
 .modal-header {
     min-height: 16.43px;
-    padding: 15px;
+/*    padding: 15px; */
+    padding: 1rem; /* Used for bottom modal to remove side scroll */
     border-bottom: 0px solid #e5e5e5;
     justify-content: space-around !important;
 }
@@ -332,3 +333,8 @@ span.legend-icon {
 .leaflet-control-layers label {
     display: inline-block;
 } 
+
+/* Use this when layer control is in modal */
+.leaflet-control-layers {
+    box-shadow: 0 1px 5px rgb(0 0 0 / 0%) !important;
+}
