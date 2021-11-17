@@ -23,7 +23,7 @@ $(window).on('load', function() {
     position: 'topright',
     states: [{
       stateName: 'add-gmap',
-      icon: 'fa-map-marker',
+      icon: 'fa-grav',
       title: 'add gmap',
       onClick: function(control) {
         map.addLayer(googleSat);
