@@ -24,10 +24,6 @@ body {
     margin: 30px auto;
 }
 
-.modal-content {
-  box-shadow: 0 3px 9px rgb(0 0 0 / 50%);
-}
-
 .modal-title {
     margin: 0;
 /*    padding-left: 40%; */
@@ -346,4 +342,10 @@ span.legend-icon {
 
 label {
     padding-right: 20px !important;
+}
+
+.modal-content {
+/*  box-shadow: 0 3px 9px rgb(0 0 0 / 50%); Used when modal has background color */
+  box-shadow: 0 3px 9px rgb(0 0 0 / 0%); /* Used when modal has transparent background */
+  background: transparent;
 }
