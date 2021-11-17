@@ -338,10 +338,12 @@ span.legend-icon {
 
 .leaflet-control-layers-expanded {
     width: 100% !important;
+    padding: 6px 10px 6px 10px !important;
 }
 
 label {
     padding-right: 20px !important;
+    padding-left: 20px !important;
 }
 
 .modal-content {
