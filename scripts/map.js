@@ -54,6 +54,7 @@ $(window).on('load', function() {
   var locationControl = L.control.locate({
       keepCurrentZoomLevel: true,
       returnToPrevBounds: true,  
+      icon: 'fas fa-moon',
       position: 'bottomright'
   }).addTo(map);
 	
