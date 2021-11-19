@@ -46,7 +46,7 @@ $(window).on('load', function() {
       $("#bottom_modal").modal("show");	
   }, {position: 'topright'}).addTo(map);
 	
-  L.easyButton( 'fa-map', function(){
+  L.easyButton( 'fas fa-user-astronaut', function(){
       $("#harvestModal").modal("show");
   }, {position: 'topright'}).addTo(map);
 	  
