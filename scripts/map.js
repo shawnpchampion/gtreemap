@@ -44,12 +44,11 @@ $(window).on('load', function() {
 	  
   L.easyButton( 'fa-rocket',  function(){
       $("#bottom_modal").modal("show");	
-//  }).addTo(map);
   }, {position: 'topright'}).addTo(map);
 	
-//  L.easyButton( 'fa-map', function(){
-//      map.addLayer(googleSat); // map.removeLayer(googleSat);
-//  }, {position: 'topright'}).addTo(map);
+  L.easyButton( 'fa-map', function(){
+      $("#harvestModal").modal("show");
+  }, {position: 'topright'}).addTo(map);
 	  
 	
   var locationControl = L.control.locate({
