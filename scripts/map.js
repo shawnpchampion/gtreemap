@@ -30,7 +30,7 @@ $(window).on('load', function() {
         control.state('remove-gmap');
       }	    
     }, {
-      icon: 'fa-undo',
+      icon: 'fas fa-user-astronaut',
       stateName: 'remove-gmap',	  
       onClick: function(control) {
         map.removeLayer(googleSat);
@@ -46,14 +46,14 @@ $(window).on('load', function() {
       $("#bottom_modal").modal("show");	
   }, {position: 'topright'}).addTo(map);
 	
-  L.easyButton( 'fas fa-user-astronaut', function(){
+  L.easyButton( 'fas fa-satellite-dish', function(){
       $("#harvestModal").modal("show");
   }, {position: 'topright'}).addTo(map);
 	  
 	
   var locationControl = L.control.locate({
       keepCurrentZoomLevel: true,
-      returnToPrevBounds: true,
+      returnToPrevBounds: true,  
       position: 'bottomright'
   }).addTo(map);
 	
